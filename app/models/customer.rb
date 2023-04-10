@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_one :room, dependent: :destroy
+  has_many :repairs, dependent: :destroy
 
   def full_name
     self.first_name + " " + self.last_name

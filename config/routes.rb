@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :new, :create, :show]
     resources :rooms, only: [:show, :create]
     resource :message, only: [:create]
+    post 'repairs/confirm' => 'repairs#confirm'
+    get 'repairs/thanx' => 'repairs#thanx'
+    resources :repairs, only: [:index, :new, :create, :show]
   end
 
   root to: "homes#top"

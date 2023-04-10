@@ -1,0 +1,32 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col mt-3'>
+      <h2 class="text-center w-25 h4 bg-light">注文情報確認</h2>
+    </div>
+  </div>
+
+
+  <div class='row mt-3'>
+    <strong class="mr-4 h5">お届け先</strong>
+    <span class="mr-2"><%= @repair.address %></span>
+    <span class="mr-2"><%= @repair.name %></span>
+    <span class="mr-2"><%= @repair.wheelchair_kinds %></span>
+    <span class="mr-2"><%= @repair.tire %></span>
+    <span class="mr-2"><%= @repair.break %></span>
+    <span class="mr-2"><%= @repair.caster %></span>
+  </div>
+
+  <%= form_with model: @repair do |f| %>
+    <%= f.hidden_field :customer_id %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :address %>
+    <%= f.hidden_field :wheelchair_kinds %>
+    <%= f.hidden_field :tire %>
+    <%= f.hidden_field :break %>
+    <%= f.hidden_field :caster %>
+
+    <div class='row mt-3 mx-auto'>
+      <%= f.submit "注文を確定する", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
