@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/success' => 'orders#success'
     resources :orders, only: [:index, :new, :create, :show]
-    resources :rooms, only: [:show, :index]
+    resources :rooms, only: [:show, :create]
     resource :message, only: [:create]
   end
 

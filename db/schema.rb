@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_10_064526) do
+ActiveRecord::Schema.define(version: 2023_04_10_064141) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -133,16 +133,10 @@ ActiveRecord::Schema.define(version: 2023_04_10_064526) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "reservations", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "rooms", force: :cascade do |t|
-    t.integer "reservation_id", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["reservation_id"], name: "index_rooms_on_reservation_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -150,5 +144,4 @@ ActiveRecord::Schema.define(version: 2023_04_10_064526) do
   add_foreign_key "messages", "admins"
   add_foreign_key "messages", "customers"
   add_foreign_key "messages", "rooms"
-  add_foreign_key "rooms", "reservations"
 end

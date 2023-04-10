@@ -6,8 +6,8 @@
   <p>メッセージがあります</p>
   <% @messages.each do |message| %>
     <div>
-      <% if message.user %>
-        <span><%= message.user.nickname %>:</span>
+      <% if message.customer %>
+        <span><%= message.customer.first_name %>:</span>
       <% else %>
         <span>スタッフ:</span>
       <% end %>
