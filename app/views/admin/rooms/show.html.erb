@@ -1,0 +1,26 @@
+<div>Adminチャットルームの一覧</div>
+ルームID<%= @room.id %>
+<% if @messages.blank? %>
+  <p>メッセージはありません</p>
+<% else%>
+  <p>メッセージがあります</p>
+  <% @messages.each do |message| %>
+    <div>
+      <% if message.user %>
+        <span><%= message.user.nickname %>:</span>
+      <% else %>
+        <span>スタッフ:</span>
+      <% end %>
+      <span><%= message.message %></span>
+    </div>
+  <% end %>
+<% end %>
+<% if @close_reservation %>
+  <p>来店日を3日以上過ぎている為、メッセージ送信はできません</p>
+<% else %>
+  <%= form_with model: [:admins, @message], url: admins_message_path, local: true do |f| %>
+    <%= f.text_field :message, class:"address-new-form" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "送信", class:"register-green-btn" %>
+  <% end %>
+<% end %>

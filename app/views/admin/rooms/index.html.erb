@@ -1,0 +1,8 @@
+<div>Adminチャットルームの一覧</div>
+<% @reservations.each do |reservation| %>
+  <div>
+    <%= reservation.user.nickname %>
+    <%= reservation.day %>
+    <%= link_to "DM", admins_room_path(reservation) %>
+  </div>
+<% end %>

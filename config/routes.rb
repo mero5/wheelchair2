@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:index,:show,:edit,:update]
     resources :items
     resources :categories, only: [:index, :edit, :create, :update, :destroy]
+    resources :rooms, only: [:show, :index]
+    resource :message, only: [:create]
   end
 
   scope module: :public do
@@ -32,11 +34,11 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/success' => 'orders#success'
     resources :orders, only: [:index, :new, :create, :show]
+    resources :rooms, only: [:show, :index]
+    resource :message, only: [:create]
   end
 
   root to: "homes#top"
   get 'about' => "homes#about"
-
-  resources :chats, only: [:show, :create]
 
 end
