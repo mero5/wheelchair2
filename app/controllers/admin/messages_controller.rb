@@ -2,9 +2,9 @@ class Admin::MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     if message.save
-      redirect_to admins_room_path(message.room.customer_id)
+      redirect_to request.referer
     else
-      redirect_to admins_room_path(message.room.reservation_id), alert: 'メッセージを送信できませんでした'
+      redirect_to request.referer alert: 'メッセージを送信できませんでした'
     end
   end
 
