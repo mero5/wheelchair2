@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <%#= render 'genres', genres: @genres %>
+    <div class="col-9">
+      <h3><strong>商品一覧</strong>(全<%= @items_all.count %>件)</h3>
+      <div class="row mt-3">
+        <% @items.each do |item| %>
+          <div class="col-3">
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.image, size: '150x120', class: "mb-2 d-block w-100", style: "background-size: cover; background-position: center;" %>
+            <% end %>
+            <p class="mb-2"><%= item.name %></p>
+            <p class="mb-2">￥<%= item.with_tax_price.to_s(:delimited) %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= @items %>
+      </div>
+    </div>
+  </div>
+</div>

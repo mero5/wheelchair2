@@ -1,0 +1,20 @@
+<%= form_with model: delivery do |f| %>
+  <%= render 'layouts/errors', obj: @delivery %>
+  <table class="table table-borderless">
+    <tbody>
+      <tr>
+        <td><%= f.label :postcode, '郵便番号(ハイフンなし)', class: "col-form-label" %></td>
+        <td><%= f.text_field :postcode, placeholder: '0000000', class:"form-control" %></td>
+      </tr>
+      <tr>
+        <td><a>住所</a></td>
+        <td><%= f.text_field :address, placeholder: '東京都渋谷区佐々木神園町0-0', class:"form-control" %></td>
+      </tr>
+      <tr>
+        <td><a>宛名</a></td>
+        <td><%= f.text_field :name, placeholder: '令和道子', class:"form-control" %></td>
+        <td><%= f.submit "新規登録", class: 'btn btn-success' %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

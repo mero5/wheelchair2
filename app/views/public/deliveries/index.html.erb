@@ -1,0 +1,38 @@
+<div class='container'>
+  <div class='row'>
+    <div class='mt-1 w-75'>
+      <h2 class="text-center w-25 h4 bg-light mt-3">配送先登録 / 一覧</h2>
+    </div>
+    <div class='mt-2 w-75'>
+      <%#=配達先新規登録%>
+      <%= render 'new', delivery: @delivery %>
+    </div>
+
+    <div class='col-10 mt-3'>
+      <%#=配達先登録一覧%>
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+              <th class="table-active text-dark">郵便番号</th>
+              <th class="table-active text-dark">住所</th>
+              <th class="table-active text-dark">宛名</th>
+              <th class="table-active text-dark"></th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @deliveries.each do |delivery| %>
+            <tr>
+              <td><%= delivery.postcode %></td>
+              <td><%= delivery.address %></td>
+              <td><%= delivery.name %></td>
+              <td>
+                <%= link_to "編集する", edit_delivery_path(delivery.id), class: "btn btn-success" %>
+                <%= link_to "削除する", delivery_path(delivery.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

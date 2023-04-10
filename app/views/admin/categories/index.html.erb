@@ -1,0 +1,41 @@
+<div class="container">
+
+  <div class="row mt-4">
+    <div class="col-10 mx-auto">
+      <h2 class="text-center w-50 h4 bg-light">カテゴリ一覧・追加</h2>
+
+      <div class="mt-5">
+        <div class="row">
+          <div>
+            <%= render 'layouts/errors', obj: @category %>
+            <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+              <%= render :partial => 'form', :locals => {:f => f} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-7">
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="2" class="pl-5 bg-light">カテゴリ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @categories.each do |category| %>
+              <tr>
+                <td class="col-6"><%= category.category_name %></td>
+                <td class="col-3"><%= link_to '編集する', edit_admin_category_path(category), class: "btn btn-success" %></td>
+                <td class="col-3"><%= link_to '削除する', admin_category_path(category), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,59 @@
+<div class='container'>
+  <div class='row'>
+    <div class='mt-3 col-4'>
+      <h2 class="text-center h4 bg-light">注文情報入力</h2>
+    </div>
+  </div>
+
+  <div class='row mt-3'>
+      <div class="col-10">
+        <%= form_with model: @order, url: orders_confirm_path do |f| %>
+          <strong>支払方法</strong>
+          <div>
+            <div class="form-group ml-3 mt-2">
+              <%= f.radio_button :payment, :クレジットカード, checked: "checked"%>
+              <%= f.label :payment, "クレジットカード" %>
+            </div>
+            <div class="form-group ml-3 mt-2">
+              <%= f.radio_button :payment, :銀行振込 %>
+              <%= f.label :payment, "銀行振込" %>
+            </div>
+          </div>
+
+          <strong>お届け先</strong>
+          <div>
+            <div class="form-group ml-3 mt-2">
+              <%= f.radio_button :address_option, 0, checked: "checked" %>
+              <%= f.label :customer_id, "ご自身の住所" %>
+              <div class="ml-4">
+                <p>〒<small class="pr-2" style="font-size:14px;"><%= @customer.post_code %></small><%= @customer.address %></p>
+                <p><%= @customer.first_name %><%= @customer.last_name %></p>
+              </div>
+            </div>
+            <div class="form-group ml-3 mt-2">
+              <%= f.radio_button :address_option, 1 %>
+              <%= f.label :deliveries, "登録済住所から選択" %>
+              <%= f.collection_select(:customer_id, @deliveries, :id, :full_delivery, {}, { class: "custom-select ml-3" }) %>
+            </div>
+            <div class="form-group text-left ml-3">
+              <%= f.radio_button :address_option, 2 %>
+              <%= f.label :order_address, "新しいお届け先" %>
+              <div class="form-inline">
+                <%= f.label :post_code, '郵便番号(ハイフンなし)', class: "col-form-label w-25 d-inline-block ml-3" %>
+                <%= f.text_field :post_code, class: "form-control mb-2" %>
+              </div>
+              <div class="form-inline">
+                <%= f.label :name, '住所', class: "col-form-label w-25 d-inline-block ml-3" %>
+                <%= f.text_field :address, class: "form-control mb-2 col-8" %>
+              </div>
+              <div class="form-inline">
+                <%= f.label :name, '宛名', class: "col-form-label w-25 d-inline-block ml-3" %>
+                <%= f.text_field :name, class: "form-control mb-2" %>
+              </div>
+            </div>
+          </div>
+          <%= f.submit "確認画面へ進む", class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+  </div>
+</div>

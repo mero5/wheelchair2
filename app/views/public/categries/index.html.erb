@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-10 mx-auto">
+      <h2 class="text-center w-50 h4 bg-light">カテゴリ</h2>
+
+      <div class="row mt-5">
+        <div class="col-7">
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="2" class="pl-5 bg-light">カテゴリ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @categories.each do |category| %>
+              <tr>
+                <td class="col-4"><%= category.category_name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

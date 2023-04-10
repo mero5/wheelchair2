@@ -1,26 +1,51 @@
-<h2>Log in</h2>
+<div class="container">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="row mt-3">
+    <div class="col-2">
+      <h1 class="h3 text-center bg-light">ログイン</h1>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "public/shared/links" %>
+  <div class="row mt-3 mt-4">
+    <div class="col-md-10 mx-auto">
+      <div class="row">
+        <div class="col-6">
+          <h2 class="h4 text-center bg-light">会員の方はこちらからログイン</h2>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-6 mx-auto">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td><%= f.label :email, 'メールアドレス', class: "col-form-label" %></td>
+                  <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
+                </tr>
+
+                <tr>
+                  <td><%= f.label :password, 'パスワード', class: "col-form-label" %></td>
+                  <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td><%= f.submit "ログイン", class: "btn btn-primary text-white col-6" %></td>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-6">
+          <h2 class="h4 text-center bg-light">会員登録がお済みでない方</h2>
+          <p class="ml-5 mt-3"><%= render "public/shared/links" %>から新規登録をお願いします</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

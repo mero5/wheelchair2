@@ -1,0 +1,42 @@
+<div class="container">
+  <div><%= flash[:item_notice] %></div>
+
+  <div class="row mt-4">
+    <h2 class="text-center w-25 h4 bg-light d-inline-block">商品一覧</h2>
+    <%= link_to '新規登録はこちら', new_admin_item_path, class: "btn btn-success ml-4" %>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-11 mx-auto">
+      <table class="table table-borderless">
+        <thead class="bg-light">
+          <tr class="text-dark text-center">
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr class="text-center">
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item), class: "link-dark" %></td>
+            <td><%= item.price.to_s(:delimited) %></td>
+            <td><%= item.category.category_name %></td>
+            <% if item.is_active == false %>
+              <td class="text-success">販売中</td>
+            <% else item.is_active == true %>
+              <td>販売停止中</td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div><%= @items %></div>
+  </div>
+</div>

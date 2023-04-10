@@ -1,0 +1,56 @@
+<table class="table table-borderless">
+  <tbody>
+    <tr>
+      <td><%= f.label :image, '商品画像', class: "col-form-label" %></td>
+      <td><%= f.file_field :image, accept: 'image/*', class: "form-control-file" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :name, '商品名', class: "col-form-label" %></td>
+      <td><%= f.text_field :name, placeholder: '商品名', class: "form-control" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :introduction, '商品説明', class: "col-form-label" %></td>
+      <td><%= f.text_area :introduction, placeholder: 'ここに説明文を記述します', class: "form-control" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :category_id, 'カテゴリ', class: "col-form-label" %></td>
+      <td><%= f.collection_select(:category_id, *[Category.all], :id, :category_name, {include_blank:"-- 選択してください --"}, {class:"custom-select"}) %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :price, '税抜価格', class: "col-form-label" %></td>
+      <td><%= f.number_field :price, placeholder: '1000', style: "display: inline;", class: "form-control" %></td>
+      <td style="font-size: 16px; height: 38px; line-height: 38px;">円</td>
+    </tr>
+
+    <% if local_assigns[:edit_flag].present? %>
+      <tr>
+        <td><%= f.label '販売ステータス' %></td>
+        <td>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, '販売中' %>
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, '販売停止' %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit '変更を保存', class: "btn btn-success btn-lg" %></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td><%= f.label '販売ステータス' %></td>
+        <td>
+          <%= f.radio_button :is_active, false, checked: true %>
+          <%= f.label :is_active, '販売中' %>
+          <%= f.radio_button :is_active, true, checked: false %>
+          <%= f.label :is_active, '販売停止' %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit '新規登録', class: "btn btn-success btn-lg" %></td>
+      </tr>
+    <% end %>
+    </tr>
+  </tbody>
+</table>

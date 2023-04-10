@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <%#= render '', genres: @category %>
+    <div class="ml-5 col-4">
+      <%= image_tag @item.image, size: '300x200', style: "background-cover; background-position: center;" %>
+    </div>
+    <div class="col-4">
+      <h3 class="mb-3" style="font-weight: bold"><%= @item.name %></h3>
+      <h4 class="mb-5"><%= @item.introduction %></h4>
+      <p><strong style="font-weight: bold; font-size: 2rem;">￥<%= @item.with_tax_price.to_s(:delimited) %></strong>(税込)</p>
+
+      <% if (customer_signed_in?) && (@item.is_active == false) %>
+        <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, { required: true, class: "ml-4"}  %>
+          <%= f.submit 'カートに入れる', class: "btn btn-success ml-4" %>
+        <% end %>
+      <% elsif @item.is_active != false %>
+        <span class="btn btn-danger disabled ml-4">売切れ</span>
+      <% end %>
+    </div>
+  </div>
+</div>
