@@ -1,0 +1,20 @@
+<div class="col-3">
+  <div class="card">
+    <table class="table">
+      <thead class="text-center">
+        <tr>
+          <th>カテゴリ検索</th>
+        </tr>
+      </thead>
+      <tbody class="table-borderless">
+        <% categories.each do |category| %>
+          <tr>
+            <td>
+              <%= link_to category.category_name, category_search_path(items: category.items.ids, category_word: category.category_name) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -43,5 +43,7 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
   get 'about' => "homes#about"
+  get '/search', to: 'searches#search'
+  get '/category_search', to: 'searches#category_search'
 
 end
