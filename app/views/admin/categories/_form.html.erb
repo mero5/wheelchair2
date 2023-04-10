@@ -1,5 +1,7 @@
 <table class="table table-borderless">
   <tbody>
+      <td><%= f.label :image, '商品画像', class: "col-form-label" %></td>
+      <td><%= f.file_field :image, accept: 'image/*', class: "form-control-file" %></td>
     <td><%= f.label :category_name, 'カテゴリ', class: "col-form-label" %></td>
     <td><%= f.text_field :category_name, class: "form-control col" %></td>
     <% if local_assigns[:edit_flag].present? %>

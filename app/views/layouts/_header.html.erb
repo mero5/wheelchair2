@@ -9,12 +9,12 @@
         </h1>
 
         <div class="mr-3" style="position: relative">
-          <%#= form_with url: search_path, method: :get do |f| %>
-          <%#= f.text_field :word, placeholder: 'Search', class: "ml-auto form-control", style: "width: 250px;" %>
-            <%#= f.button type: "submit", class: "btn btn-defalt", style: "position: absolute; top: 0px; right: 0px;" do %>
-          <i class="fas fa-search text-dark"></i>
-          <%# end %>
-          <%# end %>
+          <%= form_with url: search_path, method: :get do |f| %>
+            <%= f.text_field :word, placeholder: 'Search', class: "ml-auto form-control", style: "width: 250px;" %>
+            <%= f.button type: "submit", class: "btn btn-defalt", style: "position: absolute; top: 0px; right: 0px;" do %>
+              <i class="fas fa-search text-dark"></i>
+            <% end %>
+          <% end %>
         </div>
 
           <div class="f-flex flex-column">
@@ -81,7 +81,7 @@
                   </li>
                   <li class="nav-item mr-3">
                     <%= link_to new_customer_session_path do %>
-                      <i class="fad fa-user-plus text-dark fa-2x"></i>
+                      <i class="fas fa-user-plus text-dark fa-2x"></i>
                     <% end %>
                   </li>
                 <% end %>

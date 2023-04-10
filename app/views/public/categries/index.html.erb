@@ -12,13 +12,18 @@
               </tr>
             </thead>
             <tbody>
-              <% @categories.each do |category| %>
-              <tr>
-                <td class="col-4"><%= category.category_name %></td>
-              </tr>
-              <% end %>
             </tbody>
           </table>
+          <% @categories.each do |category| %>
+            <div class="col-4">
+              <li class="nav-item nav-link border rounded btn mr-5">
+                <%#= link_to item_path(item.id) do %>
+                  <%= image_tag category.image, size: "350x250", style: "background-size: cover; background-position: center;" %>
+                  <%= category.category_name %>
+                <%# end %>
+              </li>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
