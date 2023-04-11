@@ -27,9 +27,10 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe'
     patch 'customers/withdrawal'
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
-    resources :items, only: [:index, :show] do
-      resource :favorites, only: [:create, :destroy, :index]
+    resources :items, only: [:show] do
+      resource :favorites, only: [:create, :destroy]
     end
+    get 'favorites' => 'favorites#index'
     resources :categories, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     delete 'cart_items' => 'cart_items#destroy_all'

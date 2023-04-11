@@ -1,11 +1,11 @@
 <% if item.favorited_by?(current_customer) %>
   <%= link_to item_favorites_path(item), method: :delete, remote: true do %>
-    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-    削除
+    <i class="fas fa-clipboard-list" style="color: red;"></i>
+    <span class="text-danger">欲しいものリストから外す</span>
   <% end %>
 <% else %>
   <%= link_to item_favorites_path(item), method: :post, remote: true do %>
-    <i class="fas fa-heart" aria-hidden="true"></i>
-    欲しいものリスト
+    <i class="fas fa-clipboard-list text-dark" ></i>
+    <span class="text-dark">欲しいものに追加する</span>
   <% end %>
 <% end %>
