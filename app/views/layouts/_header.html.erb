@@ -1,24 +1,22 @@
 <header>
-  <div class="py-2" style="background-color: #3A98B9;">
+  <div style="background-color: #38B6ff;">
     <div class="container">
       <div class="d-flex justify-content-between">
-        <h1>
           <%= link_to root_path do %>
-            車椅子サービス
+            <%= image_tag '車椅子サービス.png', style: "height: 100px; width: 180px; line-height: 96px;" %>
           <% end %>
-        </h1>
 
-        <div class="mr-3" style="position: relative">
+        <div class="mt-5" style="position: relative">
           <%= form_with url: search_path, method: :get do |f| %>
-            <%= f.text_field :word, placeholder: 'Search', class: "ml-auto form-control", style: "width: 250px;" %>
+            <%= f.text_field :word, placeholder: 'Search', class: "ml-auto form-control", style: "width: 300px;" %>
             <%= f.button type: "submit", class: "btn btn-defalt", style: "position: absolute; top: 0px; right: 0px;" do %>
               <i class="fas fa-search text-dark"></i>
             <% end %>
           <% end %>
         </div>
 
-          <div class="f-flex flex-column">
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3A98B9;">
+          <div class="mt-4 f-flex flex-column">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #38B6ff;">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -26,61 +24,65 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <% if customer_signed_in? %>
-                  <p class="mb-0 mr-3" style="height: 42px;line-height: 42px;"><%= current_customer.first_name %>さま</p>
-                  <li class="nav-item mr-3">
+                  <p class="mb-0 mr-5" style="height: 42px;line-height: 42px;"><%= current_customer.first_name %>さま</p>
+                  <li class="nav-item mr-4">
                     <%= link_to customers_profile_path do %>
                       <i class="fas fa-user-cog text-dark fa-2x"></i>
                     <% end %>
                   </li>
-                  <li class="nav-item mr-3">
+                  <li class="nav-item mr-4">
                     <%= link_to customers_profile_path do %>
                       <i class="fas fa-clipboard-list text-dark fa-2x"></i>
                     <% end %>
                   </li>
-                  <li class="nav-item mr-3">
+                  <li class="nav-item mr-4">
                     <%= link_to cart_items_path do %>
                       <i class="fas fa-shopping-cart text-dark fa-2x"></i>
                     <% end %>
                   </li>
-                  <li class="nav-item mr-3">
+                  <li class="nav-item">
                     <%= link_to destroy_customer_session_path, method: :delete do %>
                       <i class="fas fa-sign-out-alt text-dark fa-2x"></i>
                     <% end %>
                   </li>
                 <% elsif admin_signed_in? %>
                   <li class="nav-item">
-                    <%= link_to '商品一覧', destroy_admin_session_path, class: "nav-link text-dark border rounded btn mr-3" %>
+                    <%= link_to '商品一覧', destroy_admin_session_path, class: "nav-link text-dark border rounded btn mr-4" %>
+                  </li>
+                  <li class="nav-item mr-4">
+                    <%= link_to destroy_admin_session_path do %>
+                      <i class="fas fa-clipboard-list text-dark fa-2x"></i>
+                    <% end %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to '会員一覧', destroy_admin_session_path,class: "nav-link text-dark border rounded btn mr-3" %>
+                    <%= link_to '注文履歴一覧', destroy_admin_session_path, class: "nav-link text-dark border rounded btn mr-4" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to '注文履歴一覧', destroy_admin_session_path, class: "nav-link text-dark border rounded btn mr-3" %>
+                    <%= link_to 'カテゴリ一覧', destroy_admin_session_path, class: "nav-link text-dark border rounded btn mr-4" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to 'ジャンル一覧', destroy_admin_session_path, class: "nav-link text-dark border rounded btn mr-3" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-dark border rounded btn" %>
+                    <%= link_to destroy_admin_session_path, method: :delete do %>
+                      <i class="fas fa-sign-out-alt text-dark fa-2x"></i>
+                    <% end %>
                   </li>
                 <% else %>
-                  <li class="nav-item mr-3">
+                  <li class="nav-item mr-4">
                     <%= link_to customers_profile_path do %>
                       <i class="fas fa-clipboard-list text-dark fa-2x"></i>
                     <% end %>
                   </li>
-                  <li class="nav-item mr-3">
+                  <li class="nav-item mr-4">
                     <%= link_to cart_items_path do %>
                       <i class="fas fa-shopping-cart text-dark fa-2x"></i>
                     <% end %>
                   </li>
-                  <li class="nav-item mr-3">
-                    <%= link_to new_customer_registration_path do %>
+                  <li class="nav-item mr-4">
+                    <%= link_to new_customer_session_path do %>
                       <i class="far fa-user-circle text-dark fa-2x"></i>
                     <% end %>
                   </li>
-                  <li class="nav-item mr-3">
-                    <%= link_to new_customer_session_path do %>
+                  <li class="nav-item">
+                    <%= link_to new_customer_registration_path do %>
                       <i class="fas fa-user-plus text-dark fa-2x"></i>
                     <% end %>
                   </li>
