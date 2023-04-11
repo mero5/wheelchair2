@@ -62,3 +62,5 @@ gem "enum_help"
 gem 'ancestry'
 
 gem 'rails-i18n'
+
+gem 'jquery-rails'
