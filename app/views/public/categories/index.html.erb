@@ -7,10 +7,10 @@
           <% @categories.each do |category| %>
             <div class="col-4">
               <li class="nav-item nav-link border rounded btn mr-5">
-                <%#= link_to item_path(item.id) do %>
+                <%= link_to category_path(category) do %>
                   <%= image_tag category.image, size: "350x250", style: "background-size: cover; background-position: center;" %>
                   <%= category.category_name %>
-                <%# end %>
+                <% end %>
               </li>
             </div>
           <% end %>

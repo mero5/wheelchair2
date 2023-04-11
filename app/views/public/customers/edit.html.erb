@@ -1,0 +1,47 @@
+<div class='container'>
+  <div class='row mt-3'>
+    <div class='col-10 mx-auto'>
+      <h2 class="text-center w-25 h4 bg-light d-inline-block">会員情報編集</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-10 mt-3'>
+
+      <%= form_with model: @customer, url:  customers_mypage_path(@customer), method: :patch do |f| %>
+        <%= render 'layouts/errors', obj: @customer %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>氏名</td>
+              <td class="form-inline"><%= f.text_field :first_name, size: 20, class:"form-control col-4" %> <%= f.text_field :last_name, size: 20, class:"form-control col-4 ml-5" %></td>
+            </tr>
+            <tr>
+              <td>フリガナ</td>
+              <td class="form-inline"><%= f.text_field :kana_first_name, size: 20, class: "form-control col-4" %> <%= f.text_field :kana_last_name, size: 20, class: "form-control col-4 ml-5" %></td>
+            </tr>
+            <tr>
+              <td>郵便番号</td>
+              <td><%= f.text_field :postal_code, size: 20, class: "form-control col-4" %></td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td><%= f.text_field :address, size: 60, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= f.text_field :telephone_number, size: 20, class: "form-control col-4" %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= f.text_field :email, size: 20, class: "form-control col-4" %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+        <%#= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger ml-3' %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
