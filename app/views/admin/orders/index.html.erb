@@ -1,0 +1,42 @@
+<div class="container">
+
+  <div class="row mt-4">
+    <div class="col-10 mx-auto">
+      <h2 class="text-center w-25 h4 bg-light d-inline-block">注文履歴一覧</h2>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-10 mx-auto">
+      <table class="table table-borderless">
+        <thead>
+          <tr class="table-active text-dark">
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% orders.each do |order| %>
+            <tr>
+              <td>
+                　<%= link_to admin_order_path(order) do %>
+                　<%= order.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %>
+                  <% end %>
+              </td>
+              <td><%= order.customer.full_name %></td>
+              <td><%= order.order_details.sum(:amount) %></td>
+              <td><%= order.status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div><%#= paginate @orders %></div>
+  </div>
+
+</div>

@@ -6,7 +6,7 @@ class Admin::RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find_by(customer_id)
+    @room = Room.find(customer_id)
     @message = Message.new
     @messages = Message.where(room_id: @room.id)
   end

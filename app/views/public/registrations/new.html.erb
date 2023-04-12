@@ -40,7 +40,9 @@
             <tr>
               <td><%= f.label :birth_year, '生年月日', class: "col-form-label" %></td>
               <td>
-                <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1940, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), class: "form-control col-10 ml-auto" %>
+                <div class="pl-6">
+                  <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1940, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), class: "pl-6" %>
+                </div>
               </td>
             </tr>
 
@@ -98,4 +100,4 @@
     <h3 class="mt-3 bg-light h4 text-center w-50">既に登録済みの方</h3>
     <p class="mx-5 mt-4"><%= render "public/shared/links" %>からログインしてください</p>
   </div>
-</div>
+</div>v>

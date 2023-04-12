@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
-    <%= render 'public/items/categories', categories: @categories %>
-    <div class="col-9">
+    <%#= render 'public/items/categories', categories: @categories %>
+    <div class="col-12">
       車椅子のことならお任せください
+      <%= render 'public/categories/index', categories: @categories %>
     </div>
   </div>
 </div>

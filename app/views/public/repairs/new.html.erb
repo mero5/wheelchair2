@@ -4,9 +4,9 @@
       <h2 class="text-center h4 bg-light">修理依頼</h2>
     </div>
   </div>
-
   <div class='row mt-3'>
-      <div class="col-10">
+    <div class="col-12">
+      <% if customer_signed_in? %>
         <%= form_with model: @repair, url: repairs_confirm_path do |f| %>
           <strong>車椅子の種類を選択</strong>
           <div>
@@ -106,6 +106,9 @@
           </div>
           <%= f.submit "確認画面へ進む", class: 'btn btn-primary' %>
         <% end %>
+      <% else %>
+        修理依頼する際はログインをしてください
+      <% end %>
     </div>
   </div>
 </div>

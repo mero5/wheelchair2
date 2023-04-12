@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row mt-3">
+    <h4 class="text-center w-40 bg-light">カテゴリ</h4>
+  </div>
+  <div class="row mt-3">
+    <% categories.each do |category| %>
+      <div class="col-4">
+        <li class="nav-item nav-link border rounded btn rounded">
+          <%= link_to category_path(category) do %>
+            <%= image_tag category.image, size: "300x250", style: "background-size: cover; background-position: center;" %>
+            <h5 class="my-2"><%= category.category_name %></h5>
+          <% end %>
+        </li>
+      </div>
+    <% end %>
+  </div>
+</div>

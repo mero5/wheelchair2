@@ -1,8 +1,11 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
 
+  def earnings
+  end
+
   def index
-    @orders = Order.all.page(params[:page]).per(10)
+    @orders = Order.all
   end
 
   def show
@@ -28,4 +31,5 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:status)
   end
+
 end
