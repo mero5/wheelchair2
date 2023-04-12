@@ -1,23 +1,9 @@
 <div class="container">
   <div class="row">
-    <%#= render 'categories', categories: @categories %>
+    <%= render 'public/items/categories', categories: @categories %>
     <div class="col-12">
-      <h3 class="text-center"><strong><%= @category.category_name %>一覧</strong>(全<%= @categories.count %>件)</h3>
+      <h3 class="text-center"><strong><%= @category.category_name %>一覧</strong>(全<%= @items.count %>件)</h3>
     </div>
   </div>
-      <div class="row mt-3">
-        <% @items.each do |item| %>
-          <div class="col-3">
-            <li class="nav-item nav-link border rounded btn mr-3 rounded">
-            <%= link_to item_path(item) do %>
-              <%= image_tag item.image, size: '200x150', class: "mb-2 d-block w-100", style: "background-size: cover; background-position: center;" %>
-              <p class="mb-2 text-dark"><%= item.name %></p>
-              <p class="mb-2 text-dark">￥<%= item.with_tax_price.to_s(:delimited) %></p>
-            <% end %>
-            </li>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <%= render 'public/categories/show', items: @items %>
 </div>
