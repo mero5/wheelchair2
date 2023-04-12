@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :edit, :create, :update, :destroy]
     get 'orders/earnings'
     resources :orders, only:[:index,:show,:update]
-
     resources :order_details,only:[:update]
     resources :rooms, only: [:show, :index]
     resource :message, only: [:create]

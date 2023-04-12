@@ -1,23 +1,47 @@
-<div>チャットルームの一覧</div>
-ルームID<%= @room.id %>
-<% if @messages.blank? %>
-  <p>メッセージはありません</p>
-<% else%>
-  <p>メッセージがあります</p>
-  <% @messages.each do |message| %>
-    <div>
-      <% if message.customer %>
-        <span><%= message.customer.first_name %>:</span>
-      <% else %>
-        <span>スタッフ:</span>
-      <% end %>
-      <span><%= message.message %></span>
+<div class="container">
+  <div class="row mt-3">
+    <div class='mt-3 col-4 mx-auto'>
+      <h4 class="text-center bg-secondary text-white"><%= @room.customer.full_name %>さまとチャット</h4>
     </div>
-  <% end %>
-<% end %>
-  <%= form_with model: [:admins, @message], url: admins_message_path, local: true do |f| %>
-    <%= f.text_field :message, class:"address-new-form" %>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.submit "送信", class:"register-green-btn" %>
-  <% end %>
-<span class="text-dark">お問い合わせ</span>
+  </div>
+  <div class="row mt-3">
+    <div class="col-8 mx-auto">
+      <div class="chat bg-light p-4">
+        <div class="message">
+          <% if @messages.blank? %>
+            <p>メッセージはありません</p>
+          <% else%>
+            <% @messages.each do |message| %>
+              <div>
+                <% if message.customer %>
+                  <div style="text-align: left;">
+                    <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
+                    <%= @room.customer.first_name %>さま
+                    <p class="bg-secondary text-white rounded-pill w-50 py-1 px-2">
+                    <%= message.message %></p>
+                  </div>
+                <% else %>
+                  <div style="text-align: right;">
+                    <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
+                    スタッフ
+                    <p class="bg-success text-white rounded-pill py-1 px-2">
+                    <%= message.message %></p>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="mt-3">
+          <div style="text-align: right;">
+            <%= form_with model: [:admins, @message], url: admin_message_path, local: true do |f| %>
+              <%= f.text_field :message, :placeholder => "メッセージを入力して下さい", class:"form-control" %>
+              <%= f.hidden_field :room_id, value: @room.id %>
+              <%= f.submit "送信", class:"btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

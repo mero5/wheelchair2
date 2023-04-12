@@ -46,19 +46,10 @@
                     <% end %>
                   </li>
                 <% elsif admin_signed_in? %>
-                  <li class="nav-item">
-                    <%= link_to '商品一覧', destroy_admin_session_path, class: "nav-link text-dark border rounded btn mr-4" %>
-                  </li>
-                  <li class="nav-item mr-4">
-                    <%= link_to destroy_admin_session_path do %>
-                      <i class="fas fa-clipboard-list text-dark fa-2x"></i>
+                <li class="nav-item mr-4">
+                    <%= link_to new_customer_session_path do %>
+                      <i class="far fa-user-circle text-dark fa-2x"></i>
                     <% end %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to '注文履歴一覧', destroy_admin_session_path, class: "nav-link text-dark border rounded btn mr-4" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'カテゴリ一覧', destroy_admin_session_path, class: "nav-link text-dark border rounded btn mr-4" %>
                   </li>
                   <li class="nav-item">
                     <%= link_to destroy_admin_session_path, method: :delete do %>
