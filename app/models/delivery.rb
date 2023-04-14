@@ -6,6 +6,6 @@ class Delivery < ApplicationRecord
   validates :delivery_name, presence: true
 
   def full_delivery
-    self.postcode + " " + self.address + " " + self.name
+    self.delivery_postcode + " " + self.delivery_address + " " + self.delivery_name
   end
 end

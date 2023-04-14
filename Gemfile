@@ -64,3 +64,7 @@ gem 'ancestry'
 gem 'rails-i18n'
 
 gem 'jquery-rails'
+
+gem 'impressionist'
+
+gem 'chartkick'

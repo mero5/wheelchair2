@@ -1,4 +1,4 @@
-class Admin::OrdersDetailsController < ApplicationController
+class Admin::OrderDetailsController < ApplicationController
   before_action :authenticate_admin!
 
   def update
@@ -14,7 +14,7 @@ class Admin::OrdersDetailsController < ApplicationController
       end
 
       if @order.order_details.count == @order_details.where(making_status: "製作完了").count
-          @order.status = "発送準備中"
+          @order.status = "発送済み"
           @order.save
       end
         redirect_to admin_order_path(@order_detail.order.id)

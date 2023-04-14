@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'orders/earnings'
     resources :orders, only:[:index,:show,:update]
     resources :order_details,only:[:update]
+    resources :repairs, only:[:index,:show,:update]
     resources :rooms, only: [:show, :index]
     resource :message, only: [:create]
   end

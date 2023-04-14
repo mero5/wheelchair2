@@ -8,11 +8,10 @@
       <h3 class="mb-3" style="font-weight: bold"><%= @item.name %></h3>
       <h4 class="mb-5"><%= @item.introduction %></h4>
       <p><strong style="font-weight: bold; font-size: 2rem;">￥<%= @item.with_tax_price.to_s(:delimited) %></strong>(税込)</p>
-      <div class=<%= "favorite-" + @item.id.to_s %> >
-        <%= render 'public/favorites/btn', item: @item %>
-      </div>
-
       <% if (customer_signed_in?) && (@item.is_active == false) %>
+        <div class=<%= "favorite-" + @item.id.to_s %> >
+          <%= render 'public/favorites/btn', item: @item %>
+        </div>
         <%= form_with model: @cart_item, url: cart_items_path do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, { required: true, class: "ml-4"}  %>

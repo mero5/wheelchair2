@@ -14,6 +14,12 @@ class Public::RepairsController < ApplicationController
     @repair = Repair.new(repair_params)
 
     #車椅子の種類
+    if params[:repair][:wheelchair_kinds_option] == "0"
+      ship = Category.find(params[:repair][:categories])
+      @repair.wheelchair_kinds = ship.category_name
+    elsif params[:repair][:wheelchair_kinds_option] == "1"
+      @repair.wheelchair_kinds = params[:repair][:wheelchair_kinds]
+    end
 
       # ご自身の住所 [:address_option]=="0"としてデータをhtmlから受ける
     if params[:repair][:address_option] == "0"
@@ -22,15 +28,15 @@ class Public::RepairsController < ApplicationController
 
       # 登録住所 [:address_option]=="1"としてデータをhtmlから受ける
     elsif params[:repair][:address_option] == "1"
-      ship = Delivery.find(params[:order][:customer_id])
+      ship = Delivery.find(params[:repair][:customer_id])
       #orderのcustomer_id(=カラム)でアドレス(帳)を選び、そのデータ送る
-      @repair.address = ship.address
-      @repair.name = ship.name
+      @repair.address = ship.delivery_address
+      @repair.name = ship.delivery_name
 
       # 新規住所入力 [:address_option]=="2"としてデータをhtmlから受ける
     elsif params[:repair][:address_option] = "2"
-      @repair.address = params[:order][:address]
-      @repair.name = params[:order][:name]
+      @repair.address = params[:repair][:address]
+      @repair.name = params[:repair][:name]
     else
       #render 'new'
     end
@@ -46,8 +52,7 @@ class Public::RepairsController < ApplicationController
   end
 
   def show
-    @repair = current_customer.orders.find(params[:id])
-    @order_details = @order.order_details
+    @repair = current_customer.repairs.find(params[:id])
   end
 
   # 注文完了画面

@@ -1,11 +1,34 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
+  #impressionist :actions=> [:show]
 
   def earnings
+    @orders = Order.all
+    @repairs = Repair.all
+    @month = Time.current
+    #修理依頼
+    @this_month = Repair.where(created_at: @month.all_month)
+    @last_month = Repair.where(created_at: @month.prev_month.all_month)
+    @three_month = Repair.where(created_at: @month.months_ago(2).all_month)
+    @four_month = Repair.where(created_at: @month.months_ago(3).all_month)
+    @five_month = Repair.where(created_at: @month.months_ago(4).all_month)
+    @six_month = Repair.where(created_at: @month.months_ago(5).all_month)
+    #商品売上
+    @this_month = Order.where(created_at: @month.all_month)
+    @last_month = Order.where(created_at: @month.prev_month.all_month)
+    @three_month = Order.where(created_at: @month.months_ago(2).all_month)
+    @four_month = Order.where(created_at: @month.months_ago(3).all_month)
+    @five_month = Order.where(created_at: @month.months_ago(4).all_month)
+    @six_month = Order.where(created_at: @month.months_ago(5).all_month)
+    #閲覧数
+    #@this_month = Category.where(@month.all_month)
+    #@category = Category.all
+    #impressionist(@category, nil, unique: [:session_hash])
   end
 
   def index
     @orders = Order.all
+    @repairs = Repair.all
   end
 
   def show

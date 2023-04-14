@@ -10,7 +10,7 @@
         <div class="message">
           <% if @messages.blank? %>
             <p>メッセージはありません</p>
-          <% else%>
+          <% else %>
             <% @messages.each do |message| %>
               <div>
                 <% if message.customer %>
