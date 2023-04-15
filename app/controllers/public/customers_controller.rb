@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_customer!
+before_action :authenticate_customer!
 
   def show
     @customer = current_customer
@@ -13,7 +13,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
        flash[:notice] = "アップデートいたしました"
-      redirect_to customers_mypage_path
+      redirect_to customers_profile_edit_path
     else
       render :edit
     end
@@ -46,6 +46,6 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:first_name, :last_name, :kana_first_name,
-    :kana_last_name, :post_code, :address, :telephone_number, :email )
+    :kana_last_name, :birth_date, :post_code, :address, :telephone_number, :email )
   end
 end

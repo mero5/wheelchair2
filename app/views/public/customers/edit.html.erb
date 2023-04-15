@@ -1,14 +1,12 @@
 <div class='container'>
   <div class='row mt-3'>
     <div class='col-10 mx-auto'>
-      <h2 class="text-center w-25 h4 bg-light d-inline-block">会員情報編集</h2>
+      <h2 class="text-center w-25 h4 bg-light d-inline-block">プロフィール編集</h2>
     </div>
   </div>
-
   <div class="row">
     <div class='col-10 mt-3'>
-
-      <%= form_with model: @customer, url:  customers_mypage_path(@customer), method: :patch do |f| %>
+      <%= form_with model: @customer, url: customers_profile_edit_path(@customer), method: :patch do |f| %>
         <%= render 'layouts/errors', obj: @customer %>
         <table class="table table-borderless">
           <tbody>
@@ -22,7 +20,7 @@
             </tr>
             <tr>
               <td>郵便番号</td>
-              <td><%= f.text_field :postal_code, size: 20, class: "form-control col-4" %></td>
+              <td><%= f.text_field :post_code, size: 20, class: "form-control col-4" %></td>
             </tr>
             <tr>
               <td>住所</td>
@@ -39,7 +37,7 @@
           </tbody>
         </table>
         <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
-        <%#= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger ml-3' %>
+        <%= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger ml-3' %>
       <% end %>
     </div>
   </div>

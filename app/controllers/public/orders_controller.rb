@@ -24,9 +24,9 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_option] == "1"
       ship = Delivery.find(params[:order][:customer_id])
       #orderのcustomer_id(=カラム)でアドレス(帳)を選び、そのデータ送る
-      @order.post_code = ship.post_code
-      @order.address = ship.address
-      @order.name = ship.name
+      @order.post_code = ship.delivery_postcode
+      @order.address = ship.delivery_address
+      @order.name = ship.delivery_name
 
       # 新規住所入力 [:address_option]=="2"としてデータをhtmlから受ける
     elsif params[:order][:address_option] = "2"
