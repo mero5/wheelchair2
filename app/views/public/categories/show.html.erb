@@ -1,9 +1,10 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-5">
     <%= render 'public/items/categories', categories: @categories %>
-    <div class="col-12">
+    <div class="col-9">
       <h3 class="text-center"><strong><%= @category.category_name %>一覧</strong>(全<%= @items.count %>件)</h3>
+      <%= render 'public/categories/show', items: @items %>
     </div>
   </div>
-  <%= render 'public/categories/show', items: @items %>
+
 </div>

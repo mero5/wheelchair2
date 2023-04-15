@@ -1,9 +1,49 @@
 <div class="container">
-  <div class="row">
-    <%#= render 'public/items/categories', categories: @categories %>
-    <div class="col-12">
-      車椅子のことならお任せください
-      <%= render 'public/categories/index', categories: @categories %>
+  <div class="row mb-5">
+    <div class="col-12 text-center">
+      <h3 class="bg-light"><strong>車椅子のことなら弊社にお任せください</strong></h3>
     </div>
   </div>
+  <div class="row my-5">
+    <div class="col-6">
+      あああ
+    </div>
+    <div class="col-5 ml-4">
+      <h1 class="display-3"><strong>１＿</strong></h1>
+      <h1 class="display-5 mt-3"><strong>便利</strong></h1>
+      <div class="mt-3">
+        通常壊れた車椅子をメーカーに送ったり持って行ったりと手間がありますが</br>
+        弊社は現場で修理、メンテナンスをいたしますので、手間がありません
+      </div>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-5 ml-4">
+      <h1 class="display-3"><strong>2＿</strong></h1>
+      <h1 class="display-5 mt-3"><strong>安心</strong></h1>
+      <div class="mt-3">
+        弊社では福祉用具専門相談員、資格保持者が在籍しております</br>
+        商品のご購入についてご不明なてんがありましたら、お気軽に
+        <%= link_to "お問い合わせ", contacts_path %>
+        ください
+      </div>
+    </div>
+    <div class="col-6">
+      あああ
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-6">
+      あああ
+    </div>
+    <div class="col-5 ml-4">
+      <h1 class="display-3"><strong>3＿</strong></h1>
+      <h1 class="display-5 mt-3"><strong>技術力</strong></h1>
+      <div class="mt-3">
+        弊社は車椅子を専門に30年以上やってきました</br>
+        車椅子のことなら技術力のある弊社にお任せください
+      </div>
+    </div>
+  </div>
+  <%= render 'public/categories/index', categories: @categories %>
 </div>

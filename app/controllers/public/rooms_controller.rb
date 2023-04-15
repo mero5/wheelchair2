@@ -1,12 +1,16 @@
 class Public::RoomsController < ApplicationController
-  before_action :authenticate_customer!
+  #before_action :authenticate_customer!
 
   def create
-    @room = current_customer.room
-    if @room.nil?
-      @room = Room.create(customer_id: current_customer.id)
+    if customer_signed_in?
+      @room = current_customer.room
+      if @room.nil?
+        @room = Room.create(customer_id: current_customer.id)
+      end
+      redirect_to room_path(@room)
+    else
+      redirect_to rooms_path
     end
-    redirect_to room_path(@room)
   end
 
   def show

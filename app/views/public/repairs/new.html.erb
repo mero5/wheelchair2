@@ -6,7 +6,6 @@
   </div>
   <div class='row mt-3'>
     <div class="col-8 mx-auto">
-      <% if customer_signed_in? %>
         <%= form_with model: @repair, url: repairs_confirm_path do |f| %>
           <strong>修理品を選択</strong>
           <div class="form-group ml-3 mt-2">
@@ -80,9 +79,6 @@
           </div>
           <%= f.submit "確認画面へ進む", class: 'btn btn-primary' %>
         <% end %>
-      <% else %>
-        修理依頼する際はログインをしてください
-      <% end %>
     </div>
   </div>
 </div>

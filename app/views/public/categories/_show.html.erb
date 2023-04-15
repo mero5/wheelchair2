@@ -1,13 +1,13 @@
-  <div class="row mt-3">
-    <% items.each do |item| %>
-      <div class="col-3">
-        <li class="nav-item nav-link border rounded btn mr-3 rounded">
-          <%= link_to item_path(item) do %>
-            <%= image_tag item.image, size: '200x150', class: "mb-2 d-block w-100", style: "background-size: cover; background-position: center;" %>
-            <p class="mb-2 text-dark"><%= item.name %></p>
-            <p class="mb-2 text-dark">￥<%= item.with_tax_price.to_s(:delimited) %></p>
-          <% end %>
-        </li>
-      </div>
-    <% end %>
-  </div>
+<div class="row mt-3">
+  <% items.each do |item| %>
+    <div class="col-4">
+      <li class="nav-item nav-link border rounded btn mr-3 rounded">
+        <%= link_to item_path(item) do %>
+          <%= image_tag item.image, size: '200x150', class: "mb-2 d-block w-100", style: "background-size: cover; background-position: center;" %>
+          <p class="mb-2 text-dark"><%= item.name %></p>
+          <p class="mb-2 text-dark">￥<%= item.with_tax_price.to_s(:delimited) %></p>
+        <% end %>
+      </li>
+    </div>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_14_151333) do
+ActiveRecord::Schema.define(version: 2023_04_15_083347) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,17 @@ ActiveRecord::Schema.define(version: 2023_04_14_151333) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "phone_number", null: false
+    t.string "subject", null: false
+    t.text "message", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -77,6 +88,7 @@ ActiveRecord::Schema.define(version: 2023_04_14_151333) do
     t.string "post_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
+    t.string "message"
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -139,6 +151,26 @@ ActiveRecord::Schema.define(version: 2023_04_14_151333) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "made_to_orders", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.string "telephone_number", null: false
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "flame", null: false
+    t.string "model_name", null: false
+    t.string "tire_size", null: false
+    t.string "tire", null: false
+    t.string "break", null: false
+    t.string "caster", null: false
+    t.string "color", null: false
+    t.string "turnover", null: false
+    t.string "option", null: false
+    t.string "others", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer "room_id", null: false
     t.integer "customer_id"
@@ -152,9 +184,11 @@ ActiveRecord::Schema.define(version: 2023_04_14_151333) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "order_id", null: false
-    t.integer "price", null: false
+    t.integer "item_id"
+    t.integer "order_id"
+    t.integer "repair_id"
+    t.integer "made_to_order_id"
+    t.integer "price"
     t.integer "making_status", default: 0, null: false
     t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false

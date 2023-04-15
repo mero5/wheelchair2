@@ -1,12 +1,16 @@
 class Public::RepairsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer![:confirm, :show, :thanx, :index]
 
   #注文情報入力画面
   def new
-    @repair = Repair.new
-    @customer = current_customer
-    @deliveries = current_customer.delivery.all
-    @categories = Category.all
+    if customer_signed_in?
+      @repair = Repair.new
+      @customer = current_customer
+      @deliveries = current_customer.delivery.all
+      @categories = Category.all
+    else
+      redirect_to sorry_path
+    end
   end
 
   #注文情報確認画面

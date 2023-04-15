@@ -1,19 +1,20 @@
 <div class="container">
-    <div class="row mt-4">
-      <div class="col-10 mx-auto">
-        <h2 class="text-center bg-light h4 col-3">会員一覧</h2>
-      </div>
+  <div class="row mt-4">
+    <div class="col-10 mx-auto">
+      <h2 class="text-center bg-light h4 col-3">会員一覧</h2>
     </div>
-
+  </div>
   <div class="row mt-4">
     <div class="col-11 mx-auto">
       <table class="table">
         <thead>
           <tr class="text-center">
-            <th>会員ID</th>
-            <th>氏名</th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
+            <th style="width: 8%">会員ID</th>
+            <th style="width: 22%">氏名</th>
+            <th style="width: 8%">年齢</th>
+            <th style="width: 22%">電話番号</th>
+            <th style="width: 30%">住所</th>
+            <th style="width: 10%">ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -21,7 +22,9 @@
             <tr class="text-center">
               <td><%= customer.id %></td>
               <td><%= link_to customer.full_name,admin_customer_path(customer) %></td>
-              <td><%= customer.email %></td>
+              <td><%= customer.age %></td>
+              <td><%= customer.telephone_number %></td>
+              <td><%= customer.address %></td>
                 <% if customer.is_deleted %>
                   <td>退会済み</td>
                 <% else %>

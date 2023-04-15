@@ -1,0 +1,29 @@
+<div class='container'>
+  <div class='row mt-3'>
+    <div class='col-10 mx-auto'>
+      <h2 class="text-center w-25 bg-light"><%= @customer.full_name %>さまの登録住所一覧</h2>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class='col-10 mx-auto'>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="table-active text-dark">郵便番号</th>
+            <th class="table-active text-dark">住所</th>
+            <th class="table-active text-dark">宛名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @deliveries.each do |delivery| %>
+            <tr>
+              <td><%= delivery.delivery_postcode %></td>
+              <td><%= delivery.delivery_address %></td>
+              <td><%= delivery.delivery_name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

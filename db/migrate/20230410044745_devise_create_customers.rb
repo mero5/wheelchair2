@@ -14,6 +14,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :post_code,          null: false
       t.string :address,             null: false
       t.string :telephone_number,   null: false
+      t.string :message
       t.boolean :is_deleted,        null: false, default: false
 
       ## Recoverable

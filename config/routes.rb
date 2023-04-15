@@ -19,7 +19,10 @@ Rails.application.routes.draw do
     get 'orders/earnings'
     resources :orders, only:[:index,:show,:update]
     resources :order_details,only:[:update]
+    resources :deliveries, only: [:show]
     resources :repairs, only:[:index,:show,:update]
+    resources :made_to_orders, only:[:index,:show,:update]
+    resources :contacts, only:[:index,:show,:update]
     resources :rooms, only: [:show, :index]
     resource :message, only: [:create]
   end
@@ -41,16 +44,20 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/success' => 'orders#success'
     resources :orders, only: [:index, :new, :create, :show]
-    resources :rooms, only: [:show, :create]
+    resources :rooms, only: [:show, :create, :index]
     resource :message, only: [:create]
     post 'repairs/confirm' => 'repairs#confirm'
     get 'repairs/thanx' => 'repairs#thanx'
     resources :repairs, only: [:index, :new, :create, :show]
+    resources :made_to_orders, only:[:index,:new, :create,:show]
   end
 
   root to: "homes#top"
   get 'about' => "homes#about"
   get '/search', to: 'searches#search'
   get '/category_search', to: 'searches#category_search'
+  post 'contacts/confirm' => 'contacts#confirm'
+  get 'contacts/thanx' => 'contacts#thanx'
+  resources :contacts, only:[:new, :create]
 
 end
