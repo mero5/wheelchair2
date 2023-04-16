@@ -1,33 +1,45 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="col-10 mx-auto">
-      <h2 class="text-center w-25 h4 bg-light d-inline-block">修理依頼履歴一覧</h2>
+    <div class="col-8 mx-auto">
+      <h4 class="text-center bg-light">修理依頼履歴一覧</h4>
     </div>
   </div>
   <div class="row mt-4">
     <div class="col-12 mx-auto">
-      <table class="table table-borderless">
+      <% if repairs.present? %>
+      <table class="table">
         <thead>
-          <tr class="table-active text-dark">
-            <th>修理依頼日時</th>
-            <th>依頼者</th>
-            <th>注文ステータス</th>
+          <tr>
+            <th class="table-active text-dark" style="width: 10%">修理依頼日</th>
+            <th class="table-active text-dark" style="width: 40%">修理場所の住所</th>
+            <th class="table-active text-dark" style="width: 20%">修理内容</th>
+            <th class="table-active text-dark" style="width: 20%">ステータス</th>
+            <th class="table-active text-dark" style="width: 10%">詳細</th>
           </tr>
         </thead>
         <tbody>
           <% repairs.each do |repair| %>
-            <tr>
-              <td>
-                <%= link_to repair_path(repair) do %>
-              　<%= repair.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %>
-                <% end %>
+            <tr class="align-middle">
+              <td class="align-middle"><%= repair.created_at.strftime("%Y/%-m/%-d") %></td>
+              <td class="align-middle">
+                <%= repair.address %></br>
+                <%= repair.name %>
               </td>
-              <td><%= repair.customer.full_name %></td>
-              <td><%= repair.status %></td>
+              <td class="align-middle">
+                <%= repair.wheelchair_kinds %></br>
+                <%= repair.tire %></br>
+                <%= repair.break %></br>
+                <%= repair.caster %>
+              </td>
+              <td class="align-middle"><%= repair.status %></td>
+              <td class="align-middle"><%= link_to "詳細", repair_path(repair), class: 'border rounded btn'  %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <% else %>
+        <h3 class="m-auto text-center">修理依頼の履歴はありません。</h3>
+      <% end %>
     </div>
   </div>
 </div>

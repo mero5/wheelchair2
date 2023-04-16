@@ -14,6 +14,11 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
 
+    unless @order.valid?
+      flash.now[:alert] = "注文情報の入力に誤りがあります。もう一度確認してください。"
+      render :new
+    end
+
       # ご自身の住所 [:address_option]=="0"としてデータをhtmlから受ける
     if params[:order][:address_option] == "0"
       @order.post_code = current_customer.post_code
@@ -34,7 +39,7 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     else
-      #render 'new'
+      render 'new'
     end
     #orderテーブルの顧客idとログインしている顧客idを紐付ける
     @order.customer_id = current_customer.id

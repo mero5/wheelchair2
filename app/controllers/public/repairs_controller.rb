@@ -60,7 +60,6 @@ class Public::RepairsController < ApplicationController
   end
 
   def index
-    @repairs = current_customer.repairs
   end
 
   private

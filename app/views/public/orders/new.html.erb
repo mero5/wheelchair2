@@ -1,6 +1,7 @@
 <div class='container'>
   <div class='row mx-auto'>
     <div class='mt-4 col-12'>
+      <%= render 'layouts/errors', obj: @order %>
       <h2 class="text-center h4 bg-light">注文情報入力</h2>
     </div>
   </div>
@@ -27,9 +28,9 @@
               <%= f.label :customer_id, "ご自身の住所" %>
               </td>
               <td colspan="2">
-                <span class="pr-2"><%= @customer.post_code %></span>
-                <span class="pr-2"><%= @customer.address %></span>
-                <%= @customer.first_name %><%= @customer.last_name %>
+                <span class="pr-2"><%= current_customer.post_code %></span>
+                <span class="pr-2"><%= current_customer.address %></span>
+                <%= current_customer.first_name %><%= current_customer.last_name %>
               </td>
             </tr>
             <tr>

@@ -1,33 +1,45 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="col-10 mx-auto">
-      <h2 class="text-center w-25 h4 bg-light d-inline-block">修理依頼履歴一覧</h2>
+    <div class="col-8 mx-auto">
+      <h4 class="text-centerbg-light">修理依頼履歴一覧</h4>
     </div>
   </div>
   <div class="row mt-4">
     <div class="col-12 mx-auto">
+      <% if repairs.present? %>
       <table class="table table-borderless">
         <thead>
           <tr class="table-active text-dark">
-            <th>修理依頼日時</th>
-            <th>依頼者</th>
-            <th>注文ステータス</th>
+            <th class="table-active text-dark" style="width: 17%">修理依頼日時</th>
+            <th class="table-active text-dark" style="width: 40%">修理場所の住所</th>
+            <th class="table-active text-dark" style="width: 25%">修理内容</th>
+            <th class="table-active text-dark" style="width: 10%">注文ステータス</th>
+            <th class="table-active text-dark" style="width: 8%">詳細</th>
           </tr>
         </thead>
         <tbody>
           <% repairs.each do |repair| %>
             <tr>
+              <td><%= repair.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
               <td>
-                <%= link_to admin_repair_path(repair) do %>
-              　<%= repair.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %>
-                <% end %>
+                <%= repair.address %></br>
+                <%= repair.name %>
               </td>
-              <td><%= repair.customer.full_name %></td>
+              <td>
+                <%= repair.wheelchair_kinds %></br>
+                <%= repair.tire %></br>
+                <%= repair.break %></br>
+                <%= repair.caster %>
+              </td>
               <td><%= repair.status %></td>
+              <td><%= link_to repair_path(repair) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <% else %>
+        <h3 class="m-auto text-center">修理依頼の履歴はありません。</h3>
+      <% end %>
     </div>
   </div>
 </div>

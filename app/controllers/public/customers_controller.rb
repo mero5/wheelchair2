@@ -13,7 +13,7 @@ before_action :authenticate_customer!
     @customer = current_customer
     if @customer.update(customer_params)
        flash[:notice] = "アップデートいたしました"
-      redirect_to customers_profile_edit_path
+      redirect_to customers_profile_path(@customer)
     else
       render :edit
     end

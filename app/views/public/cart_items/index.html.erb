@@ -35,7 +35,7 @@
           </td>
           <td class="align-middle">￥<%= cart_item.subtotal.to_s(:delimited) %></td>
           <% @total +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
-          <td class="align-middle"><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class: "border rounded btn" %></td>
+          <td class="align-middle"><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class: "border-danger rounded-danger btn text-danger" %></td>
         </tr>
       <% end %>
       </tbody>

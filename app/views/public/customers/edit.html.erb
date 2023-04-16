@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class='col-10 mt-3'>
-      <%= form_with model: @customer, url: customers_profile_edit_path(@customer), method: :patch do |f| %>
+      <%= form_with model: @customer, url: customers_profile_path(@customer), method: :patch do |f| %>
         <%= render 'layouts/errors', obj: @customer %>
         <table class="table table-borderless">
           <tbody>

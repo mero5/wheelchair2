@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class='col-8 mt-3 mx-auto'>
-      <h4 class="text-center bg-secondary text-white">修理依頼確認</h4>
+      <h4 class="text-center bg-light">修理依頼確認</h4>
     </div>
   </div>
   <div class='row mt-3'>
@@ -25,7 +25,7 @@
             <td class="w-150"><%= @repair.caster %></td>
           </tr>
           <tr>
-            <td class="table-active text-dark w-30"></td>
+            <td class="table-active text-dark w-30">修理場所(住所)</td>
             <td class="w-150"><%= @repair.address %><%= @repair.name %></td>
           </tr>
         </tbody>
@@ -41,7 +41,7 @@
     <%= f.hidden_field :break %>
     <%= f.hidden_field :caster %>
     <div class='row mt-3 ml-8'>
-      <div class="text-center">
+      <div class="col-8 text-center">
       <%= f.submit "注文を確定する", class: "btn btn-success text-center" %>
       </div>
     </div>
