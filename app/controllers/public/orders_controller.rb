@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
-    @deliveries = current_customer.delivery.all
+    @deliveries = @customer.delivery.all
   end
 
   #注文情報確認画面
@@ -13,12 +13,6 @@ class Public::OrdersController < ApplicationController
     @total = 0
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
-
-    unless @order.valid?
-      flash.now[:alert] = "注文情報の入力に誤りがあります。もう一度確認してください。"
-      render :new
-    end
-
       # ご自身の住所 [:address_option]=="0"としてデータをhtmlから受ける
     if params[:order][:address_option] == "0"
       @order.post_code = current_customer.post_code
@@ -43,6 +37,9 @@ class Public::OrdersController < ApplicationController
     end
     #orderテーブルの顧客idとログインしている顧客idを紐付ける
     @order.customer_id = current_customer.id
+    if @order.invalid?
+      render :new
+    end
   end
 
   def create

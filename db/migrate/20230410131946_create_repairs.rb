@@ -9,6 +9,7 @@ class CreateRepairs < ActiveRecord::Migration[6.1]
       t.string :break
       t.string :caster
       t.integer :status, null: false, default: 0
+      t.string :message
 
       t.timestamps
     end

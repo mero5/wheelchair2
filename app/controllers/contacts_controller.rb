@@ -3,9 +3,26 @@ class ContactsController < ApplicationController
     @contact = Contact.new
   end
 
+  def index
+    @contacts = Contact.all
+  end
+
+  def show
+    @contacts = Contact.all
+    @contact = Contact.find(params[:id])
+  end
+
   #確認画面
   def confirm
     @contact = Contact.new(contact_params)
+    if @contact.invalid?
+      render :new
+    end
+  end
+
+  def back
+    @contact = Contact.new(contact_params)
+    render :new
   end
 
   def create

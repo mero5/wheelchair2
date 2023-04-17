@@ -34,9 +34,9 @@
           <% end %>
         </tbody>
       </table>
+      <% if @items.blank? %>
+        <div class="mt-5 text-center"><strong>商品は登録されていません</strong></div>
+      <% end %>
     </div>
-  </div>
-  <div class="d-flex justify-content-center">
-    <div><%= @items %></div>
   </div>
 </div>

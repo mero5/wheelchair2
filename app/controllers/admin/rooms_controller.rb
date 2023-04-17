@@ -3,6 +3,7 @@ class Admin::RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
+    @contacts = Contact.all
   end
 
   def show

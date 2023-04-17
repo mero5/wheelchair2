@@ -13,14 +13,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :customers, only: [:index,:show,:edit,:update]
+    get 'customers/repairs'
+    get 'customers/orders'
+    resources :customers, only: [:index,:show,:edit,:update, :create]
     resources :items
     resources :categories, only: [:index, :edit, :create, :update, :destroy]
     get 'orders/earnings'
     resources :orders, only:[:index,:show,:update]
     resources :order_details,only:[:update]
     resources :deliveries, only: [:show]
-    resources :repairs, only:[:index,:show,:update]
+    resources :repairs, only:[:index,:show,:update, :create]
     resources :made_to_orders, only:[:index,:show,:update]
     resources :contacts, only:[:index,:show,:update]
     resources :rooms, only: [:show, :index]
@@ -57,7 +59,8 @@ Rails.application.routes.draw do
   get '/search', to: 'searches#search'
   get '/category_search', to: 'searches#category_search'
   post 'contacts/confirm' => 'contacts#confirm'
+  post 'contacts/back' => 'contacts#back', as: 'back'
   get 'contacts/thanx' => 'contacts#thanx'
-  resources :contacts, only:[:new, :create]
+  resources :contacts, only:[:new, :create, :show, :index]
 
 end

@@ -15,8 +15,8 @@ class Public::RepairsController < ApplicationController
 
     #車椅子の種類
     if params[:repair][:wheelchair_kinds_option] == "0"
-      ship = Category.find(params[:repair][:categories])
-      @repair.wheelchair_kinds = ship.category_name
+      shop = Category.find(params[:repair][:categories])
+      @repair.wheelchair_kinds = shop.category_name
     elsif params[:repair][:wheelchair_kinds_option] == "1"
       @repair.wheelchair_kinds = params[:repair][:wheelchair_kinds]
     end
@@ -38,16 +38,23 @@ class Public::RepairsController < ApplicationController
       @repair.address = params[:repair][:address]
       @repair.name = params[:repair][:name]
     else
-      #render 'new'
+      render 'new'
     end
     #orderテーブルの顧客idとログインしている顧客idを紐付ける
     @repair.customer_id = current_customer.id
+    if @repair.invalid?
+      render :new
+    end
   end
 
   def create
     @repair = Repair.new(repair_params)
     @repair.customer_id = current_customer.id
     @repair.save
+    @order_details = OrderDetail.new #初期化宣言
+    @order_details.repair_id = @repair.id #注文商品に注文idを紐付け
+    @order_details.amount = 1000 #商品の個数を注文商品の個数に代入
+    @order_details.save #注文商品を保存
     redirect_to repairs_thanx_path
   end
 

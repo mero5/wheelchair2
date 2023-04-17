@@ -1,6 +1,7 @@
 <div class='container border rounded' style="background-color: #FFFFFF;">
   <div class='row'>
     <div class='mt-5 col-4 mx-auto'>
+      <%= render 'layouts/errors', obj: @contact %>
       <h2 class="text-center bg-light"><strong>お問い合わせ</strong></h2>
     </div>
   </div>
@@ -46,7 +47,7 @@
             <td><strong>ご連絡方法</strong></td>
             <td>
               <span class="mr-5">
-                <%= f.radio_button :status, checked: "checked" %>
+                <%= f.radio_button :status, :電話 %>
                 <%= f.label :status, "電話" %>
               </span>
               <%= f.radio_button :status, :メール %>

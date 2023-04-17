@@ -16,10 +16,15 @@
                 <%= f.radio_button :payment, :現金, checked: "checked"%>
                 <%= f.label :payment, "現金" %>
               </td>
-              <td colspan="2">
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td>
                 <%= f.radio_button :payment, :銀行振込 %>
                 <%= f.label :payment, "銀行振込" %>
               </td>
+              <td colspan="2"></td>
             </tr>
             <tr>
               <td><strong>お届け先</strong></td>
@@ -35,11 +40,18 @@
             </tr>
             <tr>
               <td colspan="1"></td>
-              <td>
-                <%= f.radio_button :address_option, 1 %>
-                <%= f.label :deliveries, "登録済住所から選択" %>
-              </td>
-              <td colspan="2"><%= f.collection_select(:customer_id, @deliveries, :id, :full_delivery, {}, { class: "custom-select" }) %></td>
+              <% if @deliveries.blank? %>
+                <td colspan="1"></td>
+                <td colspan="2"><p>他の住所は登録されていません</p></td>
+              <% else %>
+                <td>
+                  <%= f.radio_button :address_option, 1 %>
+                  <%= f.label :deliveries, "登録済住所から選択" %>
+                </td>
+                <td colspan="2">
+                  <%= f.collection_select(:customer_id, @deliveries, :id, :full_delivery, {}, { class: "custom-select" }) %>
+                </td>
+              <% end %>
             </tr>
             <tr>
               <td colspan="1"></td>

@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 2023_04_15_083347) do
   end
 
   create_table "order_details", force: :cascade do |t|
+    t.integer "customer_id"
     t.integer "item_id"
     t.integer "order_id"
     t.integer "repair_id"
@@ -204,6 +205,7 @@ ActiveRecord::Schema.define(version: 2023_04_15_083347) do
     t.integer "billing_amount", null: false
     t.integer "payment", default: 0, null: false
     t.integer "status", default: 0, null: false
+    t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -217,6 +219,7 @@ ActiveRecord::Schema.define(version: 2023_04_15_083347) do
     t.string "break"
     t.string "caster"
     t.integer "status", default: 0, null: false
+    t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

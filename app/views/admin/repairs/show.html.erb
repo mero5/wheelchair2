@@ -1,11 +1,11 @@
-</div>
-<div class='container'>
-  <div class='row'>
-    <h2 class="text-center w-25 h4 bg-light mt-3">修理依頼履歴詳細</h2>
+<div class="container">
+  <div class="row mt-4">
+    <div class='col-12 mx-auto'>
+      <h2 class="text-center bg-light"><strong>修理履歴詳細</strong></h2>
+    </div>
   </div>
   <div class='row'>
-    <div class='col-7 mt-3'>
-      <h2 class="w-25 h4 mt-3">修理依頼情報</h2>
+    <div class='col-7 my-4'>
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -38,16 +38,24 @@
           <tr>
             <td class="table-active text-dark">修理ステータス</td>
             <td>
+              <%= @repair.status %>
               <%= form_with model:@repair, url: admin_repair_path, class: "d-inline-block" do |f| %>
                 <div class="form-inline">
-                   <%= f.select(:status, ["修理依頼確認中", "スケジュール調整中", "修理完了済み"], {}, { class: "custom-select mr-2"}) %>
-                   <%= f.submit "更新", class: 'btn btn-success' %>
+                  <%= f.select(:status, ["修理依頼中", "スケジュール調整中", "修理完了済み"], {}, { class: "custom-select mx-3"}) %>
+                  <%= f.submit "更新", class: 'btn btn-success' %>
                 </div>
-               <% end %>
-            <td><%= @repair.status %></td>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="col-5 mt-3">
+      <p class="text-center bg-light"><strong>メモ</strong></p>
+      <%= form_with model: @repair, url: admin_repair_path do |f| %>
+        <%= f.text_area :message, class:"form-control", size: "20x13" %>
+        <%= f.submit "保存", class: 'btn btn-success' %>
+      <% end %>
     </div>
   </div>
 </div>

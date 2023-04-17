@@ -17,8 +17,8 @@
                   <div style="text-align: right;">
                     <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
                     <%= @room.customer.first_name %>
-                    <p class="bg-success text-white rounded-pill py-1 px-2">
-                    <%= message.message %></p>
+                    <div class="bg-success text-white rounded-pill py-1 px-2">
+                    <%= message.message %></div>
                   </div>
                 <% else %>
                   <div style="text-align: left;">
@@ -32,13 +32,15 @@
             <% end %>
           <% end %>
         </div>
-        <div class="mt-3">
+        <div class="row mt-3">
+          <div class="col-12">
           <div style="text-align: right;">
             <%= form_with model: @message, url: message_path, local: true do |f| %>
               <%= f.text_field :message, class:"form-control" %>
               <%= f.hidden_field :room_id, value: @room.id %>
               <%= f.submit "送信", class:"btn btn-success" %>
             <% end %>
+            </div>
           </div>
         </div>
       </div>

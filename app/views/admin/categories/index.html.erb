@@ -1,30 +1,32 @@
 <div class="container">
-  <div class="row mt-4">
-    <div class="col-12 mx-auto">
-      <h2 class="text-center w-50 h4 bg-light">カテゴリ一覧・追加</h2>
-      <div class="row mt-5">
-        <%= render 'layouts/errors', obj: @category %>
-        <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
-          <%= render :partial => 'form', :locals => {:f => f} %>
-        <% end %>
-      </div>
-      <div class="row mt-4">
-        <h4 class="text-center w-50 bg-light">カテゴリ</h4>
-      </div>
-      <div class="row mt-4">
-        <% @categories.each do |category| %>
-          <div class="col-4">
-            <li class="nav-item nav-link border rounded btn rounded">
-              <%= link_to category_path(category) do %>
-                <%= image_tag category.image, size: "300x250", style: "background-size: cover; background-position: center;" %>
-                <h5 class="my-2"><%= category.category_name %></h5>
-                <%= link_to '編集する', edit_admin_category_path(category), class: "btn btn-success" %></td>
-                <%= link_to '削除する', admin_category_path(category), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-              <% end %>
-            </li>
-          </div>
-        <% end %>
-      </div>
+  <div class="row mt-5">
+    <div class="col-8 mx-auto">
+      <%= render 'layouts/errors', obj: @category %>
+      <h2 class="text-center h4 bg-light">カテゴリ一覧・追加</h2>
     </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-10 mx-auto">
+      <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+        <%= render :partial => 'form', :locals => {:f => f} %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-8 mx-auto">
+      <h4 class="text-center bg-light">カテゴリ</h4>
+    </div>
+  </div>
+  <div class="row my-4">
+    <% @categories.each do |category| %>
+      <div class="col-4">
+        <li class="nav-item nav-link border rounded btn rounded">
+          <%= image_tag category.image, size: "300x250", style: "background-size: cover; background-position: center;" %>
+          <h5 class="my-3"><%= category.category_name %></h5>
+          <%= link_to '編集する', edit_admin_category_path(category), class: "btn btn-success mr-3" %>
+          <%= link_to '削除する', admin_category_path(category), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+        </li>
+      </div>
+    <% end %>
   </div>
 </div>

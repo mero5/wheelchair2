@@ -1,6 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :edit_category, only: [:edit, :update, :destroy]
+  before_action :edit_category, only: [:edit, :update]
 
   def index
     @category = Category.new
@@ -32,7 +32,7 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
+    @category.destroy!
     flash[:notice] = "削除いたしました"
     redirect_to admin_categories_path
   end

@@ -42,31 +42,37 @@
                   <% end %>
                 </li>
               <% elsif admin_signed_in? %>
-                <li class="nav-item nav-link border rounded btn mr-5">
+                <li class="nav-item nav-link border rounded btn mr-1">
                   <%= link_to admin_customers_path do %>
                     <i class="fas fa-info-circle text-dark"></i>
                     <span class="text-dark">会員一覧</span>
                   <% end %>
                 </li>
-                <li class="nav-item nav-link border rounded btn mr-5">
+                <li class="nav-item nav-link border rounded btn mr-1">
                   <%= link_to admin_orders_path do %>
                     <i class="fas fa-info-circle text-dark"></i>
                     <span class="text-dark">注文履歴一覧</span>
                   <% end %>
                 </li>
-                <li class="nav-item nav-link border rounded btn mr-5">
+                <li class="nav-item nav-link border rounded btn mr-1">
+                  <%= link_to admin_repairs_path do %>
+                    <i class="fas fa-info-circle text-dark"></i>
+                    <span class="text-dark">修理履歴一覧</span>
+                  <% end %>
+                </li>
+                <li class="nav-item nav-link border rounded btn mr-1">
                   <%= link_to admin_categories_path do %>
                     <i class="fas fa-info-circle text-dark"></i>
                     <span class="text-dark">カテゴリ設定</span>
                   <% end %>
                 </li>
-                <li class="nav-item nav-link border rounded btn mr-5">
+                <li class="nav-item nav-link border rounded btn mr-1">
                   <%= link_to admin_items_path do %>
                     <i class="fas fa-info-circle text-dark">
                     </i><span class="text-dark">商品設定</span>
                   <% end %>
                 </li>
-                <li class="nav-item nav-link border rounded btn mr-5">
+                <li class="nav-item nav-link border rounded btn mr-1">
                   <%= link_to admin_orders_earnings_path do %>
                     <i class="fas fa-info-circle text-dark"></i>
                     <span class="text-dark">売上集計表</span>
