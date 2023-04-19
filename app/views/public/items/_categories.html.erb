@@ -10,6 +10,7 @@
         <% categories.each do |category| %>
           <tr>
             <td>
+              <%= image_tag category.image, size: "40x30", class: "mr-3", style: "background-size: cover; background-position: center;" %>
               <%= link_to category.category_name, category_search_path(items: category.items.ids, category_word: category.category_name) %>
             </td>
           </tr>

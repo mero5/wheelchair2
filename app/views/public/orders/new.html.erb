@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='row mx-auto'>
-    <div class='mt-4 col-12'>
+    <div class='mt-4 col-8'>
       <%= render 'layouts/errors', obj: @order %>
       <h2 class="text-center h4 bg-light">注文情報入力</h2>
     </div>
@@ -19,7 +19,7 @@
               </td>
               <td colspan="2"></td>
             </tr>
-            <tr>
+            <tr class="border-bottom">
               <td colspan="2"></td>
               <td>
                 <%= f.radio_button :payment, :銀行振込 %>
