@@ -14,14 +14,15 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     get 'customers/repairs'
-    get 'customers/orders'
     resources :customers, only: [:index,:show,:edit,:update, :create]
     resources :items
     resources :categories, only: [:index, :edit, :create, :update, :destroy]
     get 'orders/earnings'
+    get 'orders/history'
     resources :orders, only:[:index,:show,:update]
     resources :order_details,only:[:update]
     resources :deliveries, only: [:show]
+    get 'repairs/history'
     resources :repairs, only:[:index,:show,:update, :create]
     resources :made_to_orders, only:[:index,:show,:update]
     resources :contacts, only:[:index,:show,:update]

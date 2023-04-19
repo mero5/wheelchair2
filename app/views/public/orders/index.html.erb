@@ -30,7 +30,7 @@
                 </td>
                 <td class="align-middle"><%= order.billing_amount.to_s(:delimited) %>円</td>
                 <td class="align-middle"><%= order.status %></td>
-                <td class="align-middle"><%= link_to "詳細", order_path(order.id), class: 'border rounded btn' %></td>
+                <td class="align-middle"><%= link_to "詳細", order_path(order.id), class: 'border-primary rounded-primary btn text-primary' %></td>
               </tr>
             <% end %>
         </tbody>

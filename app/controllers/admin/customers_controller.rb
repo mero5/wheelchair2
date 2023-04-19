@@ -5,22 +5,26 @@ class Admin::CustomersController < ApplicationController
     @customers = Customer.all
   end
 
-  def orders
-    @customer = Customer.find(params[:id])
-    @orders = @customer.order.all
-  end
-
-  def repairs
-    @customer = Customer.find(params[:id])
-    @repairs = @customer.repair.all
-  end
-
   def show
+    @customer_new = Customer.new
     @customer = Customer.find(params[:id])
   end
 
   def edit
     @customer = Customer.find(params[:id])
+  end
+
+  def create
+    @customer_new = Customer.new(customer_params)
+    @customer = Customer.find(params[:id])
+    if @customer.save
+      flash[:notice] = "保存いたしました"
+      redirect_to request.referer
+    else
+      @repair_new = Repair.new(customer_params)
+      @customer = Customer.find(params[:id])
+      render :show
+    end
   end
 
   def update
@@ -36,6 +40,7 @@ class Admin::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:birth_date,:email,:encrypted_password,:post_code,:address,:telephone_number,:is_deleted)
+    params.require(:customer).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,
+    :birth_date,:email,:encrypted_password,:post_code,:address,:telephone_number,:is_deleted, :message)
   end
 end

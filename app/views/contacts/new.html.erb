@@ -12,6 +12,7 @@
         <tbody>
           <tr>
             <td><strong>ご用件について</strong></td>
+            <td class="text-danger">必須</td>
             <td>
               <div>
                 <span class="mr-5">
@@ -33,18 +34,22 @@
           </tr>
           <tr>
             <td><strong>お名前</strong></td>
+            <td class="text-danger">必須</td>
             <td><%= f.text_field :name, class: "form-control mb-2" %></td>
           </tr>
           <tr>
             <td><strong>電話番号</strong></td>
+            <td class="text-danger">必須</td>
             <td><%= f.text_field :phone_number, class: "form-control mb-2" %></td>
           </tr>
           <tr>
             <td><strong>メールアドレス</strong></td>
+            <td class="text-danger">必須</td>
             <td><%= f.text_field :email, class: "form-control mb-2" %></td>
           </tr>
           <tr>
             <td><strong>ご連絡方法</strong></td>
+            <td class="text-danger">必須</td>
             <td>
               <span class="mr-5">
                 <%= f.radio_button :status, :電話 %>
@@ -56,7 +61,8 @@
           </tr>
           <tr>
             <td><strong>お問い合わせ内容</strong></td>
-            <td><%= f.text_area :message, class: "form-control mb-2" %></td>
+            <td class="text-danger">必須</td>
+            <td><%= f.text_area :message, class: "form-control mb-2", size: "20x6" %></td>
           </tr>
         </tbody>
       </table>

@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-12">
+    <div class="col-7">
       <div class="card">
         <h2 class="card-header bg-light"><%= @customer.full_name %>さまの会員詳細</h2>
         <div class="card-body">
@@ -51,11 +51,18 @@
             </tbody>
           </table>
           <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success mr-3" %>
-          <%= link_to "登録住所一覧を見る", admin_delivery_path(@customer), class: 'btn btn-primary mr-3' %>
-          <%= link_to "注文履歴一覧を見る",admin_customers_orders_path(@customer), class: "btn btn-primary mr-3" %>
-          <%= link_to "修理履歴一覧を見る",admin_customers_repairs_path(@customer), class: "btn btn-primary" %>
+          <%= link_to "登録住所一覧", admin_delivery_path(@customer), class: 'btn btn-primary mr-3' %>
+          <%= link_to "注文履歴一覧",admin_orders_history_path(@customer), class: "btn btn-primary mr-3" %>
+          <%= link_to "修理履歴一覧",admin_repairs_history_path(@cust_omer), class: "btn btn-primary" %>
         </div>
       </div>
+    </div>
+    <div class="col-5 mt-3">
+      <p class="text-center bg-light"><strong>メモ</strong></p>
+      <%= form_with model: @customer, url: admin_customer_path do |f| %>
+        <%= f.text_area :message, class:"form-control", size: "20x13" %>
+        <%= f.submit "保存", class: 'btn btn-success' %>
+      <% end %>
     </div>
   </div>
 </div>

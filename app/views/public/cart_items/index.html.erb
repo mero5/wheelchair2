@@ -6,8 +6,8 @@
   </div>
   <div class="row mt-4">
     <div class="col-12 text-center">
-      <%= link_to '買い物を続ける', categories_path, class: "border rounded btn mr-4" %>
-      <%= link_to 'カートを空にする', cart_items_path, method: :delete, class: "border rounded btn ml-4" %>
+      <%= link_to '買い物を続ける', categories_path, class: "border-primary rounded-primary btn text-primary mr-4" %>
+      <%= link_to 'カートを空にする', cart_items_path, method: :delete, class: "border-danger rounded-danger btn text-danger ml-4" %>
     </div>
   </div>
   <div class="row mt-4">
@@ -30,7 +30,7 @@
           <td class="align-middle">
             <%= form_with model: cart_item, method: :patch, url: cart_item_path(cart_item.id) do |f| %>
               <%= f.select :amount, *[1..10] %>
-              <%= f.submit '変更', class: "border rounded btn" %>
+              <%= f.submit '変更', class: "border-success rounded-success btn text-success" %>
             <% end %>
           </td>
           <td class="align-middle">￥<%= cart_item.subtotal.to_s(:delimited) %></td>
@@ -41,7 +41,6 @@
       </tbody>
     </table>
   </div>
-
   <div class="d-flex justify-content-end">
     <table class="col-4 table table-bordered">
       <tbody>

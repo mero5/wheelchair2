@@ -10,6 +10,11 @@ class Admin::RepairsController < ApplicationController
     @repair = Repair.find(params[:id])
   end
 
+  def history
+    @customer = Customer.find(params[:id])
+    @repairs = @customer.repair.all
+  end
+
   def update
     @repair = Repair.find(params[:id])
     @repair.update(repair_params)

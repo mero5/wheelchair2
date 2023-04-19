@@ -12,13 +12,14 @@
           <tbody>
             <tr>
               <td><strong>修理品を選択</strong></td>
+              <td class="text-danger">必須</td>
               <td>
                 <%= f.radio_button :wheelchair_kinds_option, 0, checked: "checked" %>
                 <%= f.label :category_name, "カテゴリから選択" %>
               </td>
               <td colspan="2"><%= f.collection_select(:categories, @categories, :id, :category_name, {}, { class: "custom-select" }) %></td>
             <tr>
-              <td colspan="1" style="height: 80px;"></td>
+              <td colspan="2" style="height: 80px;"></td>
               <td>
                 <%= f.radio_button :wheelchair_kinds_option, 1 %>
                 <%= f.label :wheelchair_kinds, "その他" %>
@@ -29,6 +30,7 @@
             </tr>
             <tr>
               <td style="height: 80px;"><strong>タイヤ関係</strong></td>
+              <td>任意</td>
               <td>
                 <%= f.radio_button :tire, :タイヤとチューブ交換 %>
                 <%= f.label :tire, "タイヤとチューブ交換" %>
@@ -44,6 +46,7 @@
             </tr>
             <tr>
               <td style="height: 80px;"><strong>ブレーキ関係</strong></td>
+              <td>任意</td>
               <td>
                 <%= f.radio_button :break, :ブレーキの調整 %>
                 <%= f.label :break, "ブレーキの調整" %>
@@ -56,6 +59,7 @@
             </tr>
             <tr style="height: 80px;">
               <td><strong>キャスター関係</strong></td>
+              <td>任意</td>
               <td>
                 <%= f.radio_button :caster, :キャスターの交換 %>
                 <%= f.label :caster, "キャスターの交換" %>
@@ -68,6 +72,7 @@
             </tr>
             <tr>
               <td><strong>修理場所の住所</strong></td>
+              <td class="text-danger">必須</td>
               <td>
                 <%= f.radio_button :address_option, 0, checked: "checked" %>
                 <%= f.label :customer_id, "ご自身の住所" %>
@@ -79,7 +84,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="1"></td>
+              <td colspan="2"></td>
               <% if @deliveries.blank? %>
                 <td colspan="1"></td>
                 <td colspan="2"><p>他の住所は登録されていません</p></td>
@@ -94,7 +99,7 @@
               <% end %>
             </tr>
             <tr>
-              <td colspan="1"></td>
+              <td colspan="2"></td>
               <td>
                 <%= f.radio_button :address_option, 2 %>
                 <%= f.label :repair_address, "その他" %>
@@ -105,7 +110,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2"></td>
+              <td colspan="3"></td>
               <td colspan="2">
                 <%= f.label :delivery_name, '宛名' %>
                 <%= f.text_field :delivery_name, class: "form-control" %>

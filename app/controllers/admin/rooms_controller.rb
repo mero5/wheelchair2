@@ -4,6 +4,7 @@ class Admin::RoomsController < ApplicationController
   def index
     @rooms = Room.all
     @contacts = Contact.all
+    #@message = Room.all.message(created_at: :desc)
   end
 
   def show

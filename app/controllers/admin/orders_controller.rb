@@ -36,6 +36,11 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
   end
 
+  def history
+    @customer = Customer.find(params[:id])
+    @orders = @customer.order.all
+  end
+
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)

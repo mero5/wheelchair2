@@ -15,4 +15,10 @@ class Order < ApplicationRecord
   def subtotal
     item.with_tax_price * amount
   end
+
+  def red
+    if order.status == "受注確認中"
+      "color:primary;"
+    end
+  end
 end
