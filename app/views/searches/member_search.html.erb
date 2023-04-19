@@ -1,0 +1,24 @@
+<div class="container">
+  <% if @member.nil? && @result.nil? %>
+    <p>該当する文字は見つかりませんでした</p>
+  <% else %>
+    <% if @result.empty? %>
+      <div class="row">
+        <div class="col-9 mx-auto">
+          <h3 class="text-center bg-light"><strong><%= @word %>一覧</strong>(全<%= @members.count %>件)</h3>
+        </div>
+      </div>
+      <% if @members.count >= 1 %>
+        <%= render 'member', members: @members %>
+      <% end %>
+    <% else %>
+      <div class="row">
+        <%= render 'public/items/categories', categories: @categories %>
+        <div class="col-9">
+          <h3 class="text-center bg-light"><strong><%= @word %>一覧</strong>(全<%= @result.count %>件)</h3>
+          <%= render 'result', result: @result %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

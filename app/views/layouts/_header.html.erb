@@ -2,19 +2,28 @@
   <div style="background-color: #3A98B9;">
     <div class="container">
       <div class="d-flex justify-content-between">
-          <%= link_to root_path do %>
-            <%= image_tag '車椅子サービス.png', style: "height: 100px; width: 180px; line-height: 96px;" %>
-          <% end %>
-
-        <div class="mt-5" style="position: relative">
-          <%= form_with url: search_path, method: :get do |f| %>
-            <%= f.text_field :word, placeholder: 'search', class: "ml-auto form-control", style: "width: 300px;" %>
-            <%= f.button type: "submit", class: "btn btn-defalt", style: "position: absolute; top: 0px; right: 0px;" do %>
-              <i class="fas fa-search text-dark"></i>
+        <%= link_to root_path do %>
+          <%= image_tag '車椅子サービス.png', style: "height: 100px; width: 180px; line-height: 96px;" %>
+        <% end %>
+        <% if admin_signed_in? %>
+          <div class="mt-5" style="position: relative">
+            <%= form_with url: member_search_path, method: :get do |f| %>
+              <%= f.text_field :word, placeholder: 'search', class: "ml-auto form-control", style: "width: 300px;" %>
+              <%= f.button type: "submit", class: "btn btn-defalt", style: "position: absolute; top: 0px; right: 0px;" do %>
+                <i class="fas fa-search text-dark"></i>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-
+          </div>
+        <% else %>
+          <div class="mt-5" style="position: relative">
+            <%= form_with url: search_path, method: :get do |f| %>
+              <%= f.text_field :word, placeholder: 'search', class: "ml-auto form-control", style: "width: 300px;" %>
+              <%= f.button type: "submit", class: "btn btn-defalt", style: "position: absolute; top: 0px; right: 0px;" do %>
+                <i class="fas fa-search text-dark"></i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
           <div class="mt-4 f-flex flex-column">
             <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3A98B9;">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -24,47 +33,79 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <% if customer_signed_in? %>
-                  <p class="mb-0 mr-5" style="height: 42px;line-height: 42px;"><%= current_customer.first_name %>さま</p>
+                  <p class="mb-0 mr-5" style="height: 42px;line-height: 42px; color: #FFFFFF;"><%= current_customer.first_name %>さま</p>
                   <li class="nav-item mr-4">
                     <%= link_to customers_profile_path do %>
-                      <i class="fas fa-user-cog fa-2x" style="color: #FFFFFF;"></i>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="fas fa-user-cog fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">プロフィール</div>
+                      </div>
                     <% end %>
                   </li>
                   <li class="nav-item mr-4">
                     <%= link_to favorites_path do %>
-                      <i class="fas fa-clipboard-list fa-2x" style="color: #FFFFFF;"></i>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="fas fa-clipboard-list fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">欲しいもの</br>リスト</div>
+                      </div>
                     <% end %>
                   </li>
                   <li class="nav-item mr-4">
                     <%= link_to cart_items_path do %>
-                      <i class="fas fa-shopping-cart fa-2x" style="color: #FFFFFF;"></i>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="fas fa-shopping-cart fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">カート</div>
+                      </div>
                     <% end %>
                   </li>
                   <li class="nav-item">
                     <%= link_to destroy_customer_session_path, method: :delete do %>
-                      <i class="fas fa-sign-out-alt fa-2x" style="color: #FFFFFF;"></i>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="fas fa-sign-out-alt fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">ログアウト</div>
+                      </div>
                     <% end %>
                   </li>
                 <% elsif admin_signed_in? %>
-                <li class="nav-item mr-4">
-                    <%= link_to new_customer_session_path do %>
-                      <i class="far fa-user-circle fa-2x" style="color: #FFFFFF;"></i>
+                  <li class="nav-item">
+                    <%= link_to admin_categories_path do %>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="fas fa-book-alt fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">カテゴリ設定</div>
+                      </div>
+                    <% end %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to admin_items_path do %>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="fas fa-wheelchair fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">商品設定</div>
+                      </div>
                     <% end %>
                   </li>
                   <li class="nav-item">
                     <%= link_to destroy_admin_session_path, method: :delete do %>
-                      <i class="fas fa-sign-out-alt fa-2x" style="color: #FFFFFF;"></i>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="fas fa-sign-out-alt fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">ログアウト</div>
+                      </div>
                     <% end %>
                   </li>
                 <% else %>
                   <li class="nav-item mr-4">
                     <%= link_to new_customer_session_path do %>
-                      <i class="far fa-user-circle fa-2x" style="color: #FFFFFF;"></i>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="far fa-user-circle fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">ログイン</div>
+                      </div>
                     <% end %>
                   </li>
                   <li class="nav-item">
                     <%= link_to new_customer_registration_path do %>
-                      <i class="fas fa-user-plus fa-2x" style="color: #FFFFFF;"></i>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="fas fa-user-plus fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">新規登録</div>
+                      </div>
                     <% end %>
                   </li>
                 <% end %>

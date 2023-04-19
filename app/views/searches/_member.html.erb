@@ -1,0 +1,32 @@
+<div class="row mt-3">
+  <div class="col-12 mx-auto">
+    <table class="table">
+      <thead>
+        <tr class="text-center">
+          <th style="width: 8%">会員ID</th>
+          <th style="width: 22%">氏名</th>
+          <th style="width: 8%">年齢</th>
+          <th style="width: 22%">電話番号</th>
+          <th style="width: 30%">住所</th>
+          <th style="width: 10%">ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% members.each do |customer| %>
+          <tr class="text-center">
+            <td><%= customer.id %></td>
+            <td><%= link_to customer.full_name,admin_customer_path(customer) %></td>
+            <td><%= customer.age %></td>
+            <td><%= customer.telephone_number %></td>
+            <td><%= customer.address %></td>
+            <% if customer.is_deleted %>
+              <td>退会済み</td>
+            <% else %>
+              <td class="text-success">有効</td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

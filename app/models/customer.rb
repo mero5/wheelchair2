@@ -35,4 +35,10 @@ class Customer < ApplicationRecord
     "#{age} 歳"
   end
 
+  def self.member_search_for(word)
+    Customer.where('first_name LIKE ? or last_name LIKE ? or kana_first_name LIKE ? or kana_last_name LIKE ?
+                      or email LIKE ? or post_code LIKE ? or address LIKE ? or telephone_number LIKE ?',
+    '%'+word+'%','%'+word+'%','%'+word+'%','%'+word+'%','%'+word+'%','%'+word+'%','%'+word+'%','%'+word+'%')
+  end
+
 end
