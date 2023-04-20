@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="col-10 mx-auto">
-      <h2 class="text-center w-25 h4 bg-light d-inline-block">注文履歴一覧</h2>
+    <div class="col-8 mx-auto">
+      <h4 class="text-center bg-light">注文履歴一覧</h4>
     </div>
   </div>
   <div class="row mt-4">
     <div class="col-10 mx-auto">
-      <table class="table table-borderless">
+      <table class="table">
         <thead>
           <tr class="table-active text-dark">
             <th>購入日時</th>
@@ -25,11 +25,16 @@
               </td>
               <td><%= order.customer.full_name %></td>
               <td><%= order.order_details.sum(:amount) %></td>
-              <td><% if order.status == "対応中" %>
-                    <p style="color: #green;"><%= order.status %></p>
-                  <% else %>
-
-                  <% end %>
+              <td>
+                <% if order.status == "受注確認中" %>
+                  <p style="color: #dc3545;"><%= order.status %></p>
+                <% elsif order.status == "入金確認" %>
+                  <p style="color: #fd7e14;"><%= order.status %></p>
+                <% elsif order.status == "製作中" %>
+                  <p style="color: #ffc107;"><%= order.status %></p>
+                <% elsif order.status == "発送済み" %>
+                  <p style="color: #28a745;"><%= order.status %></p>
+                <% end %>
               </td>
             </tr>
           <% end %>
