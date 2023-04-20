@@ -25,7 +25,12 @@
               </td>
               <td><%= order.customer.full_name %></td>
               <td><%= order.order_details.sum(:amount) %></td>
-              <td><%= order.status %></td>
+              <td><% if order.status == "対応中" %>
+                    <p style="color: #green;"><%= order.status %></p>
+                  <% else %>
+
+                  <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

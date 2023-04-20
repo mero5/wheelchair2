@@ -18,11 +18,11 @@ Rails.application.routes.draw do
     resources :items
     resources :categories, only: [:index, :edit, :create, :update, :destroy]
     get 'orders/earnings'
-    get 'orders/history'
+    get 'orders/:id' => 'orders#history'
     resources :orders, only:[:index,:show,:update]
     resources :order_details,only:[:update]
     resources :deliveries, only: [:show]
-    get 'repairs/history'
+    get 'orders/:id' => 'repairs#history'
     resources :repairs, only:[:index,:show,:update, :create]
     resources :made_to_orders, only:[:index,:show,:update]
     resources :contacts, only:[:index,:show,:update]
