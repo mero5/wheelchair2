@@ -1,11 +1,11 @@
-<div class="row ml-4 mt-4">
+<div class="row mt-4">
   <% items.each do |item| %>
-    <div class="col-4">
-      <li class="nav-item nav-link border rounded btn mr-3 rounded">
+    <div class="col-4 my-4">
+      <li class="nav-item nav-link border rounded btn rounded">
         <%= link_to item_path(item) do %>
-          <%= image_tag item.image, size: '200x150', class: "mb-2 d-block w-100", style: "background-size: cover; background-position: center;" %>
-          <p class="mb-2 text-dark"><%= item.name %></p>
-          <p class="mb-2 text-dark">￥<%= item.with_tax_price.to_s(:delimited) %></p>
+          <%= image_tag item.image, style: "background-size: cover; background-position: center; width: 90%; height: 250px;" %>
+          <p class="my-2 text-dark"><%= item.name %></p>
+          <p class="my-2 text-dark">￥<%= item.with_tax_price.to_s(:delimited) %></p>
         <% end %>
       </li>
     </div>

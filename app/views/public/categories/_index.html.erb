@@ -6,10 +6,10 @@
   </div>
   <div class="row my-5">
     <% categories.each do |category| %>
-      <div class="col-4">
+      <div class="col-4 my-3">
         <li class="nav-item nav-link border rounded btn rounded">
           <%= link_to category_path(category) do %>
-            <%= image_tag category.image, size: "300x250", style: "background-size: cover; background-position: center;" %>
+            <%= image_tag category.image, style: "background-size: cover; background-position: center; width: 90%; height: auto;" %>
             <h5 class="my-2"><%= category.category_name %></h5>
           <% end %>
         </li>
