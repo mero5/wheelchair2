@@ -6,6 +6,7 @@
   </div>
   <div class="row mt-4">
     <div class="col-10 mx-auto">
+      <% if orders.present? %>
       <table class="table">
         <thead>
           <tr class="table-active text-dark">
@@ -40,6 +41,9 @@
           <% end %>
         </tbody>
       </table>
+      <% else %>
+        <h4 class="my-5 mx-auto text-center">注文履歴はありません。</h4>
+      <% end %>
     </div>
   </div>
 </div>

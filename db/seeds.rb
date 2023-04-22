@@ -221,6 +221,135 @@ Item.create!(
 
 Order.create!(
   [
+  {customer_id: 1,
+  post_code: "8764326",
+  address: "大阪市西区九条13-257",
+  name: "守田 祥真",
+  postage: 0,
+  billing_amount: 674300,
+  payment: "現金",
+  status: "受注確認中"},
 
+  {customer_id: 1,
+  post_code: "8764326",
+  address: "大阪市西区九条13-257",
+  name: "守田 祥真",
+  postage: 0,
+  billing_amount: 688600,
+  payment: "現金",
+  status: "受注確認中",
+  message: nil},
+
+  {customer_id: 2,
+  post_code: "3542378",
+  address: "東京都港区神園町3-167",
+  name: "佐藤 あきら",
+  postage: 0,
+  billing_amount: 40260,
+  payment: "現金",
+  status: "受注確認中",
+  message: nil}
+  ]
+)
+
+OrderDetail.create!(
+  [
+  {customer_id: 1,
+  item_id: 5,
+  order_id: 1,
+  repair_id: nil,
+  made_to_order_id: nil,
+  price: 674300,
+  making_status: "着手不可",
+  amount: 1
+  },
+
+  {customer_id: 1,
+  item_id: 2,
+  order_id: 1,
+  repair_id: nil,
+  made_to_order_id: nil,
+  price: 674300,
+  making_status: "着手不可",
+  amount: 1
+  },
+
+  {customer_id: 1,
+  item_id: 5,
+  order_id: 2,
+  repair_id: nil,
+  made_to_order_id: nil,
+  price: 688600,
+  making_status: "着手不可",
+  amount: 2
+  },
+
+  {customer_id: 1,
+  item_id: 13,
+  order_id: 3,
+  repair_id: nil,
+  made_to_order_id: nil,
+  price: 40260,
+  making_status: "着手不可",
+  amount: 1
+  },
+
+  {customer_id: 2,
+  item_id: 16,
+  order_id: 3,
+  repair_id: nil,
+  made_to_order_id: nil,
+  price: 40260,
+  making_status: "着手不可",
+  amount: 1
+  }
+  ]
+)
+
+Repair.create!(
+  [
+  {customer_id: 1,
+  address: "大阪市西区九条13-257",
+  name: "守田 祥真",
+  wheelchair_kinds: "リクライニング",
+  tire: "",
+  break: "",
+  caster: "",
+  status: "修理依頼中",
+  message: nil
+  },
+
+  {customer_id: 1,
+  address: "大阪市西区九条13-257",
+  name: "守田 祥真",
+  wheelchair_kinds: "リクライニング",
+  tire: "",
+  break: "",
+  caster: "",
+  status: "修理依頼中",
+  message: nil
+  },
+
+  {customer_id: 1,
+  address: "大阪市西区九条13-257",
+  name: "守田 祥真",
+  wheelchair_kinds: "リクライニング",
+  tire: "タイヤとチューブ交換",
+  break: "ブレーキの調整",
+  caster: "",
+  status: "修理依頼中",
+  message: nil
+  },
+
+  {customer_id: 2,
+  address: "東京都港区神園町3-167",
+  name: "佐藤 あきら",
+  wheelchair_kinds: "リクライニング",
+  tire: "タイヤとチューブ交換",
+  break: "ブレーキの調整",
+  caster: "キャスターの交換",
+  status: "修理依頼中",
+  message: nil
+  }
   ]
 )

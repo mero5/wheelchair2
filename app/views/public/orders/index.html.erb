@@ -29,14 +29,24 @@
                   <% end %>
                 </td>
                 <td class="align-middle"><%= order.billing_amount.to_s(:delimited) %>円</td>
-                <td class="align-middle"><%= order.status %></td>
+                <td class="align-middle">
+                  <% if order.status == "受注確認中" %>
+                    <p style="color: #dc3545;"><%= order.status %></p>
+                  <% elsif order.status == "入金確認" %>
+                    <p style="color: #fd7e14;"><%= order.status %></p>
+                  <% elsif order.status == "製作中" %>
+                    <p style="color: #ffc107;"><%= order.status %></p>
+                  <% elsif order.status == "発送済み" %>
+                    <p style="color: #28a745;"><%= order.status %></p>
+                  <% end %>
+                </td>
                 <td class="align-middle"><%= link_to "詳細", order_path(order.id), class: 'border-primary rounded-primary btn text-primary' %></td>
               </tr>
             <% end %>
         </tbody>
       </table>
       <% else %>
-        <h3 class="m-auto text-center">注文履歴はありません。</h3>
+        <h4 class="my-5 mx-auto text-center">注文履歴はありません。</h4>
       <% end %>
     </div>
   </div>

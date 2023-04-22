@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-10 mx-auto">
-      <h2 class="text-center w-25 h4 bg-light d-inline-block"><%= @customer.full_name %>さま注文履歴一覧</h2>
+      <h2 class="text-center w-25 h4 bg-light d-inline-block"><%= @customer.full_name %>さまの注文履歴一覧</h2>
     </div>
   </div>
   <div class="row mt-4">
@@ -25,7 +25,17 @@
               </td>
               <td><%= order.customer.full_name %></td>
               <td><%= order.order_details.sum(:amount) %></td>
-              <td><%= order.status %></td>
+              <td>
+                <% if order.status == "受注確認中" %>
+                  <p style="color: #dc3545;"><%= order.status %></p>
+                <% elsif order.status == "入金確認" %>
+                  <p style="color: #fd7e14;"><%= order.status %></p>
+                <% elsif order.status == "製作中" %>
+                  <p style="color: #ffc107;"><%= order.status %></p>
+                <% elsif order.status == "発送済み" %>
+                  <p style="color: #28a745;"><%= order.status %></p>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
