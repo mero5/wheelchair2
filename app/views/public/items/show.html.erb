@@ -1,18 +1,20 @@
 <div class="container">
   <div class="row my-5">
     <%= render 'public/items/categories', categories: @categories %>
+  </div>
+  <div class="row mb-5">
     <div class="ml-5 col-4">
       <%= image_tag @item.image, size: '300x200', style: "background-cover; background-position: center;" %>
     </div>
     <div class="col-4">
       <h3 class="mb-3" style="font-weight: bold"><%= @item.name %></h3>
-      <h4 class="mb-5"><%= @item.introduction %></h4>
+      <h4 class="mb-5" style="font-size: 16px;"><%= @item.introduction %></h4>
       <p><strong style="font-weight: bold; font-size: 2rem;">￥<%= @item.with_tax_price.to_s(:delimited) %></strong>(税込)</p>
       <% if (customer_signed_in?) && (@item.is_active == false) %>
         <div class="mb-3">
-        <div class=<%= "favorite-" + @item.id.to_s %> >
-          <%= render 'public/favorites/btn', item: @item %>
-        </div>
+          <div class=<%= "favorite-" + @item.id.to_s %> >
+            <%= render 'public/favorites/btn', item: @item %>
+          </div>
         </div>
         <%= form_with model: @cart_item, url: cart_items_path do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>

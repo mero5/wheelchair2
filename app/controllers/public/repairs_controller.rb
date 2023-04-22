@@ -15,7 +15,7 @@ class Public::RepairsController < ApplicationController
 
     #車椅子の種類
     if params[:repair][:wheelchair_kinds_option] == "0"
-      shop = Category.find(params[:repair][:categories])
+      shop = Category.find(params[:repair][:category_name])
       @repair.wheelchair_kinds = shop.category_name
     elsif params[:repair][:wheelchair_kinds_option] == "1"
       @repair.wheelchair_kinds = params[:repair][:wheelchair_kinds]
@@ -59,7 +59,8 @@ class Public::RepairsController < ApplicationController
   end
 
   def show
-    @repair = current_customer.repairs.find(params[:id])
+    @repair = current_customer.repairs.find_by(id: params[:id])
+    render 'new' if @repair.blank?
   end
 
   # 注文完了画面

@@ -3,7 +3,7 @@ class Repair < ApplicationRecord
   has_many :items, through: :order_details
   belongs_to :customer
 
-  validates :name, presence: true
+  validates :name, presence: true, on: :update
   validates :address, presence: true
   validates :wheelchair_kinds, presence: true
 

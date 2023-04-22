@@ -77,126 +77,144 @@ Item.create!(
     name: "リクライニング車椅子",
     introduction: "プッシュアップ動作や膝部の安定に。スラリとしたフロントを演出。",
     price: 320000 ,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/リクライニング.png"), filename:"リクライニング.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/リクライニング.png"), filename:"リクライニング.png"),
+    is_active: false
     },
 
     { category_id: 2,
     name: "電動車椅子",
     introduction: "高性能な軽量型電動車椅子。",
     price: 300000 ,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/電動車いす.png"), filename:"電動車いす.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/電動車いす.png"), filename:"電動車いす.png"),
+    is_active: false
     },
 
     { category_id: 3,
     name: "AS-Ⅲ",
     introduction: "強度と美しさをあわせもつ、身体と一体となるフレームワーク。",
     price: 160000 ,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/車椅子.png"), filename:"車椅子.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/車椅子.png"), filename:"車椅子.png"),
+    is_active: false
     },
 
     { category_id: 3,
     name: "MS-Ⅲ",
     introduction: "プッシュアップ動作や膝部の安定に。スラリとしたフロントを演出。",
     price: 160000,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/車椅子2.png"), filename:"車椅子2.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/車椅子2.png"), filename:"車椅子2.png"),
+    is_active: false
     },
 
     { category_id: 4,
     name: "バスケットボール用車椅子",
     introduction: "抜群の一体感バスケットボール用の車椅子。",
     price: 313000,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ.png"), filename:"スポーツ.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ.png"), filename:"スポーツ.png"),
+    is_active: false
     },
 
     { category_id: 4,
     name: "バスケットボール用車椅子",
     introduction: "ツインバスケットボール用の車椅子。",
     price: 313000,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ2.png"), filename:"スポーツ2.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ2.png"), filename:"スポーツ2.png"),
+    is_active: false
     },
 
     { category_id: 4,
     name: "スポーツ用車椅子",
     introduction: "車椅子スポーツの入門や体験用の車椅子。",
     price: 253000,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ車椅子.png"), filename:"スポーツ車椅子.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ車椅子.png"), filename:"スポーツ車椅子.png"),
+    is_active: false
     },
 
     { category_id: 4,
     name: "バトミントン用車椅子",
     introduction: "素早い前後の動きで、相手からのクリアショットに対応。",
     price: 313000,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ3.png"), filename:"スポーツ3.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ3.png"), filename:"スポーツ3.png"),
+    is_active: false
     },
 
     { category_id: 4,
     name: "ソフトボール用車椅子",
     introduction: "走攻守の動作に対応しダイナミックなプレーを可能にします。",
     price: 313000 ,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ4.png"), filename:"スポーツ4.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スポーツ4.png"), filename:"スポーツ4.png"),
+    is_active: false
     },
 
     { category_id: 5,
     name: "スタンダート車椅子446",
     introduction: "スタンダートタイプの介助用車椅子。",
     price: 127000 ,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スタンダート.png"), filename:"スタンダート.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スタンダート.png"), filename:"スタンダート.png"),
+    is_active: false
     },
 
     { category_id: 5,
     name: "スタンダート車椅子426",
     introduction: "スタンダートタイプの介助用車椅子。",
     price: 165000 ,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スタンダート (2).png"), filename:"スタンダート (2).png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/スタンダート (2).png"), filename:"スタンダート (2).png"),
+    is_active: false
     },
 
     { category_id: 6,
     name: "アルミ製松葉杖",
     introduction: "高さ調整可能",
     price: 6400,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/杖.png"), filename:"杖.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/杖.png"), filename:"杖.png"),
+    is_active: false
     },
 
     { category_id: 6,
     name: "木製松葉杖",
     introduction: "高さ調整可能",
     price: 4600,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/杖 (2).png"), filename:"杖 (2).png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/杖 (2).png"), filename:"杖 (2).png"),
+    is_active: false
     },
 
     { category_id: 6,
     name: "T字杖",
     introduction: "高さ調整可能",
     price: 4500,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/杖 (3).png"), filename:"杖 (3).png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/杖 (3).png"), filename:"杖 (3).png"),
+    is_active: false
     },
 
     { category_id: 6,
     name: "アルミ製四脚杖",
     introduction: "高さ調整可能",
     price: 12700,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/杖 (4).png"), filename:"杖 (4).png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/杖 (4).png"), filename:"杖 (4).png"),
+    is_active: false
     },
 
     { category_id: 6,
     name: "トレウォーク",
     introduction: "室内用歩行車。高さ調整がワンタッチで手間いらず。",
     price: 32000,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/介護 (2).png"), filename:"介護 (2).png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/介護 (2).png"), filename:"介護 (2).png"),
+    is_active: false
     },
 
     { category_id: 6,
     name: "シニアカー",
     introduction: "高さ調整可能",
     price: 54000,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/シニアカー.png"), filename:"シニアカー.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/シニアカー.png"), filename:"シニアカー.png"),
+    is_active: false
     },
 
     { category_id: 6,
     name: "クッション",
     introduction: "やわらかくて長持ちします",
     price: 34000,
-    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/クッション.png"), filename:"クッション.png")
+    image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/クッション.png"), filename:"クッション.png"),
+    is_active: false
     }
   ]
 )
