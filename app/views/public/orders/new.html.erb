@@ -35,7 +35,7 @@
               <%= f.label :customer_id, "ご自身の住所" %>
               </td>
               <td colspan="2">
-                <span class="pr-2"><%= current_customer.post_code %></span>
+                <span class="pr-2">〒<%= current_customer.post_code %></span>
                 <span class="pr-2"><%= current_customer.address %></span>
                 <%= current_customer.first_name %><%= current_customer.last_name %>
               </td>

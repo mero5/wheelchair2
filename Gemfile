@@ -59,6 +59,7 @@ gem 'devise'
 gem "enum_help"
 gem 'ancestry'
 gem 'rails-i18n'
+gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'impressionist'
 gem 'chartkick'
