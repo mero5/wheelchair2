@@ -3,7 +3,11 @@ class Public::OrdersController < ApplicationController
 
   #注文情報入力画面
   def new
-    @order = Order.new
+    if Order.new.invalid?
+      @order = Order.new
+    else
+      redirect_to :new
+    end
     @customer = current_customer
     @deliveries = @customer.delivery.all
   end
@@ -62,7 +66,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = current_customer.orders.find(params[:id])
+    @order = current_customer.orders.find_by(id: params[:id])
+    render 'new' if @order.blank?
     @order_details = @order.order_details
   end
 

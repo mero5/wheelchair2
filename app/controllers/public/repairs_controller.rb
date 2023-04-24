@@ -3,7 +3,11 @@ class Public::RepairsController < ApplicationController
 
   #注文情報入力画面
   def new
-    @repair = Repair.new
+    if Repair.new.invalid?
+      @repair = Repair.new
+    else
+      redirect_to :new
+    end
     @customer = current_customer
     @deliveries = current_customer.delivery.all
     @categories = Category.all
