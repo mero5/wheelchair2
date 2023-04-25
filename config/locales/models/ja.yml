@@ -1,6 +1,15 @@
----
 ja:
   activerecord:
+    models:
+      contact: お問い合わせ
+      customer: 顧客
+      delivery: 配送先
+      admin: 管理者
+      order: 注文
+      repair: 修理
+      item: 商品
+      category: カテゴリ
+
     attributes:
       customer:
         first_name: 姓
@@ -14,36 +23,37 @@ ja:
         address: 住所
         telephone_number: 電話番号
 
-      deliveries:
+      delivery:
         delivery_name: 名前
         delivery_address: 住所
         delivery_postcode: 郵便番号
 
-      contacts:
+      contact:
         name: 名前
         email: メールアドレス
         phone_number: 電話番号
         subject: ご用件
+        message: お問い合わせ内容
 
-      categories:
+      category:
         category_name: カテゴリの名前
 
-      admins:
+      admin:
         email: メールアドレス
         encrypted_password: パスワード
 
-      items:
+      item:
         name: 商品の名前
         introduction: 商品説明
         price: 値段
 
-      orders:
+      order:
         post_code: 郵便番号
         address: 住所
         name: 名前
         postage: 送料
 
-      repairs:
+      repair:
         address: 住所
         name: 名前
         wheelchair_kinds: 修理カテゴリ

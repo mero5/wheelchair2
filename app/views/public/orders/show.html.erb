@@ -25,7 +25,17 @@
           </tr>
           <tr>
             <td class="table-active text-dark">ステータス</td>
-            <td><%= @order.status %></td>
+            <td>
+              <% if @order.status == "受注確認中" %>
+                <p style="color: #dc3545;"><%= @order.status %></p>
+              <% elsif @order.status == "入金確認" %>
+                <p style="color: #fd7e14;"><%= @order.status %></p>
+              <% elsif @order.status == "製作中" %>
+                <p style="color: #ffc107;"><%= @order.status %></p>
+              <% elsif @order.status == "発送済み" %>
+                <p style="color: #28a745;"><%= @order.status %></p>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>

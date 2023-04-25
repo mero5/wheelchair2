@@ -1,13 +1,13 @@
 <div class='container border rounded' style="background-color: #FFFFFF;">
   <div class='row'>
     <div class='mt-5 col-4 mx-auto'>
-      <%= render 'layouts/errors', obj: @contact %>
       <h2 class="text-center bg-light"><strong>お問い合わせ</strong></h2>
     </div>
   </div>
   <div class='row mt-3'>
     <div class="col-8 mx-auto">
       <%= form_with model: @contact, url: contacts_confirm_path do |f| %>
+      <%= render 'layouts/errors', obj: f.object %>
       <table class="table table-borderless">
         <tbody>
           <tr class="border-bottom">
