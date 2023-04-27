@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :orders, only:[:index,:show,:update]
     resources :order_details,only:[:update]
     resources :deliveries, only: [:show]
-    #get 'repairs/:id' => 'repairs#history'
+    get 'repairs/history/:id' => 'repairs#history', as: 'admin_history'
     resources :repairs, only:[:index,:show,:update, :create]
     resources :made_to_orders, only:[:index,:show,:update]
     resources :contacts, only:[:index,:show,:update]

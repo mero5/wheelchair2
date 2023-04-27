@@ -38,7 +38,7 @@ class Admin::OrdersController < ApplicationController
 
   def history
     @customer = Customer.find(params[:id])
-    @orders = @customer.order.all
+    @orders = @customer.orders
   end
 
   def update

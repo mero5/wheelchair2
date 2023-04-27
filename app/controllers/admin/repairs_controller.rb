@@ -12,7 +12,7 @@ class Admin::RepairsController < ApplicationController
 
   def history
     @customer = Customer.find(params[:id])
-    @repairs = @customer.repair.all
+    @repairs = @customer.repairs
   end
 
   def update
