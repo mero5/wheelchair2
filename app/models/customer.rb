@@ -11,6 +11,7 @@ class Customer < ApplicationRecord
   has_one :room, dependent: :destroy
   has_many :repairs, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :made_to_order, dependent: :destroy
 
   def full_name
     self.first_name + " " + self.last_name

@@ -52,6 +52,9 @@ Rails.application.routes.draw do
     post 'repairs/confirm' => 'repairs#confirm'
     get 'repairs/thanx' => 'repairs#thanx'
     resources :repairs, only: [:index, :new, :create, :show]
+    post 'made_to_orders/confirm' => 'made_to_orders#confirm'
+    post 'made_to_orders/back' => 'made_to_orders#back', as: 'made_to_orders_back'
+    get 'made_to_orders/thanx' => 'made_to_orders#thanx'
     resources :made_to_orders, only:[:index,:new, :create,:show]
   end
 

@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   has_many :order_details
   has_many :order, through: :order_details
   has_many :cart_items, dependent: :destroy
+  has_many :tags, dependent: :destroy
   has_many :favorites, dependent: :destroy
   belongs_to :category
 

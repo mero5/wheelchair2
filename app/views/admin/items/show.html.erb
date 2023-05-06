@@ -38,6 +38,13 @@
               </tr>
 
               <tr>
+                <td><% @item.tags.each do |tag| %>
+                  <%= tag.name %>
+                  <% end %>
+                </td>
+              </tr>
+
+              <tr>
                 <td>販売ステータス</td>
                   <% if @item.is_active == false %>
                 <td class="text-success">販売中</td>
