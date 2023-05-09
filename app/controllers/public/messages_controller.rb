@@ -1,5 +1,5 @@
 class Public::MessagesController < ApplicationController
-  after_create_commit :create_notifications
+  #after_create_commit :create_notifications
 
   def create
     message = Message.new(message_params)
@@ -17,8 +17,8 @@ class Public::MessagesController < ApplicationController
     params.require(:message).permit(:message, :room_id).merge(customer_id: current_customer.id)
   end
 
-  def create_notifications
-    Notification.create(notifiable: self, cutomer: post)
-  end
+  #def create_notifications
+    #Notification.create(notifiable: self, cutomer: post)
+  #end
 
 end
