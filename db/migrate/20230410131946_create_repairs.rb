@@ -8,6 +8,7 @@ class CreateRepairs < ActiveRecord::Migration[6.1]
       t.string :tire
       t.string :break
       t.string :caster
+      t.string :others
       t.integer :status, null: false, default: 0
       t.string :message
 

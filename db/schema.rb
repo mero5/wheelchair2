@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_06_084712) do
+ActiveRecord::Schema.define(version: 2023_05_09_092643) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 2023_05_06_084712) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "colors", force: :cascade do |t|
+    t.integer "made_to_order_id", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -157,15 +164,22 @@ ActiveRecord::Schema.define(version: 2023_05_06_084712) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "flame", null: false
-    t.string "model_name", null: false
-    t.string "tire_size", null: false
-    t.string "tire", null: false
+    t.string "flame2", null: false
+    t.string "type", null: false
+    t.string "material", null: false
+    t.string "flame_color", null: false
+    t.string "side_color", null: false
+    t.string "seat_color", null: false
+    t.string "back_color", null: false
     t.string "break", null: false
-    t.string "caster", null: false
-    t.string "color", null: false
-    t.string "turnover", null: false
-    t.string "option", null: false
-    t.string "others", null: false
+    t.string "nursing_break"
+    t.string "turnover"
+    t.string "cane"
+    t.string "cane2"
+    t.string "cushion"
+    t.string "table"
+    t.string "others"
+    t.string "message"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -181,6 +195,23 @@ ActiveRecord::Schema.define(version: 2023_05_06_084712) do
     t.index ["admin_id"], name: "index_messages_on_admin_id"
     t.index ["customer_id"], name: "index_messages_on_customer_id"
     t.index ["room_id"], name: "index_messages_on_room_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "order_id"
+    t.integer "repair_id"
+    t.integer "message_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["message_id"], name: "index_notifications_on_message_id"
+    t.index ["order_id"], name: "index_notifications_on_order_id"
+    t.index ["repair_id"], name: "index_notifications_on_repair_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -210,6 +241,15 @@ ActiveRecord::Schema.define(version: 2023_05_06_084712) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "reads", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "room_id", null: false
+    t.boolean "complete", default: false, null: false
+    t.datetime "open_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "repairs", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "address", null: false
@@ -218,6 +258,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_084712) do
     t.string "tire"
     t.string "break"
     t.string "caster"
+    t.string "others"
     t.integer "status", default: 0, null: false
     t.string "message"
     t.datetime "created_at", precision: 6, null: false

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    get 'customers' => 'registrations#new'
     get 'customers/profile' => 'customers#show'
     patch 'customers/profile' => 'customers#update'
     get 'customers/profile/edit' => 'customers#edit'
@@ -55,7 +56,8 @@ Rails.application.routes.draw do
     post 'made_to_orders/confirm' => 'made_to_orders#confirm'
     post 'made_to_orders/back' => 'made_to_orders#back', as: 'made_to_orders_back'
     get 'made_to_orders/thanx' => 'made_to_orders#thanx'
-    resources :made_to_orders, only:[:index,:new, :create,:show]
+    resources :made_to_orders, only:[:index, :new, :create, :show]
+    resources :notifications, only: [:index]
   end
 
   root to: "homes#top"

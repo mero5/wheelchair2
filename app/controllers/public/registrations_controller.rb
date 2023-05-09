@@ -59,4 +59,26 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  #def new
+    # フォームで送られたパラメータを取得する
+    #if post_code = params[:post_code]
+      # ここでエンコードする。URI.encode_www_formメソッドで、URLの末尾に「zipcode=郵便番号」を作っている
+      #params = URI.encode_www_form({zipcode: post_code})
+      # これでURLを取得する、paramsは変数なので展開する必要あり
+      #uri = URI.parse("https://zipcloud.ibsnet.co.jp/api/search?#{params}")
+      # レスポンスを取得している、GET![スクリーンショット 2020-12-18 23.46.27.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/431899/9b912f6a-f11b-5065-73e6-909459901403.png)
+
+      #response = Net::HTTP.get_response(uri)
+      # JSON形式に変換
+      #if result = JSON.parse(response.body)
+        #viewで使用するために、インスタンス変数に格納
+        #レスポンスで、都道府県名や、市区町村を指定して取得する
+        #@zipcode = result["results"][0]["zipcode"]
+        #@address1 = result["results"][0]["address1"]
+        #@address2 = result["results"][0]["address2"]
+        #@address3 = result["results"][0]["address3"]
+      #end
+    #end
+  #end
 end

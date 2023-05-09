@@ -73,5 +73,4 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 
-#API
-
+gem 'jp_prefecture'# 都道府県コードから都道府県名を変換するgem

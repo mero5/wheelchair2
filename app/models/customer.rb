@@ -12,6 +12,10 @@ class Customer < ApplicationRecord
   has_many :repairs, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :made_to_order, dependent: :destroy
+  has_many :reads, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   def full_name
     self.first_name + " " + self.last_name
