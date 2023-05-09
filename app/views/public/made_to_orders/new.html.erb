@@ -6,12 +6,14 @@
   </div>
   <div class='row mt-3'>
     <div class="col-12 mx-auto">
+      <%= render 'layouts/errors', obj: @made_to_order %>
       <%= form_with model: @made_to_order, url: made_to_orders_confirm_path do |f| %>
-      <%= render 'layouts/errors', obj: f.object %>
+
       <table class="table table-borderless">
         <tbody>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>フレームの種類</strong></td>
+            <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
                 <span class="mr-5">
@@ -40,6 +42,7 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>型式</strong></td>
+            <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
                 <span class="mr-5">
@@ -53,6 +56,7 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>車体</strong></td>
+            <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
                 <span class="mr-5">
@@ -70,6 +74,7 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>フレーム色</strong></td>
+            <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
                   <%= f.label :flame_color, "アルマイト：" %>
@@ -80,6 +85,7 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>サイドガード色</strong></td>
+            <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
                   <%= f.label :side_color, "アルマイト：" %>
@@ -90,6 +96,7 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>シート</strong></td>
+            <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
                   <%= f.label :seat_color, "座シート：色" %>
@@ -105,6 +112,7 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>ブレーキ</strong></td>
+            <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
                 <span class="mr-5">
@@ -132,8 +140,13 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>介護ブレーキ</strong></td>
+            <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
+                <span class="mr-5">
+                  <%= f.radio_button :nursing_break, :無し %>
+                  <%= f.label :nursing_break, "無し" %>
+                </span>
                 <span class="mr-5">
                   <%= f.radio_button :nursing_break, :アルミ %>
                   <%= f.label :nursing_break, "アルミ" %>
@@ -149,6 +162,7 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>転倒防止装置</strong></td>
+            <td class="align-middle" style="width: 13%;">任意</td>
             <td>
               <div>
                 <span class="mr-5">
@@ -166,6 +180,7 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>オプション</strong></td>
+            <td class="align-middle" style="width: 13%;">任意</td>
             <td>
               <div>
                 杖入れ：
@@ -222,6 +237,7 @@
           </tr>
           <tr class="border-bottom">
             <td style="width: 17%;"><strong>その他要望</strong></td>
+            <td class="align-middle" style="width: 13%;">任意</td>
             <td>
               <div>
                 <%= f.text_area :others, class: "form-control mb-2", size: "20x6" %>

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-8 mx-auto">
+      <%= f.label :name, 'カラー', class: "col-form-label" %>
+      <%= f.text_field :name, class: "form-control col" %>
+      <% if local_assigns[:edit_flag].present? %>
+        <%= f.submit '変更を保存', class: "form-control btn btn-success col" %></td>
+      <% else %>
+        <%= f.submit '新規登録', class: "form-control btn btn-success col" %></td>
+      <% end %>
+    </div>
+  </div>
+</div>

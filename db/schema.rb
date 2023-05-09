@@ -160,9 +160,6 @@ ActiveRecord::Schema.define(version: 2023_05_09_092643) do
 
   create_table "made_to_orders", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.string "telephone_number", null: false
-    t.string "name", null: false
-    t.string "email", null: false
     t.string "flame", null: false
     t.string "flame2", null: false
     t.string "type", null: false

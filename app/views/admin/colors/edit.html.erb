@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-8 mx-auto">
+      <h4 class="text-center bg-light">カラー編集</h4>
+    </div>
+  </div>
+  <div class="mt-5">
+    <div class="row">
+      <div class="col-10">
+        <%= render 'layouts/errors', obj: @color %>
+        <%= form_with model: @category, url: admin_category_path(@category.id), method: :patch do |f| %>
+          <%= render :partial => 'form', :locals => {:f => f, :edit_flag => true} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
