@@ -1,6 +1,6 @@
 class Public::RoomsController < ApplicationController
   #before_action :authenticate_customer!
-  after_create_commit :create_notifications
+  #after_create_commit :create_notifications
 
   def create
     if customer_signed_in?
@@ -22,8 +22,8 @@ class Public::RoomsController < ApplicationController
 
   private
 
-  def create_notifications
-    Notification.create(notifiable: self, cutomer: post)
-  end
+  #def create_notifications
+    #Notification.create(notifiable: self, cutomer: post)
+  #end
 
 end

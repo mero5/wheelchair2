@@ -1,6 +1,6 @@
 class Admin::RoomsController < ApplicationController
   before_action :authenticate_admin!
-  after_create_commit :create_notifications
+  #after_create_commit :create_notifications
 
   def index
     @rooms = Room.all
@@ -17,7 +17,7 @@ class Admin::RoomsController < ApplicationController
 
   private
 
-  def create_notifications
-    Notification.create(notifiable: self, cutomer: post)
-  end
+  #def create_notifications
+    #Notification.create(notifiable: self, cutomer: post)
+  #end
 end
