@@ -2,6 +2,8 @@ class Public::MadeToOrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def new
+    @cloths = Cloth.all
+    @colors = Color.all
     if MadeToOrder.new.invalid?
       @made_to_order = MadeToOrder.new
     else

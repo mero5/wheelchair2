@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index,:show,:edit,:update, :create]
     resources :items
     resources :colors
+    resources :cloths
     resources :categories, only: [:index, :edit, :create, :update, :destroy]
     get 'orders/earnings'
     get 'orders/history/:id' => 'orders#history'

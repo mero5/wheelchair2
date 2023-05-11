@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-8 mx-auto">
+      <%= render 'layouts/errors', obj: @cloth %>
+      <h2 class="text-center h4 bg-light">シート生地 追加</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <%= form_with model: @cloth, url: admin_cloths_path, method: :post do |f| %>
+        <%= render :partial => 'form', :locals => {:f => f} %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-8 mx-auto">
+      <h4 class="text-center bg-light">シート生地 一覧</h4>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-10 mx-auto">
+      <table class="table table-borderless">
+        <thead class="bg-light">
+          <tr class="text-dark text-center">
+            <th>シート生地ID</th>
+            <th>シートイメージ</th>
+            <th>シート生地名</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cloths.each do |cloth| %>
+            <tr class="text-center">
+              <td class="align-middle"><%= cloth.id %></td>
+              <td class="align-middle"><%= image_tag cloth.image, size: '100x80', style: "background-size: cover; background-position: center;" %></td>
+              <td class="align-middle"><%= cloth.name %></td>
+              <% if cloth.is_active == false %>
+                <td class="align-middle text-success mr-4">販売中</td>
+              <% else cloth.is_active == true %>
+                <td class="align-middle text-danger">販売停止中</td>
+              <% end %>
+              <td class="align-middle">
+                <%= link_to '編集する', edit_admin_cloth_path(cloth), class: "border-success rounded-success btn text-success mr-3" %>
+                <%= link_to '削除する', admin_cloth_path(cloth), method: :delete, "data-confirm" => "本当に削除しますか？", class: "border-danger rounded-danger btn text-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% if @cloths.blank? %>
+    <div class="mt-5 text-center"><strong>シート生地は登録されていません</strong></div>
+  <% end %>
+</div>

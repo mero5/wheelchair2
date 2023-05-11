@@ -12,8 +12,15 @@
       <table class="table table-borderless">
         <tbody>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>フレームの種類</strong></td>
-            <td class="text-danger" style="width: 13%;">必須</td>
+            <td class="align-middle" style="width: 17%;"><strong>フレームの種類</strong></td>
+            <td class="text-danger" style="width: 13%;">
+              <div>
+                必須
+              </div>
+              <div class="mt-4">
+                必須
+              </div>
+            </td>
             <td>
               <div>
                 <span class="mr-5">
@@ -23,7 +30,7 @@
                   <%= f.radio_button :flame, :折りたたみ %>
                   <%= f.label :flame, "折りたたみ" %>
               </div>
-              <div class="mt-3">
+              <div class="d-flex justify-content mt-3">
                 <span class="mr-5">
                   <%= f.radio_button :flame2, :普通型 %>
                   <%= f.label :flame2, "普通型" %>
@@ -32,16 +39,16 @@
                   <%= f.radio_button :flame2, :リクライニング %>
                   <%= f.label :flame2, "リクライニング" %>
                 </span>
-                <span class="">
+                <span class="d-flex justify-content">
                   <%= f.radio_button :flame2, 1 %>
-                  <%= f.label :flame2, "その他" %>
-                  <%= f.text_field :flame2, class: "form-control col-4" %>
+                  <%= f.label :flame2, "その他", class: "mr-3" %>
+                  <%= f.text_field :flame2, class: "form-control" %>
                 </span>
               </div>
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>型式</strong></td>
+            <td class="align-middle" style="width: 17%;"><strong>型式</strong></td>
             <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
@@ -55,7 +62,7 @@
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>車体</strong></td>
+            <td class="align-middle" style="width: 17%;"><strong>車体</strong></td>
             <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
@@ -73,13 +80,12 @@
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>フレーム色</strong></td>
+            <td class="align-middle" style="width: 17%;"><strong>フレーム色</strong></td>
             <td class="text-danger" style="width: 13%;">必須</td>
             <td>
-              <div>
-                  <%= f.label :flame_color, "アルマイト：" %>
-                  <%= f.text_field :flame_color, class: "form-control col-4" %>
-                  <%#= f.collection_select(:customer_id, @deliveries, :id, :full_delivery, {}, { class: "custom-select" }) %>
+              <div class="d-flex justify-content">
+                <%= f.label :flame_color, "アルマイト：" %>
+                <%= f.collection_select(:name, @colors, :id, :name, {}, { class: "custom-select col-5" }) %>
               </div>
             </td>
           </tr>
@@ -87,31 +93,38 @@
             <td style="width: 17%;"><strong>サイドガード色</strong></td>
             <td class="text-danger" style="width: 13%;">必須</td>
             <td>
-              <div>
-                  <%= f.label :side_color, "アルマイト：" %>
-                  <%= f.text_field :side_color, class: "form-control col-4" %>
-                  <%#= f.collection_select(:customer_id, @deliveries, :id, :full_delivery, {}, { class: "custom-select" }) %>
+              <div class="d-flex justify-content">
+                <%= f.label :side_color, "アルマイト：" %>
+                <%= f.collection_select(:name, @colors, :id, :name, {}, { class: "custom-select col-5" }) %>
               </div>
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>シート</strong></td>
-            <td class="text-danger" style="width: 13%;">必須</td>
+            <td class="align-middle" style="width: 17%;"><strong>シート色</strong></td>
+            <td class="align-middle text-danger" style="width: 13%;">必須</td>
             <td>
-              <div>
-                  <%= f.label :seat_color, "座シート：色" %>
-                  <%= f.text_field :seat_color, class: "form-control col-4" %>
-                  <%#= f.collection_select(:customer_id, @deliveries, :id, :full_delivery, {}, { class: "custom-select" }) %>
+              <div class="d-flex justify-content">
+                <%= f.label :seat_color, "座シート：" %>
+                <%= f.collection_select(:name, @cloths, :id, :name, {}, { class: "custom-select col-5" }) do %>
+                  <%= image_tag cloth.image, size: '100x80', style: "background-size: cover; background-position: center;" %>
+                <% end %>
               </div>
-              <div class="mt-3">
-                  <%= f.label :back_color, "背シート：色" %>
-                  <%= f.text_field :back_color, class: "form-control col-4" %>
-                  <%#= f.collection_select(:customer_id, @deliveries, :id, :full_delivery, {}, { class: "custom-select" }) %>
+              <div class="mt-3 d-flex justify-content">
+                  <%= f.label :back_color, "背シート：" %>
+                  <%= f.collection_select(:name, @cloths, :id, :name, {}, { class: "custom-select col-5" }) %>
+              </div>
+              <div>
+                <% @cloths.each do |cloth| %>
+                  <%= image_tag cloth.image, size: '100x80', style: "background-size: cover; background-position: center;" %>
+                  <div>
+                    
+                  </div>
+                <% end %>
               </div>
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>ブレーキ</strong></td>
+            <td class="align-middle" style="width: 17%;"><strong>ブレーキ</strong></td>
             <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
@@ -139,7 +152,7 @@
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>介護ブレーキ</strong></td>
+            <td class="align-middle" style="width: 17%;"><strong>介護ブレーキ</strong></td>
             <td class="text-danger" style="width: 13%;">必須</td>
             <td>
               <div>
@@ -161,7 +174,7 @@
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>転倒防止装置</strong></td>
+            <td class="align-middle" style="width: 17%;"><strong>転倒防止装置</strong></td>
             <td class="align-middle" style="width: 13%;">任意</td>
             <td>
               <div>
@@ -179,16 +192,16 @@
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>オプション</strong></td>
+            <td class="align-middle" style="width: 17%;"><strong>オプション</strong></td>
             <td class="align-middle" style="width: 13%;">任意</td>
             <td>
               <div>
                 杖入れ：
-                <span class="mx-5">
+                <span class="mx-3">
                   <%= f.radio_button :cane, :大 %>
                   <%= f.label :cane, "大" %>
                 </span>
-                <span class="mr-5">
+                <span class="mr-3">
                   <%= f.radio_button :cane, :中 %>
                   <%= f.label :cane, "中" %>
                 </span>
@@ -196,11 +209,11 @@
                   <%= f.label :cane, "小" %>
                 </span>
                 <span class="mx-5">/</span>
-                <span class="mr-5">
+                <span class="mr-3">
                   <%= f.radio_button :cane2, :左 %>
                   <%= f.label :cane2, "左" %>
                 </span>
-                <span class="mr-5">
+                <span class="mr-3">
                   <%= f.radio_button :cane2, :右 %>
                   <%= f.label :cane2, "右" %>
                 </span>
@@ -209,11 +222,11 @@
               </div>
               <div class="mt-3">
                 クッション：
-                <span class="mx-5">
+                <span class="mx-3">
                   <%= f.radio_button :cushion, :ホロクッション %>
                   <%= f.label :cushion, "ホロクッション" %>
                 </span>
-                <span class="mr-5">
+                <span class="mr-3">
                   <%= f.radio_button :cushion, :クッション２ %>
                   <%= f.label :cushion, "クッション２" %>
                 </span>
@@ -222,11 +235,11 @@
               </div>
               <div class="mt-3">
                 テーブル：
-                <span class="mx-5">
+                <span class="mx-3">
                   <%= f.radio_button :table, :上下式 %>
                   <%= f.label :table, "上下式" %>
                 </span>
-                <span class="mr-5">
+                <span class="mr-3">
                   <%= f.radio_button :table, :前後式 %>
                   <%= f.label :table, "前後式" %>
                 </span>
@@ -236,7 +249,7 @@
             </td>
           </tr>
           <tr class="border-bottom">
-            <td style="width: 17%;"><strong>その他要望</strong></td>
+            <td class="align-middle" style="width: 17%;"><strong>その他要望</strong></td>
             <td class="align-middle" style="width: 13%;">任意</td>
             <td>
               <div>

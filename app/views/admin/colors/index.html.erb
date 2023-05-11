@@ -18,11 +18,12 @@
     </div>
   </div>
   <div class="row mt-4">
-    <div class="col-8 mx-auto">
+    <div class="col-10 mx-auto">
       <table class="table table-borderless">
         <thead class="bg-light">
           <tr class="text-dark text-center">
             <th>カラーID</th>
+            <th>カラーイメージ</th>
             <th>カラー名</th>
             <th>ステータス</th>
             <th></th>
@@ -31,14 +32,15 @@
         <tbody>
           <% @colors.each do |color| %>
             <tr class="text-center">
-              <td><%= color.id %></td>
-              <td><%= color.name %></td>
+              <td class="align-middle"><%= color.id %></td>
+              <td class="align-middle"><%= image_tag color.image, size: '100x80', style: "background-size: cover; background-position: center;" %></td>
+              <td class="align-middle"><%= color.name %></td>
               <% if color.is_active == false %>
-                <td class="text-success mr-4">販売中</td>
+                <td class="align-middle text-success mr-4">販売中</td>
               <% else color.is_active == true %>
-                <td class="text-danger">販売停止中</td>
+                <td class="align-middle text-danger">販売停止中</td>
               <% end %>
-              <td>
+              <td class="align-middle">
                 <%= link_to '編集する', edit_admin_color_path(color), class: "border-success rounded-success btn text-success mr-3" %>
                 <%= link_to '削除する', admin_color_path(color), method: :delete, "data-confirm" => "本当に削除しますか？", class: "border-danger rounded-danger btn text-danger" %>
               </td>

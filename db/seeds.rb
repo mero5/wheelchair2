@@ -353,3 +353,85 @@ Repair.create!(
   }
   ]
 )
+
+
+Color.create!(
+  [
+  {
+  id: 1,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/レッド.png"), filename:"レッド.png"),
+  name: "レッド",
+  is_active: false,
+  },
+  {
+  id: 2,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/シルバー.png"), filename:"シルバー.png"),
+  name: "シルバー",
+  is_active: false,
+  },
+  {
+  id: 3,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/オレンジ.png"), filename:"オレンジ.png"),
+  name: "オレンジ",
+  is_active: false,
+  },
+  {
+  id: 4,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/イエロー.png"), filename:"イエロー.png"),
+  name: "イエロー",
+  is_active: false,
+  },
+  {
+  id: 5,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/グリーン.png"), filename:"グリーン.png"),
+  name: "グリーン",
+  is_active: false,
+  }
+  ]
+)
+
+
+Cloth.create!(
+  [
+  {
+  id: 1,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/赤.png"), filename:"赤.png"),
+  name: "N-1",
+  is_active: false,
+  },
+  {
+  id: 2,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/緑.png"), filename:"緑.png"),
+  name: "M-1",
+  is_active: false,
+  },
+  {
+  id: 3,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/黄色.png"), filename:"黄色.png"),
+  name: "M-2",
+  is_active: false,
+  },
+  {
+  id: 4,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/水玉.png"), filename:"水玉.png"),
+  name: "PM-1",
+  is_active: false,
+  },
+  {
+  id: 5,
+  made_to_order_id: nil,
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/白.png"), filename:"シニアカー.png"),
+  name: "PM-2",
+  is_active: false,
+  }
+  ]
+)
