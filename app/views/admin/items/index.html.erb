@@ -3,7 +3,7 @@
 
   <div class="row mt-4">
     <h2 class="text-center w-25 h4 bg-light d-inline-block">商品一覧</h2>
-    <%= link_to '新規登録はこちら', new_admin_item_path, class: "btn btn-success ml-4" %>
+    <%= link_to '新規登録はこちら', new_admin_item_path, class: "border-success rounded-success btn text-success ml-4" %>
   </div>
 
   <div class="row mt-4">
@@ -28,7 +28,7 @@
             <% if item.is_active == false %>
               <td class="text-success">販売中</td>
             <% else item.is_active == true %>
-              <td>販売停止中</td>
+              <td class="text-danger">販売停止中</td>
             <% end %>
           </tr>
           <% end %>

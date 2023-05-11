@@ -90,6 +90,14 @@
                     <% end %>
                   </li>
                   <li class="nav-item mx-2 mt-2">
+                    <%= link_to admin_colors_path do %>
+                      <div class="d-flex flex-column text-center">
+                        <div><i class="fas fa-tint fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">カラー設定</div>
+                      </div>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-2 mt-2">
                     <%= link_to destroy_admin_session_path, method: :delete do %>
                       <div class="d-flex flex-column text-center">
                         <div><i class="fas fa-sign-out-alt fa-2x" style="color: #FFFFFF;"></i></div>

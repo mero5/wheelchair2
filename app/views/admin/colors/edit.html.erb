@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-10">
         <%= render 'layouts/errors', obj: @color %>
-        <%= form_with model: @category, url: admin_category_path(@category.id), method: :patch do |f| %>
+        <%= form_with model: @color, url: admin_color_path(@color.id), method: :patch do |f| %>
           <%= render :partial => 'form', :locals => {:f => f, :edit_flag => true} %>
         <% end %>
       </div>

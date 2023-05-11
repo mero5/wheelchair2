@@ -4,7 +4,7 @@ class Admin::ColorsController < ApplicationController
 
   def index
     @color = Color.new
-    @Colors = Color.all
+    @colors = Color.all
   end
 
   def edit
@@ -15,7 +15,7 @@ class Admin::ColorsController < ApplicationController
     @color = Color.new(color_params)
     if @color.save
       flash[:notice] = "保存いたしました"
-      redirect_to admin_color_index_path
+      redirect_to admin_colors_path
     else
       @colors = Color.all
       render :index
@@ -26,7 +26,7 @@ class Admin::ColorsController < ApplicationController
     @color = Color.find(params[:id])
     if @color.update(color_params)
       flash[:notice] = "アップデートいたしました"
-      redirect_to admin_color_index_path
+      redirect_to admin_colors_path
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Admin::ColorsController < ApplicationController
     @color = Color.find(params[:id])
     @color.destroy
     flash[:notice] = "削除いたしました"
-    redirect_to admin_color_index_path
+    redirect_to admin_colors_path
   end
 
   def edit_color
@@ -44,6 +44,6 @@ class Admin::ColorsController < ApplicationController
   end
 
   def color_params
-    params.require(:color).permit(:name)
+    params.require(:color).permit(:name, :is_active)
   end
 end

@@ -10,33 +10,37 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
               <% if customer_signed_in? %>
-                <li class="nav-link border rounded btn mx-5">
+                <li class="nav-link border rounded btn mx-3">
                   <%= link_to root_path do %>
                     <i class="fas fa-home text-dark"></i>
                     <span class="text-dark">ホーム</span>
                   <% end %>
                 </li>
-                <li class="nav-item nav-link border rounded btn mx-5">
+                <li class="nav-item nav-link border rounded btn mx-3">
                   <%= link_to about_path do %>
                     <i class="fas fa-building text-dark"></i>
                     <span class="text-dark">会社概要</span>
                   <% end %>
                 </li>
-                <li class="nav-item nav-link border rounded btn mx-5">
+                <li class="nav-item nav-link border rounded btn mx-3">
                   <%= link_to categories_path do %>
                   <i class="fas fa-wheelchair text-dark"></i>
                     <span class="text-dark">カテゴリ</span>
                   <% end %>
                 </li>
-                <li class="nav-item nav-link border rounded btn mx-5">
+                <li class="nav-item nav-link border rounded btn mx-3">
                   <%= link_to new_repair_path do %>
                     <i class="fas fa-tools text-dark"></i>
                     <span class="text-dark">修理依頼</span>
                   <% end %>
                 </li>
-                  <%#= link_to new_made_to_order_path do %>
-                  <%# end %>
-                <li class="nav-item nav-link border rounded btn mx-5">
+                <li class="nav-item nav-link border rounded btn mx-3">
+                  <%= link_to new_made_to_order_path do %>
+                  <i class="fas fa-wheelchair text-dark"></i>
+                    <span class="text-dark">オーダーメイド</span>
+                  <% end %>
+                </li>
+                <li class="nav-item nav-link border rounded btn mx-3">
                   <%= link_to rooms_path, method: :post do %>
                     <i class="fas fa-comment text-dark"></i>
                     <span class="text-dark">お問い合わせ</span>

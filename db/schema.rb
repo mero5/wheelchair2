@@ -67,8 +67,9 @@ ActiveRecord::Schema.define(version: 2023_05_09_092643) do
   end
 
   create_table "colors", force: :cascade do |t|
-    t.integer "made_to_order_id", null: false
+    t.integer "made_to_order_id"
     t.string "name", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,13 +1,55 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-8 mx-auto">
-      <%= f.label :name, 'カラー', class: "col-form-label" %>
-      <%= f.text_field :name, class: "form-control col" %>
-      <% if local_assigns[:edit_flag].present? %>
-        <%= f.submit '変更を保存', class: "form-control btn btn-success col" %></td>
-      <% else %>
-        <%= f.submit '新規登録', class: "form-control btn btn-success col" %></td>
-      <% end %>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%#= f.label :image, '商品画像', class: "col-form-label" %></td>
+            <td><%#= f.file_field :image, accept: 'image/*', class: "form-control-file" %></td>
+          </tr>
+          <tr>
+            <td>カラーの名前</td>
+            <td><%= f.text_field :name, class: "form-control col" %></td>
+          </tr>
+          <% if local_assigns[:edit_flag].present? %>
+            <tr>
+              <td><%= f.label '販売ステータス' %></td>
+              <td>
+                <span class="text-success mr-4">
+                  <%= f.radio_button :is_active, false %>
+                  <%= f.label :is_active, '販売中' %>
+                </span>
+                <span class="text-danger">
+                  <%= f.radio_button :is_active, true %>
+                  <%= f.label :is_active, '販売停止' %>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit '変更を保存', class: "border-success rounded-success btn text-success" %></td>
+            </tr>
+          <% else %>
+            <tr>
+              <td><%= f.label '販売ステータス' %></td>
+              <td>
+                <span class="text-success mr-4">
+                  <%= f.radio_button :is_active, false, checked: true %>
+                  <%= f.label :is_active, '販売中' %>
+                </span>
+                <span class="text-danger">
+                  <%= f.radio_button :is_active, true, checked: false %>
+                  <%= f.label :is_active, '販売停止' %>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit '新規登録', class: "border-success rounded-success btn text-success" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

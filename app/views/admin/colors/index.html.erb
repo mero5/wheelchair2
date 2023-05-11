@@ -1,32 +1,54 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-8 mx-auto">
-      <%= render 'layouts/errors', obj: @category %>
-      <h2 class="text-center h4 bg-light">カテゴリ一覧・追加</h2>
+      <%= render 'layouts/errors', obj: @color %>
+      <h2 class="text-center h4 bg-light">カラー 追加</h2>
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="row">
     <div class="col-10 mx-auto">
-      <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+      <%= form_with model: @color, url: admin_colors_path, method: :post do |f| %>
         <%= render :partial => 'form', :locals => {:f => f} %>
       <% end %>
     </div>
   </div>
   <div class="row mt-4">
     <div class="col-8 mx-auto">
-      <h4 class="text-center bg-light">カテゴリ</h4>
+      <h4 class="text-center bg-light">カラー 一覧</h4>
     </div>
   </div>
-  <div class="row my-4">
-    <% @categories.each do |category| %>
-      <div class="col-4">
-        <li class="nav-item nav-link border rounded btn rounded">
-          <%= image_tag category.image, size: "300x250", style: "background-size: cover; background-position: center;" %>
-          <h5 class="my-3"><%= category.category_name %></h5>
-          <%= link_to '編集する', edit_admin_category_path(category), class: "btn btn-success mr-3" %>
-          <%#= link_to '削除する', admin_category_path(category), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-        </li>
-      </div>
-    <% end %>
+  <div class="row mt-4">
+    <div class="col-8 mx-auto">
+      <table class="table table-borderless">
+        <thead class="bg-light">
+          <tr class="text-dark text-center">
+            <th>カラーID</th>
+            <th>カラー名</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @colors.each do |color| %>
+            <tr class="text-center">
+              <td><%= color.id %></td>
+              <td><%= color.name %></td>
+              <% if color.is_active == false %>
+                <td class="text-success mr-4">販売中</td>
+              <% else color.is_active == true %>
+                <td class="text-danger">販売停止中</td>
+              <% end %>
+              <td>
+                <%= link_to '編集する', edit_admin_color_path(color), class: "border-success rounded-success btn text-success mr-3" %>
+                <%= link_to '削除する', admin_color_path(color), method: :delete, "data-confirm" => "本当に削除しますか？", class: "border-danger rounded-danger btn text-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <% if @colors.blank? %>
+    <div class="mt-5 text-center"><strong>カラーは登録されていません</strong></div>
+  <% end %>
 </div>

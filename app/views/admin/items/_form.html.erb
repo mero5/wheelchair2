@@ -21,34 +21,41 @@
       <td><%= f.number_field :price, placeholder: '1000', style: "display: inline;", class: "form-control" %></td>
       <td style="font-size: 16px; height: 38px; line-height: 38px;">円</td>
     </tr>
-
     <% if local_assigns[:edit_flag].present? %>
       <tr>
         <td><%= f.label '販売ステータス' %></td>
         <td>
-          <%= f.radio_button :is_active, false %>
-          <%= f.label :is_active, '販売中' %>
-          <%= f.radio_button :is_active, true %>
-          <%= f.label :is_active, '販売停止' %>
+          <span class="text-success mr-4">
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, '販売中' %>
+          </span>
+          <span class="text-danger">
+            <%= f.radio_button :is_active, true %>
+            <%= f.label :is_active, '販売停止' %>
+          </span>
         </td>
       </tr>
       <tr>
         <td></td>
-        <td><%= f.submit '変更を保存', class: "btn btn-success btn-lg" %></td>
+        <td><%= f.submit '変更を保存', class: "border-success rounded-success btn text-success" %></td>
       </tr>
     <% else %>
       <tr>
         <td><%= f.label '販売ステータス' %></td>
         <td>
-          <%= f.radio_button :is_active, false, checked: true %>
-          <%= f.label :is_active, '販売中' %>
-          <%= f.radio_button :is_active, true, checked: false %>
-          <%= f.label :is_active, '販売停止' %>
+          <span class="text-success mr-4">
+            <%= f.radio_button :is_active, false, checked: true %>
+            <%= f.label :is_active, '販売中' %>
+          </span>
+          <span class="text-danger">
+            <%= f.radio_button :is_active, true, checked: false %>
+            <%= f.label :is_active, '販売停止' %>
+          </span>
         </td>
       </tr>
       <tr>
         <td></td>
-        <td><%= f.submit '新規登録', class: "btn btn-success btn-lg" %></td>
+        <td><%= f.submit '新規登録', class: "border-success rounded-success btn text-success" %></td>
       </tr>
     <% end %>
     </tr>
