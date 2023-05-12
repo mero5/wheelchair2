@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
       redirect_to :new
     end
     @customer = current_customer
-    @deliveries = @customer.delivery.all
+    @deliveries = @customer.deliveries
   end
 
   #注文情報確認画面
@@ -54,6 +54,7 @@ class Public::OrdersController < ApplicationController
     @cart_item = current_customer.cart_items.all
     @cart_item.each do |cart_item| #カートの商品を1つずつ取り出しループ
       @order_details = OrderDetail.new #初期化宣言
+      @order_details.customer_id = current_customer.id
       @order_details.item_id = cart_item.item_id #商品idを注文商品idに代入
       @order_details.amount = cart_item.amount #商品の個数を注文商品の個数に代入
       @order_details.price = @order.billing_amount #請求金額に代入billing_amount

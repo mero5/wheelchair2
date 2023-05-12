@@ -9,7 +9,7 @@ class Public::RepairsController < ApplicationController
       redirect_to :new
     end
     @customer = current_customer
-    @deliveries = current_customer.delivery.all
+    @deliveries = current_customer.deliveries
     @categories = Category.all
   end
 
@@ -56,8 +56,8 @@ class Public::RepairsController < ApplicationController
     @repair.customer_id = current_customer.id
     @repair.save
     @order_details = OrderDetail.new #初期化宣言
+    @order_details.customer_id = current_customer.id
     @order_details.repair_id = @repair.id #注文商品に注文idを紐付け
-    @order_details.amount = 1000 #商品の個数を注文商品の個数に代入
     @order_details.save #注文商品を保存
     redirect_to repairs_thanx_path
   end

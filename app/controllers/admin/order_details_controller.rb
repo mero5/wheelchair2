@@ -23,6 +23,11 @@ class Admin::OrderDetailsController < ApplicationController
     end
   end
 
+  def index
+    @order_details = OrderDetail.all
+    @order_details = OrderDetail.all.order(created_at: :desc)
+  end
+
   private
 
   def order_detail_params

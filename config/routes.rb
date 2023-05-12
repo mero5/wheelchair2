@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'orders/earnings'
     get 'orders/history/:id' => 'orders#history'
     resources :orders, only:[:index,:show,:update]
-    resources :order_details,only:[:update]
+    resources :order_details,only:[:update, :index, :show]
     resources :deliveries, only: [:show]
     get 'repairs/history/:id' => 'repairs#history', as: 'admin_history'
     resources :repairs, only:[:index,:show,:update, :create]

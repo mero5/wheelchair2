@@ -4,14 +4,15 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :delivery, dependent: :destroy
+  has_many :deliveries, dependent: :destroy
   has_many :cart_items, dependent: :destroy
+  has_many :order_details, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_one :room, dependent: :destroy
   has_many :repairs, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :made_to_order, dependent: :destroy
+  has_many :made_to_orders, dependent: :destroy
   has_many :reads, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy

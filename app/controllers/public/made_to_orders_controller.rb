@@ -38,13 +38,10 @@ class Public::MadeToOrdersController < ApplicationController
 
     #フレーム色
     @made_to_order.flame_color = Color.find(params[:made_to_order][:color_id])
-
     #サイドガード色
     @made_to_order.side_color = Color.find(params[:made_to_order][:color_id])
-
     #座シート色
     @made_to_order.seat_color = Cloth.find(params[:made_to_order][:cloth_id])
-
     #背シート色
     @made_to_order.back_color = Cloth.find(params[:made_to_order][:cloth_id])
 
@@ -60,7 +57,12 @@ class Public::MadeToOrdersController < ApplicationController
 
   def create
     @made_to_order = MadeToOrder.new(made_to_order_params)
+    @made_to_order.customer_id = current_customer.id
     if @made_to_order.save
+      @order_details = OrderDetail.new #初期化宣言
+      @order_details.made_to_order_id = @made_to_order.id #注文商品に注文idを紐付け
+      @order_details.customer_id = current_customer.id
+      @order_details.save #注文商品を保存
       redirect_to made_to_orders_thanx_path
     else
       render 'new'
