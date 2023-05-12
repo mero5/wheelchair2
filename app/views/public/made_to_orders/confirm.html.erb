@@ -9,67 +9,75 @@
       <table class="table table-borderless">
         <tbody>
           <tr class="border-bottom">
-            <td class="table-active text-dark border-bottom" style="width: 25%">
+            <td class="table-active text-dark border-bottom align-middle" style="width: 25%">
               フレームの種類
             </td>
-            <td class="table-active text-dark" style="width: 10%"><span class="text-danger">必須</span></td>
+            <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td>
               <div>
-                <%= @made_to_order.flame2 %>
+                <%= @made_to_order.flame%>
                 <%= @made_to_order.flame2 %>
               </div>
             </td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">型式</td>
-            <td class="table-active text-dark" style="width: 10%"><span class="text-danger">必須</span></td>
-            <td><%= @made_to_order.type %></td>
+            <td class="table-active text-dark align-middle">型式</td>
+            <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
+            <td><%= @made_to_order.wheelchair_type %></td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">車体</td>
-            <td class="table-active text-dark" style="width: 10%"><span class="text-danger">必須</span></td>
+            <td class="table-active text-dark align-middle">車体</td>
+            <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td><%= @made_to_order.material %></td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">フレーム色</td>
-            <td class="table-active text-dark" style="width: 10%"><span class="text-danger">必須</span></td>
-            <td>アルマイト：<%= @made_to_order.flame_color %></td>
+            <td class="table-active text-dark align-middle">フレーム色</td>
+            <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
+            <td>アルマイト：
+              <%= @made_to_order.flame_color %>
+              <%#= image_tag @made_to_order.color_id.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+            </td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">サイドガード色</td>
-            <td class="table-active text-dark" style="width: 10%"><span class="text-danger">必須</span></td>
-            <td>アルマイト：<%= @made_to_order.side_color %></td>
+            <td class="table-active text-dark align-middle">サイドガード色</td>
+            <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
+            <td>アルマイト：
+              <%= @made_to_order.side_color %>
+              <%#= image_tag @made_to_order.color_id.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+            </td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">シート</td>
-            <td class="table-active text-dark" style="width: 10%"><span class="text-danger">必須</span></td>
+            <td class="table-active text-dark align-middle">シート</td>
+            <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td>
               <div>
                 座シート：色<%= @made_to_order.seat_color %>
+                <%#= image_tag @made_to_order.color_id.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
               </div>
               <div>
                 背シート：色<%= @made_to_order.back_color %>
+                <%#= image_tag @made_to_order.color_id.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
               </div>
             </td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">ブレーキ</td>
-            <td class="table-active text-dark" style="width: 10%"><span class="text-danger">必須</span></td>
+            <td class="table-active text-dark align-middle">ブレーキ</td>
+            <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td><%= @made_to_order.break %></td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">介護ブレーキ</td>
-            <td class="table-active text-dark" style="width: 10%">任意</td>
+            <td class="table-active text-dark align-middle">介護ブレーキ</td>
+            <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td><%= @made_to_order.nursing_break %></td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">転倒防止装置</td>
-            <td class="table-active text-dark" style="width: 10%">任意</td>
+            <td class="table-active text-dark align-middle">転倒防止装置</td>
+            <td class="table-active text-dark align-middle" style="width: 10%">任意</td>
             <td><%= @made_to_order.turnover %></td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">オプション</td>
-            <td class="table-active text-dark" style="width: 10%">任意</td>
+            <td class="table-active text-dark align-middle">オプション</td>
+            <td class="table-active text-dark align-middle" style="width: 10%">任意</td>
             <td>
               <div>
                 杖入れ：<%= @made_to_order.cane %>
@@ -84,8 +92,8 @@
             </td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark">その他要望</td>
-            <td class="table-active text-dark" style="width: 10%">任意</td>
+            <td class="table-active text-dark align-middle">その他要望</td>
+            <td class="table-active text-dark align-middle" style="width: 10%">任意</td>
             <td><%= @made_to_order.others %></td>
           </tr>
         </tbody>
@@ -95,32 +103,10 @@
   <div class='row mt-3 mb-5'>
     <div class="col-10 text-center ">
       <div class="btn-group">
-      <%= form_with model: @made_to_order, url: made_to_orders_back_path do |f| %>
-        <%= f.hidden_field :customer_id %>
-        <%= f.hidden_field :status %>
-        <%= f.hidden_field :type %>
-        <%= f.hidden_field :material %>
-        <%= f.hidden_field :flame %>
-        <%= f.hidden_field :flame2 %>
-        <%= f.hidden_field :flame_color %>
-        <%= f.hidden_field :side_color %>
-        <%= f.hidden_field :seat_color %>
-        <%= f.hidden_field :back_color %>
-        <%= f.hidden_field :break %>
-        <%= f.hidden_field :nursing_break %>
-        <%= f.hidden_field :turnover %>
-        <%= f.hidden_field :cane %>
-        <%= f.hidden_field :cane2 %>
-        <%= f.hidden_field :cushion %>
-        <%= f.hidden_field :table %>
-        <%= f.hidden_field :others %>
-        <%= f.hidden_field :message %>
-        <%= f.submit '入力画面に戻る', class: "border-primary rounded-primary btn text-primary text-center mr-5" %>
-      <% end %>
       <%= form_with model: @made_to_order do |f| %>
         <%= f.hidden_field :customer_id %>
         <%= f.hidden_field :status %>
-        <%= f.hidden_field :type %>
+        <%= f.hidden_field :wheelchair_type %>
         <%= f.hidden_field :material %>
         <%= f.hidden_field :flame %>
         <%= f.hidden_field :flame2 %>

@@ -26,6 +26,28 @@ class Public::MadeToOrdersController < ApplicationController
   def confirm
     @made_to_order = MadeToOrder.new(made_to_order_params)
     @made_to_order.customer_id = current_customer.id
+
+    #フレーム
+    if params[:made_to_order][:flame2_option] == "0"
+      @made_to_order.flame2 = params[:made_to_order][:flame2]
+    elsif params[:made_to_order][:flame2_option] == "1"
+      @made_to_order.flame2 = params[:made_to_order][:flame2]
+    elsif params[:made_to_order][:flame2_option] == "2"
+      @made_to_order.flame2 = params[:made_to_order][:flame2]
+    end
+
+    #フレーム色
+    @made_to_order.flame_color = Color.find(params[:made_to_order][:color_id])
+
+    #サイドガード色
+    @made_to_order.side_color = Color.find(params[:made_to_order][:color_id])
+
+    #座シート色
+    @made_to_order.seat_color = Cloth.find(params[:made_to_order][:cloth_id])
+
+    #背シート色
+    @made_to_order.back_color = Cloth.find(params[:made_to_order][:cloth_id])
+
     if @made_to_order.invalid?
       render :new
     end
@@ -52,7 +74,7 @@ class Public::MadeToOrdersController < ApplicationController
   private
 
   def made_to_order_params
-    params.require(:made_to_order).permit(:message, :status, :flame, :flame2, :type,
+    params.require(:made_to_order).permit(:customer_id, :message, :status, :flame, :flame2, :wheelchair_type,
     :material, :flame_color,:side_color, :seat_color, :back_color, :break, :nursing_break,
     :turnover, :cane, :cane2, :cushion, :table, :others)
   end

@@ -4,7 +4,7 @@ class CreateMadeToOrders < ActiveRecord::Migration[6.1]
       t.integer :customer_id, null: false
       t.string :flame, null: false
       t.string :flame2, null: false
-      t.string :type, null: false
+      t.string :wheelchair_type, null: false
       t.string :material, null: false
       t.string :flame_color, null: false
       t.string :side_color, null: false

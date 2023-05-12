@@ -1,17 +1,19 @@
-<div class="col-6 mx-auto">
-  <% if made_to_order.blank? %>
-    <p class="text-center mt-3"><strong>オーダーメイドはありません</strong></p>
-  <% else %>
-    <table class="table">
-      <tbody>
-        <% made_to_orders.each do |made_to_order| %>
-          <tr>
-            <td class="text-center"><%= made_to_order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-            <td class="text-center"><strong><%= made_to_order.name %>さま</strong></td>
-            <td class="text-center"><%= link_to "内容確認", made_to_order_path(made_to_order), class: "border-primary rounded-primary btn text-primary" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-8 mx-auto">
+      <h4 class="text-center bg-light">オーダーメイド依頼</h4>
+    </div>
+  </div>
+  <div class='row my-5'>
+    <div class='col-12 text-center'>
+      <h4><strong>申し訳ございません</br>
+        オーダーメイドの見積依頼する際は新規登録かログインをしてください
+      </strong></h4>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-8 mx-auto text-center'>
+      <%= image_tag '申し訳ございません.jpg', style: "width: 80%; height: 90%;" %>
+    </div>
+  </div>
 </div>

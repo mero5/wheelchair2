@@ -429,7 +429,7 @@ Cloth.create!(
   {
   id: 5,
   made_to_order_id: nil,
-  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/白.png"), filename:"シニアカー.png"),
+  image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/白.png"), filename:"白.png"),
   name: "PM-2",
   is_active: false,
   }

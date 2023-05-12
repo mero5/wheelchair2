@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     end
     get 'favorites' => 'favorites#index'
     resources :categories, only: [:index, :show]
+    resources :order_details
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     delete 'cart_items' => 'cart_items#destroy_all'
     post 'orders/confirm' => 'orders#confirm'

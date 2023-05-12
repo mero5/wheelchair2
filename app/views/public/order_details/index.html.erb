@@ -1,0 +1,5 @@
+<% @order_details.each do |order_detail| %>
+  <%= order_detail.order.wheelchair_kinds %>
+  <%= order_detail.repair.wheelchair_kinds %>
+  <%= order_detail.made_to_order.flame_color %>
+<% end %>
