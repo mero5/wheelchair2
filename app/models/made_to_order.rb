@@ -6,4 +6,6 @@ class MadeToOrder < ApplicationRecord
   belongs_to :side_color, class_name: 'Color', foreign_key: :side_color_id
   belongs_to :seat_color, class_name: 'Cloth', foreign_key: :seat_color_id
   belongs_to :back_color, class_name: 'Cloth', foreign_key: :back_color_id
+
+  enum status: {見積依頼中:0, 見積送信済み:1}
 end

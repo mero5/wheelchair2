@@ -18,8 +18,8 @@ class Public::MadeToOrdersController < ApplicationController
   end
 
   def show
-    @made_to_orders = MadeToOrder.all
-    @made_to_order = MadeToOrder.find(params[:id])
+    @made_to_order = current_customer.made_to_orders.find_by(id: params[:id])
+    render 'new' if @made_to_order.blank?
   end
 
   #確認画面

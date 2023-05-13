@@ -89,19 +89,20 @@
             </td>
             <td class="align-middle">
               <% if order_detail.repair_id.present? %>
-                <%#= link_to "詳細", repair_path(repair), class: 'border-primary rounded-primary btn text-primary' %>
+                <%= link_to "詳細", repair_path(order_detail.repair_id), class: 'border-primary rounded-primary btn text-primary' %>
               <% end %>
               <% if order_detail.order_id.present? %>
-                <%#= link_to "詳細", order_path(order.id), class: 'border-primary rounded-primary btn text-primary' %>
+                <%= link_to "詳細", order_path(order_detail.order_id), class: 'border-primary rounded-primary btn text-primary' %>
               <% end %>
               <% if order_detail.made_to_order_id.present? %>
-                <%#= link_to "詳細", made_to_order_path(made_to_order), class: 'border-primary rounded-primary btn text-primary' %>
+                <%= link_to "詳細", made_to_order_path(order_detail.made_to_order_id), class: 'border-primary rounded-primary btn text-primary' %>
               <% end %>
             </td>
           </tr>
           <% end %>
         </tbody>
       </table>
+      <%= paginate order_details %>
     </div>
   </div>
 </div>
