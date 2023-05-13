@@ -43,6 +43,14 @@
                 <% end %>
                 <% if customer_signed_in? %>
                   <li class="nav-item mx-2 mt-2">
+                    <%= link_to order_details_path do %>
+                      <div class="text-center">
+                        <div><i class="fas fa-history fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div style="font-size: 4px; color: #FFFFFF;">注文依頼履歴</div>
+                      </div>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-2 mt-2">
                     <%= link_to customers_profile_path do %>
                       <div class="text-center">
                         <div><i class="fas fa-user-cog fa-2x" style="color: #FFFFFF;"></i></div>
@@ -102,7 +110,7 @@
                   <li class="nav-item mx-2 mt-2">
                     <%= link_to admin_cloths_path do %>
                       <div class="d-flex flex-column text-center">
-                        <div><i class="fas fa-sheep fa-2x" style="color: #FFFFFF;"></i></div>
+                        <div><i class="fas fa-tshirt fa-2x" style="color: #FFFFFF;"></i></div>
                         <div style="font-size: 4px; color: #FFFFFF;">シート生地</br>設定</div>
                       </div>
                     <% end %>

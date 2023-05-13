@@ -10,7 +10,8 @@
         <thead>
           <tr>
             <th class="table-active text-dark align-middle" style="width: 10%">注文依頼日</th>
-            <th class="table-active text-dark align-middle" style="width: 40%">住所</th>
+            <th class="table-active text-dark align-middle" style="width: 10%">アイコン</th>
+            <th class="table-active text-dark align-middle" style="width: 30%">注文種類</th>
             <th class="table-active text-dark align-middle" style="width: 20%">内容</th>
             <th class="table-active text-dark align-middle" style="width: 20%">ステータス</th>
             <th class="table-active text-dark align-middle" style="width: 10%">詳細</th>
@@ -32,16 +33,24 @@
             </td>
             <td class="align-middle">
               <% if order_detail.repair_id.present? %>
-                <%= order_detail.repair.address %></br>
-                <%= order_detail.repair.name %>
+                <i class="fas fa-tools text-dark fa-2x"></i>
               <% end %>
               <% if order_detail.order_id.present? %>
-                〒<%= order_detail.order.post_code %></br>
-                  <%= order_detail.order.address %></br>
-                  <%= order_detail.order.name %>
+                <i class="fas fa-crutch text-dark fa-2x"></i>
               <% end %>
               <% if order_detail.made_to_order_id.present? %>
-
+                <i class="fas fa-wheelchair text-dark fa-2x"></i>
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <% if order_detail.repair_id.present? %>
+                修理依頼
+              <% end %>
+              <% if order_detail.order_id.present? %>
+                購入注文
+              <% end %>
+              <% if order_detail.made_to_order_id.present? %>
+                オーダーメイド見積依頼
               <% end %>
             </td>
             <td class="align-middle">
@@ -61,11 +70,11 @@
             <td class="align-middle">
               <% if order_detail.repair_id.present? %>
                 <% if order_detail.repair.status == "修理依頼中" %>
-                  <p style="color: #fd7e14;"><%= order_detail.repair.status %></p>
+                  <p class="align-middle" style="color: #fd7e14;"><%= order_detail.repair.status %></p>
                 <% elsif order_detail.repair.status == "スケジュール調整中" %>
-                  <p style="color: #ffc107;"><%= order_detail.repair.status %></p>
+                  <p class="align-middle" style="color: #ffc107;"><%= order_detail.repair.status %></p>
                 <% elsif order_detail.repair.status == "修理完了済み" %>
-                  <p style="color: #28a745;"><%= order_detail.repair.status %></p>
+                  <p class="align-middle" style="color: #28a745;"><%= order_detail.repair.status %></p>
                 <% end %>
               <% end %>
               <% if order_detail.order_id.present? %>
