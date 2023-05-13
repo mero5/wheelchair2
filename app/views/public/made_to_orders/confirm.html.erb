@@ -34,29 +34,30 @@
             <td class="table-active text-dark align-middle">フレーム色</td>
             <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td>アルマイト：
-              <%= @made_to_order.flame_color %>
-              <%#= image_tag @made_to_order.color_id.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+              <%#= @made_to_order.color.name %>
+              <%= @made_to_order.flame_color.name %>
+              <%= image_tag @made_to_order.flame_color.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
             </td>
           </tr>
           <tr class="border-bottom">
             <td class="table-active text-dark align-middle">サイドガード色</td>
             <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td>アルマイト：
-              <%= @made_to_order.side_color %>
-              <%#= image_tag @made_to_order.color_id.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+              <%= @made_to_order.side_color.name %>
+              <%= image_tag @made_to_order.side_color.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
             </td>
           </tr>
           <tr class="border-bottom">
-            <td class="table-active text-dark align-middle">シート</td>
+            <td class="table-active text-dark align-middle">シート色</td>
             <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td>
               <div>
-                座シート：色<%= @made_to_order.seat_color %>
-                <%#= image_tag @made_to_order.color_id.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+                座シート：<%= @made_to_order.seat_color.name %>
+                <%= image_tag @made_to_order.seat_color.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
               </div>
               <div>
-                背シート：色<%= @made_to_order.back_color %>
-                <%#= image_tag @made_to_order.color_id.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+                背シート：<%= @made_to_order.back_color.name %>
+                <%= image_tag @made_to_order.back_color.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
               </div>
             </td>
           </tr>
@@ -110,10 +111,10 @@
         <%= f.hidden_field :material %>
         <%= f.hidden_field :flame %>
         <%= f.hidden_field :flame2 %>
-        <%= f.hidden_field :flame_color %>
-        <%= f.hidden_field :side_color %>
-        <%= f.hidden_field :seat_color %>
-        <%= f.hidden_field :back_color %>
+        <%= f.hidden_field :flame_color_id %>
+        <%= f.hidden_field :side_color_id %>
+        <%= f.hidden_field :seat_color_id %>
+        <%= f.hidden_field :back_color_id %>
         <%= f.hidden_field :break %>
         <%= f.hidden_field :nursing_break %>
         <%= f.hidden_field :turnover %>

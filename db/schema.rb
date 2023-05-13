@@ -173,10 +173,10 @@ ActiveRecord::Schema.define(version: 2023_05_11_140532) do
     t.string "flame2", null: false
     t.string "wheelchair_type", null: false
     t.string "material", null: false
-    t.string "flame_color", null: false
-    t.string "side_color", null: false
-    t.string "seat_color", null: false
-    t.string "back_color", null: false
+    t.integer "flame_color_id", null: false
+    t.integer "side_color_id", null: false
+    t.integer "seat_color_id", null: false
+    t.integer "back_color_id", null: false
     t.string "break", null: false
     t.string "nursing_break"
     t.string "turnover"
