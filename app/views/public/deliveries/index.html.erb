@@ -1,37 +1,48 @@
 <div class='container'>
   <div class='row'>
-    <div class='mt-1 w-75'>
-      <h2 class="text-center w-25 h4 bg-light mt-3">配送先登録 / 一覧</h2>
+    <div class='col-8 mt-5 mx-auto'>
+      <h4 class="text-center bg-light">配送先登録 / 一覧</h4>
     </div>
-    <div class='mt-2 w-75'>
-      <%#=配達先新規登録%>
+  </div>
+  <%#=配達先新規登録%>
+  <div class='row'>
+    <div class='col-8 mt-5 mx-auto'>
       <%= render 'new', delivery: @delivery %>
     </div>
-
-    <div class='col-10 mt-3'>
-      <%#=配達先登録一覧%>
+  </div>
+  <%#=配達先登録一覧%>
+  <div class='row mt-4'>
+    <div class='col-10 mx-auto'>
       <table class="table table-bordered">
         <thead>
             <tr>
-              <th class="table-active text-dark">郵便番号</th>
-              <th class="table-active text-dark">住所</th>
-              <th class="table-active text-dark">宛名</th>
-              <th class="table-active text-dark"></th>
+              <th class="table-active text-dark" style="width: 20%">郵便番号</th>
+              <th class="table-active text-dark" style="width: 30%">住所</th>
+              <th class="table-active text-dark" style="width: 25%">宛名</th>
+              <th class="table-active text-dark" style="width: 25%"></th>
             </tr>
         </thead>
+        <% if @deliveries.present? %>
         <tbody>
           <% @deliveries.each do |delivery| %>
-            <tr>
+            <tr class="align-middle">
               <td><%= delivery.delivery_postcode %></td>
               <td><%= delivery.delivery_address %></td>
               <td><%= delivery.delivery_name %></td>
               <td>
-                <%= link_to "編集する", edit_delivery_path(delivery.id), class: "btn btn-success" %>
-                <%= link_to "削除する", delivery_path(delivery.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+                <%= link_to "編集する", edit_delivery_path(delivery.id), class: "border-success rounded-success btn text-success mr-3" %>
+                <%= link_to "削除する", delivery_path(delivery.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "border-danger rounded-danger btn text-danger" %>
               </td>
             </tr>
           <% end %>
         </tbody>
+        <% else %>
+          <tbody class="text-center">
+            <tr>
+              <td colspan="4"><strong>登録の配送先はありません</strong></td>
+            </tr>
+          </tbody>
+        <% end %>
       </table>
     </div>
   </div>

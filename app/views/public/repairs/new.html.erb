@@ -5,7 +5,7 @@
       <h2 class="text-center h4 bg-light">修理依頼</h2>
     </div>
   </div>
-  <div class='row mt-3'>
+  <div class='row mt-5'>
     <div class="col-12 mx-auto">
       <%= form_with model: @repair, url: repairs_confirm_path do |f| %>
         <table class="table table-borderless">
@@ -72,6 +72,15 @@
               </td>
               <td colspan="1"></td>
             </tr>
+            <tr class="border-bottom">
+              <td class="align-middle"><strong>その他</strong></td>
+              <td class="align-middle">任意</td>
+              <td colspan="2" class="align-middle">
+                <div>
+                  <%= f.text_area :others, class: "form-control", size: "" %>
+                </div>
+              </td>
+            </tr>
             <tr>
               <td class="align-middle"><strong>修理場所の住所</strong></td>
               <td class="text-danger align-middle">必須</td>
@@ -107,17 +116,20 @@
                 <%= f.label :repair_address, "その他" %>
               </td>
               <td colspan="2">
-                <%= f.label :address, '住所' %>
+                <span class="d-flex justify-content-center">
+                <%= f.label :address, '住所', style: "white-space: nowrap", class: "mr-2" %>
                 <%= f.text_field :address, class: "form-control" %>
+                </span>
               </td>
             </tr>
-            <tr>
+            <tr class="border-bottom">
               <td colspan="3"></td>
               <td colspan="2">
-                <%= f.label :name, '宛名' %>
+                <span class="d-flex justify-content-center">
+                <%= f.label :name, '宛名', style: "white-space: nowrap", class: "mr-2" %>
                 <%= f.text_field :name, class: "form-control" %>
+                </span>
               </td>
-            </tr>
           </tbody>
         </table>
         <div class="text-center">

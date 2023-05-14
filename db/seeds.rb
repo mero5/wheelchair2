@@ -386,6 +386,7 @@ Repair.create!(
   break: "",
   caster: "",
   status: "修理依頼中",
+  others: nil,
   message: nil
   },
 
@@ -397,6 +398,7 @@ Repair.create!(
   break: "",
   caster: "",
   status: "修理依頼中",
+  others: nil,
   message: nil
   },
 
@@ -408,6 +410,7 @@ Repair.create!(
   break: "ブレーキの調整",
   caster: "",
   status: "修理依頼中",
+  others: nil,
   message: nil
   },
 
@@ -419,6 +422,7 @@ Repair.create!(
   break: "ブレーキの調整",
   caster: "キャスターの交換",
   status: "修理依頼中",
+  others: nil,
   message: nil
   }
   ]

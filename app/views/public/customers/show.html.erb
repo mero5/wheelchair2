@@ -7,7 +7,8 @@
   <div class='row mt-3'>
     <div class='col-8 mx-auto'>
     <div class="text-center">
-      <%= link_to "プロフィール編集", customers_profile_edit_path, class: 'border-success rounded-success btn text-success' %>
+      <%= link_to "プロフィール編集", customers_profile_edit_path, class: 'border-success rounded-success btn text-success mr-3' %>
+      <%= link_to "登録住所一覧", deliveries_path, class: 'border-primary rounded-primary btn text-primary' %>
     </div>
     </div>
   </div>
@@ -44,12 +45,5 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div class='row mt-1 ml-5 my-5'>
-    <div class='col-8 mx-auto'>
-      <div class="text-center">
-        <%= link_to "登録住所一覧", deliveries_path, class: 'border-primary rounded-primary btn text-primary mr-3' %>
-      </div>
-    </div>
   </div>
 </div>

@@ -4,7 +4,7 @@ class Admin::MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     if message.save
-      @room.create_notification_message!(current_customer, message.id)
+      #@room.create_notification_message!(current_customer, message.id)
       redirect_to request.referer
     else
       redirect_to request.referer alert: 'メッセージを送信できませんでした'

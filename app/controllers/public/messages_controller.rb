@@ -4,7 +4,7 @@ class Public::MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     if message.save
-      @room.create_notification_message!(current_customer, message.id)
+      #@room.create_notification_message!(current_customer, message.id)
       redirect_to room_path(message.room.customer_id)
     else
       redirect_to room_path(message.room.customer_id), alert: 'メッセージを送信できませんでした'

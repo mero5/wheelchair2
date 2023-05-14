@@ -77,6 +77,6 @@ class Public::RepairsController < ApplicationController
   private
 
   def repair_params
-    params.require(:repair).permit(:address, :name, :wheelchair_kinds, :tire, :break, :caster)
+    params.require(:repair).permit(:address, :name, :wheelchair_kinds, :tire, :break, :caster, :others)
   end
 end

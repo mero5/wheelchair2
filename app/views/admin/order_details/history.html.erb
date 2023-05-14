@@ -12,9 +12,9 @@
           <tr>
             <th class="table-active text-dark align-middle" style="width: 10%">注文依頼日</th>
             <th class="table-active text-dark align-middle" style="width: 10%">アイコン</th>
-            <th class="table-active text-dark align-middle" style="width: 30%">注文種類</th>
-            <th class="table-active text-dark align-middle" style="width: 20%">内容</th>
-            <th class="table-active text-dark align-middle" style="width: 20%">ステータス</th>
+            <th class="table-active text-dark align-middle" style="width: 25%">注文種類</th>
+            <th class="table-active text-dark align-middle" style="width: 30%">内容</th>
+            <th class="table-active text-dark align-middle" style="width: 15%">ステータス</th>
             <th class="table-active text-dark align-middle" style="width: 10%">詳細</th>
           </tr>
         </thead>
@@ -57,15 +57,22 @@
             <td class="align-middle">
               <% if order_detail.repair_id.present? %>
                 <%= order_detail.repair.wheelchair_kinds %></br>
-                <%= order_detail.repair.tire %></br>
-                <%= order_detail.repair.break %></br>
-                <%= order_detail.repair.caster %>
+                <% if order_detail.repair.tire.present? %>
+                  <%= order_detail.repair.tire %></br>
+                <% end %>
+                <% if order_detail.repair.break.present? %>
+                  <%= order_detail.repair.break %></br>
+                <% end %>
+                <% if order_detail.repair.caster.present? %>
+                  <%= order_detail.repair.caster %>
+                <% end %>
               <% end %>
               <% if order_detail.order_id.present? %>
                   <%= order_detail.item.name %></br>
               <% end %>
               <% if order_detail.made_to_order_id.present? %>
-
+                <%= order_detail.made_to_order.flame %>-
+                <%= order_detail.made_to_order.flame2 %>
               <% end %>
             </td>
             <td class="align-middle">

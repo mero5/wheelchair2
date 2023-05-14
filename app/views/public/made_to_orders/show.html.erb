@@ -10,6 +10,7 @@
         <tbody>
           <tr class="border-bottom">
             <td class="table-active text-dark border-bottom align-middle" style="width: 25%">見積依頼日</td>
+            <td class="table-active text-dark border-bottom align-middle"></td>
             <td><%= @made_to_order.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
           </tr>
           <tr class="border-bottom">
@@ -19,7 +20,7 @@
             <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td>
               <div>
-                <%= @made_to_order.flame%>
+                <%= @made_to_order.flame%>-
                 <%= @made_to_order.flame2 %>
               </div>
             </td>
