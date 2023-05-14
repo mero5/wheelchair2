@@ -29,16 +29,15 @@ class Public::MadeToOrdersController < ApplicationController
 
     #フレーム
     if params[:made_to_order][:flame2_option] == "0"
-      @made_to_order.flame2 = params[:made_to_order][:flame2]
+      @made_to_order.flame2 = "普通型"
     elsif params[:made_to_order][:flame2_option] == "1"
-      @made_to_order.flame2 = params[:made_to_order][:flame2]
+      @made_to_order.flame2 = "リクライニング"
     elsif params[:made_to_order][:flame2_option] == "2"
       @made_to_order.flame2 = params[:made_to_order][:flame2]
     end
 
     #フレーム色
     @made_to_order.flame_color = Color.find(params[:made_to_order][:name])
-    #@made_to_order.flame_color = Color.find(params[:made_to_order][:color_id])
     #サイドガード色
     @made_to_order.side_color = Color.find(params[:made_to_order][:color_id])
     #座シート色

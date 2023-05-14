@@ -15,7 +15,7 @@
             <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td>
               <div>
-                <%= @made_to_order.flame%>
+                <%= @made_to_order.flame %>-
                 <%= @made_to_order.flame2 %>
               </div>
             </td>
@@ -34,7 +34,6 @@
             <td class="table-active text-dark align-middle">フレーム色</td>
             <td class="table-active text-dark align-middle" style="width: 10%"><span class="text-danger">必須</span></td>
             <td>アルマイト：
-              <%#= @made_to_order.color.name %>
               <%= @made_to_order.flame_color.name %>
               <%= image_tag @made_to_order.flame_color.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
             </td>
@@ -74,22 +73,34 @@
           <tr class="border-bottom">
             <td class="table-active text-dark align-middle">転倒防止装置</td>
             <td class="table-active text-dark align-middle" style="width: 10%">任意</td>
-            <td><%= @made_to_order.turnover %></td>
+            <td>
+              <% if @made_to_order.turnover.present? %>
+                <%= @made_to_order.turnover %>
+              <% else %>
+                無し
+              <% end %>
+            </td>
           </tr>
           <tr class="border-bottom">
             <td class="table-active text-dark align-middle">オプション</td>
             <td class="table-active text-dark align-middle" style="width: 10%">任意</td>
             <td>
+              <% if @made_to_order.cane.present? %>
               <div>
                 杖入れ：<%= @made_to_order.cane %>
                 <%= @made_to_order.cane2 %>
               </div>
+              <% end %>
+              <% if @made_to_order.cushion.present? %>
               <div>
                 クッション：<%= @made_to_order.cushion %>
               </div>
+              <% end %>
+              <% if @made_to_order.table.present? %>
               <div>
                 テーブル：<%= @made_to_order.table %>
               </div>
+              <% end %>
             </td>
           </tr>
           <tr class="border-bottom">

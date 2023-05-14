@@ -1,0 +1,136 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class='col-12 mx-auto'>
+      <h2 class="text-center bg-light"><strong>オーダーメイド見積依頼履歴詳細</strong></h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-7 my-4'>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="border-bottom">
+            <td class="table-active text-dark border-bottom align-middle" style="width: 25%">見積依頼日</td>
+            <td><%= @made_to_order.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
+          </tr>
+          <tr class="border-bottom">
+            <td class="table-active text-dark border-bottom align-middle" style="width: 25%">
+              フレームの種類
+            </td>
+            <td>
+              <div>
+                <%= @made_to_order.flame%>
+                <%= @made_to_order.flame2 %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-active text-dark align-middle">型式</td>
+            <td><%= @made_to_order.wheelchair_type %></td>
+          </tr>
+          <tr>
+            <td class="table-active text-dark align-middle">車体</td>
+            <td><%= @made_to_order.material %></td>
+          </tr>
+          <tr>
+            <td class="table-active text-dark align-middle">フレーム色</td>
+            <td>アルマイト：
+              <%= @made_to_order.flame_color.name %>
+              <%= image_tag @made_to_order.flame_color.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-active text-dark align-middle">サイドガード色</td>
+            <td>アルマイト：
+              <%= @made_to_order.side_color.name %>
+              <%= image_tag @made_to_order.side_color.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-active text-dark align-middle">シート</td>
+            <td>
+              <div>
+                座シート：色<%= @made_to_order.seat_color.name %>
+                <%= image_tag @made_to_order.seat_color.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+              </div>
+              <div>
+                背シート：色<%= @made_to_order.back_color.name %>
+                <%= image_tag @made_to_order.back_color.image, size: '60x40', style: "background-size: cover; background-position: center;" %>
+              </div>
+            </td>
+          </tr>
+          <tr class="border-bottom">
+            <td class="table-active text-dark align-middle">ブレーキ</td>
+            <td><%= @made_to_order.break %></td>
+          </tr>
+          <tr class="border-bottom">
+            <td class="table-active text-dark align-middle">介護ブレーキ</td>
+            <td><%= @made_to_order.nursing_break %></td>
+          </tr>
+          <tr>
+            <td class="table-active text-dark align-middle">転倒防止装置</td>
+            <td>
+              <% if @made_to_order.turnover.present? %>
+                <%= @made_to_order.turnover %>
+              <% else %>
+                無し
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-active text-dark align-middle">オプション</td>
+            <td>
+              <div>
+                杖入れ：
+                <% if @made_to_order.cane.present? %>
+                  <%= @made_to_order.cane %>
+                  <%= @made_to_order.cane2 %>
+                <% else %>
+                  無し
+                <% end %>
+              </div>
+              <div>
+                クッション：
+                <% if @made_to_order.cushion.present? %>
+                  <%= @made_to_order.cushion %>
+                <% else %>
+                  無し
+                <% end %>
+              </div>
+              <div>
+                テーブル：
+                <% if @made_to_order.table.present? %>
+                  <%= @made_to_order.table %>
+                <% else %>
+                  無し
+                <% end %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-active text-dark align-middle">その他要望</td>
+            <td><%= @made_to_order.others %></td>
+          </tr>
+          <tr>
+            <td class="table-active text-dark">ステータス</td>
+            <td>
+              <%= @made_to_order.status %>
+              <%= form_with model: @made_to_order, url: admin_made_to_order_path, class: "d-inline-block" do |f| %>
+                <div class="form-inline">
+                  <%= f.select(:status, ["見積依頼中", "見積送信済み"], {}, { class: "custom-select mx-3"}) %>
+                  <%= f.submit "更新", class: 'btn btn-success' %>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-5 mt-3">
+      <p class="text-center bg-light"><strong>メモ</strong></p>
+      <%= form_with model: @made_to_order, url: admin_made_to_order_path do |f| %>
+        <%= f.text_area :message, class:"form-control", size: "20x13" %>
+        <%= f.submit "保存", class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

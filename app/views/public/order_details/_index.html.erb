@@ -6,6 +6,7 @@
   </div>
   <div class='row mt-4'>
     <div class='col-12 mx-auto'>
+      <% if order_details.present? %>
       <table class="table">
         <thead>
           <tr>
@@ -47,7 +48,7 @@
                 修理依頼
               <% end %>
               <% if order_detail.order_id.present? %>
-                購入注文
+                商品購入注文
               <% end %>
               <% if order_detail.made_to_order_id.present? %>
                 オーダーメイド見積依頼
@@ -111,6 +112,9 @@
           <% end %>
         </tbody>
       </table>
+      <% else %>
+        <h4 class="my-5 mx-auto text-center">注文依頼履歴はありません。</h4>
+      <% end %>
       <%= paginate order_details %>
     </div>
   </div>

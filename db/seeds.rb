@@ -265,6 +265,26 @@ OrderDetail.create!(
   },
 
   {customer_id: 1,
+  item_id: nil,
+  order_id: nil,
+  repair_id: 1,
+  made_to_order_id: nil,
+  price: nil,
+  making_status: "着手不可",
+  amount: nil
+  },
+
+  {customer_id: 1,
+  item_id: nil,
+  order_id: nil,
+  repair_id: 2,
+  made_to_order_id: nil,
+  price: nil,
+  making_status: "着手不可",
+  amount: nil
+  },
+
+  {customer_id: 1,
   item_id: 2,
   order_id: 1,
   repair_id: nil,
@@ -285,6 +305,46 @@ OrderDetail.create!(
   },
 
   {customer_id: 1,
+  item_id: nil,
+  order_id: nil,
+  repair_id: 3,
+  made_to_order_id: nil,
+  price: nil,
+  making_status: "着手不可",
+  amount: nil
+  },
+
+  {customer_id: 1,
+  item_id: nil,
+  order_id: nil,
+  repair_id: nil,
+  made_to_order_id: 1,
+  price: nil,
+  making_status: "着手不可",
+  amount: nil
+  },
+
+  {customer_id: 1,
+  item_id: nil,
+  order_id: nil,
+  repair_id: nil,
+  made_to_order_id: 2,
+  price: nil,
+  making_status: "着手不可",
+  amount: nil
+  },
+
+  {customer_id: 2,
+  item_id: nil,
+  order_id: nil,
+  repair_id: 4,
+  made_to_order_id: nil,
+  price: nil,
+  making_status: "着手不可",
+  amount: nil
+  },
+
+  {customer_id: 2,
   item_id: 13,
   order_id: 3,
   repair_id: nil,
@@ -292,6 +352,16 @@ OrderDetail.create!(
   price: 40260,
   making_status: "着手不可",
   amount: 1
+  },
+
+  {customer_id: 2,
+  item_id: nil,
+  order_id: nil,
+  repair_id: nil,
+  made_to_order_id: 3,
+  price: nil,
+  making_status: "着手不可",
+  amount: nil
   },
 
   {customer_id: 2,
@@ -432,6 +502,75 @@ Cloth.create!(
   image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/白.png"), filename:"白.png"),
   name: "PM-2",
   is_active: false,
+  }
+  ]
+)
+
+
+MadeToOrder.create!(
+  [
+  {
+  customer_id: 1,
+  flame: "固定",
+  flame2: "普通型",
+  wheelchair_type: "自走式",
+  material: "アルミ",
+  flame_color_id: 1,
+  side_color_id: 2,
+  seat_color_id: 1,
+  back_color_id: 2,
+  break: "PP",
+  nursing_break: "無し",
+  turnover: "",
+  cane: "",
+  cane2: "",
+  cushion: "",
+  table: "",
+  others: "",
+  message: "",
+  status: "見積依頼中"
+  },
+  {
+  customer_id: 1,
+  flame: "固定",
+  flame2: "普通型",
+  wheelchair_type: "自走式",
+  material: "アルミ",
+  flame_color_id: 1,
+  side_color_id: 2,
+  seat_color_id: 1,
+  back_color_id: 2,
+  break: "PP",
+  nursing_break: "無し",
+  turnover: "ゴム",
+  cane: "大",
+  cane2: "左",
+  cushion: "ホロクッション",
+  table: "上下式",
+  others: "",
+  message: "",
+  status: "見積依頼中"
+  },
+  {
+  customer_id: 2,
+  flame: "固定",
+  flame2: "普通型",
+  wheelchair_type: "自走式",
+  material: "アルミ",
+  flame_color_id: 1,
+  side_color_id: 2,
+  seat_color_id: 1,
+  back_color_id: 2,
+  break: "PP",
+  nursing_break: "無し",
+  turnover: "",
+  cane: "",
+  cane2: "",
+  cushion: "",
+  table: "",
+  others: "",
+  message: "",
+  status: "見積依頼中"
   }
   ]
 )

@@ -5,6 +5,7 @@ class Admin::OrdersController < ApplicationController
   def earnings
     @orders = Order.all
     @repairs = Repair.all
+    @made_to_orders = MadeToOrder.all
     @month = Time.current
     #修理依頼
     @this_month = Repair.where(created_at: @month.all_month)
@@ -20,6 +21,13 @@ class Admin::OrdersController < ApplicationController
     @four_month = Order.where(created_at: @month.months_ago(3).all_month)
     @five_month = Order.where(created_at: @month.months_ago(4).all_month)
     @six_month = Order.where(created_at: @month.months_ago(5).all_month)
+    #オーダーメイド依頼
+    @this_month_made = MadeToOrder.where(created_at: @month.all_month)
+    @last_month_made = MadeToOrder.where(created_at: @month.prev_month.all_month)
+    @three_month_made = MadeToOrder.where(created_at: @month.months_ago(2).all_month)
+    @four_month_made = MadeToOrder.where(created_at: @month.months_ago(3).all_month)
+    @five_month_made = MadeToOrder.where(created_at: @month.months_ago(4).all_month)
+    @six_month_made = MadeToOrder.where(created_at: @month.months_ago(5).all_month)
     #閲覧数
     #@this_month = Category.where(@month.all_month)
     #@category = Category.all
@@ -29,16 +37,12 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.all
     @repairs = Repair.all
+    @made_to_orders = MateToOrder.all
   end
 
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-  end
-
-  def history
-    @customer = Customer.find(params[:id])
-    @orders = @customer.orders
   end
 
   def update

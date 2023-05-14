@@ -36,10 +36,10 @@
             </td>
           </tr>
           <tr>
-            <td class="table-active text-dark">修理ステータス</td>
+            <td class="table-active text-dark">ステータス</td>
             <td>
               <%= @repair.status %>
-              <%= form_with model:@repair, url: admin_repair_path, class: "d-inline-block" do |f| %>
+              <%= form_with model: @repair, url: admin_repair_path, class: "d-inline-block" do |f| %>
                 <div class="form-inline">
                   <%= f.select(:status, ["修理依頼中", "スケジュール調整中", "修理完了済み"], {}, { class: "custom-select mx-3"}) %>
                   <%= f.submit "更新", class: 'btn btn-success' %>

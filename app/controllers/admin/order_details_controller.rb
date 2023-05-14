@@ -24,8 +24,13 @@ class Admin::OrderDetailsController < ApplicationController
   end
 
   def index
-    @order_details = OrderDetail.all
-    @order_details = OrderDetail.all.order(created_at: :desc)
+    @order_details = OrderDetail.all.page(params[:page])
+    @order_details = OrderDetail.all.page(params[:page]).order(created_at: :desc)
+  end
+
+  def history
+    @customer = Customer.find(params[:id])
+    @order_details = @customer.order_details.page(params[:page]).order(created_at: :desc)
   end
 
   private

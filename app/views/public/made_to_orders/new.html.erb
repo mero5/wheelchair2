@@ -8,7 +8,6 @@
     <div class="col-12 mx-auto">
       <%= render 'layouts/errors', obj: @made_to_order %>
       <%= form_with model: @made_to_order, url: made_to_orders_confirm_path do |f| %>
-
       <table class="table table-borderless">
         <tbody>
           <tr class="border-bottom">
@@ -39,9 +38,9 @@
                   <%= f.radio_button :flame2_option, 1 %>
                   <%= f.label :flame2, "リクライニング" %>
                 </span>
-                <span class="d-flex justify-content">
+                <span class="d-flex justify-content-center">
                   <%= f.radio_button :flame2_option, 2 %>
-                  <%= f.label :flame2, "その他", class: "mr-3" %>
+                  <%= f.label :flame2, "その他", style: "white-space: nowrap", class: "mr-2" %>
                   <%= f.text_field :flame2, class: "form-control" %>
                 </span>
               </div>

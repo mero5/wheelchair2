@@ -1,0 +1,134 @@
+<%#= render 'public/order_details/index', order_details: @order_details %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-8 mt-5 mx-auto'>
+      <h4 class="text-center bg-light">全ての注文依頼履歴一覧</h4>
+    </div>
+  </div>
+  <div class='row my-4'>
+    <div class='col-10 mx-auto'>
+      <p class="mx-3 col"><i class="fas fa-tools text-dark fa-lg"></i>・・・修理依頼</p>
+      <p class="mx-3 col"><i class="fas fa-crutch text-dark fa-lg"></i>・・・商品購入注文</p>
+      <p class="mx-3 col"><i class="fas fa-wheelchair text-dark fa-lg"></i>・・・オーダーメイド見積依頼</p>
+    </div>
+  </div>
+  <div class='row mt-4'>
+    <div class='col-10 mx-auto'>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="table-active text-dark align-middle" style="width: 10%">注文依頼日</th>
+            <th class="table-active text-dark align-middle" style="width: 8%">種類</th>
+            <th class="table-active text-dark align-middle" style="width: 17%">注文者</th>
+            <th class="table-active text-dark align-middle" style="width: 30%">内容</th>
+            <th class="table-active text-dark align-middle" style="width: 20%">ステータス</th>
+            <th class="table-active text-dark align-middle" style="width: 15%">詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+          <tr>
+            <td class="align-middle">
+              <% if order_detail.repair_id.present? %>
+                <%= order_detail.created_at.strftime("%Y/%m/%d") %>
+              <% end %>
+              <% if order_detail.order_id.present? %>
+                <%= order_detail.created_at.strftime("%Y/%m/%d") %>
+              <% end %>
+              <% if order_detail.made_to_order_id.present? %>
+                <%= order_detail.created_at.strftime("%Y/%m/%d") %>
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <% if order_detail.repair_id.present? %>
+                <i class="fas fa-tools text-dark fa-2x"></i>
+              <% end %>
+              <% if order_detail.order_id.present? %>
+                <i class="fas fa-crutch text-dark fa-2x"></i>
+              <% end %>
+              <% if order_detail.made_to_order_id.present? %>
+                <i class="fas fa-wheelchair text-dark fa-2x"></i>
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <% if order_detail.repair_id.present? %>
+                <%= order_detail.repair.name %>
+              <% end %>
+              <% if order_detail.order_id.present? %>
+                <%= order_detail.order.name %>
+              <% end %>
+              <% if order_detail.made_to_order_id.present? %>
+                <%= order_detail.made_to_order.customer.full_name %>
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <% if order_detail.repair_id.present? %>
+                <%= order_detail.repair.wheelchair_kinds %></br>
+                <% if order_detail.repair.tire.present? %>
+                  <%= order_detail.repair.tire %></br>
+                <% end %>
+                <% if order_detail.repair.break.present? %>
+                  <%= order_detail.repair.break %></br>
+                <% end %>
+                <% if order_detail.repair.caster.present? %>
+                  <%= order_detail.repair.caster %>
+                <% end %>
+              <% end %>
+              <% if order_detail.order_id.present? %>
+                  <%= order_detail.item.name %></br>
+              <% end %>
+              <% if order_detail.made_to_order_id.present? %>
+                <%= order_detail.made_to_order.flame %>-
+                <%= order_detail.made_to_order.flame2 %>
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <% if order_detail.repair_id.present? %>
+                <% if order_detail.repair.status == "修理依頼中" %>
+                  <p class="align-middle" style="color: #fd7e14;"><%= order_detail.repair.status %></p>
+                <% elsif order_detail.repair.status == "スケジュール調整中" %>
+                  <p class="align-middle" style="color: #ffc107;"><%= order_detail.repair.status %></p>
+                <% elsif order_detail.repair.status == "修理完了済み" %>
+                  <p class="align-middle" style="color: #28a745;"><%= order_detail.repair.status %></p>
+                <% end %>
+              <% end %>
+              <% if order_detail.order_id.present? %>
+                <% if order_detail.order.status == "受注確認中" %>
+                  <p style="color: #dc3545;"><%= order_detail.order.status %></p>
+                <% elsif order_detail.order.status == "入金確認" %>
+                  <p style="color: #fd7e14;"><%= order_detail.order.status %></p>
+                <% elsif order_detail.order.status == "製作中" %>
+                  <p style="color: #ffc107;"><%= order_detail.order.status %></p>
+                <% elsif order_detail.order.status == "発送済み" %>
+                  <p style="color: #28a745;"><%= order_detail.order.status %></p>
+                <% end %>
+              <% end %>
+              <% if order_detail.made_to_order_id.present? %>
+                <% if order_detail.made_to_order.status == "見積依頼中" %>
+                  <p style="color: #fd7e14;"><%= order_detail.made_to_order.status %></p>
+                <% elsif order_detail.made_to_order.status == "見積送信済み" %>
+                  <p style="color: #28a745;"><%= order_detail.made_to_order.status %></p>
+                <% end %>
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <% if order_detail.repair_id.present? %>
+                <%= link_to "詳細", admin_repair_path(order_detail.repair_id), class: 'border-primary rounded-primary btn text-primary' %>
+              <% end %>
+              <% if order_detail.order_id.present? %>
+                <%= link_to "詳細", admin_order_path(order_detail.order_id), class: 'border-primary rounded-primary btn text-primary' %>
+              <% end %>
+              <% if order_detail.made_to_order_id.present? %>
+                <%= link_to "詳細", admin_made_to_order_path(order_detail.made_to_order_id), class: 'border-primary rounded-primary btn text-primary' %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <%= paginate @order_details %>
+      </div>
+    </div>
+  </div>
+</div>
