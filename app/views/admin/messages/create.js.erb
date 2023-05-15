@@ -1,0 +1,2 @@
+$('#message_message').val("");
+$('#messages-index').html("<%= j(render '/admin/messages/index', locals: { room: @room, messages: @messages }) %>")

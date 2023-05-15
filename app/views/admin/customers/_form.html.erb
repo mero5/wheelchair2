@@ -1,0 +1,4 @@
+<%= form_with model: customer, url: admin_customer_path, local: false do |f| %>
+  <%= f.text_area :message, class: "form-control customers-form", size: "20x13" %>
+  <%= f.submit "保存", class: 'btn btn-success' %>
+<% end %>

@@ -50,7 +50,7 @@
               </tr>
             </tbody>
           </table>
-          <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success mr-3" %>
+          <%#= link_to "編集する", edit_admin_customer_path, class: "btn btn-success mr-3" %>
           <%= link_to "登録住所一覧", admin_delivery_path(@customer), class: 'btn btn-primary mr-3' %>
           <%= link_to "注文依頼履歴一覧", admin_order_details_history_path(@customer), class: "btn btn-primary mr-3" %>
         </div>
@@ -58,10 +58,7 @@
     </div>
     <div class="col-5 mt-3">
       <p class="text-center bg-light"><strong>メモ</strong></p>
-      <%= form_with model: @customer, url: admin_customer_path do |f| %>
-        <%= f.text_area :message, class:"form-control", size: "20x13" %>
-        <%= f.submit "保存", class: 'btn btn-success' %>
-      <% end %>
+      <%= render 'admin/customers/form', customer: @customer %>
     </div>
   </div>
 </div>

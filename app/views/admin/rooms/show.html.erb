@@ -4,41 +4,24 @@
       <h4 class="text-center bg-secondary text-white"><%= @room.customer.full_name %>さまとチャット</h4>
     </div>
   </div>
+  <div class="d-flex justify-content-center">
+    <%#= paginate @messages %>
+  </div>
   <div class="row mt-3">
     <div class="col-8 mx-auto">
       <div class="chat bg-light p-4">
-        <div class="message">
+        <div id="messages-index">
           <% if @messages.blank? %>
             <p>メッセージはありません</p>
           <% else %>
-            <% @messages.each do |message| %>
-              <div>
-                <% if message.customer %>
-                  <div style="text-align: left;">
-                    <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
-                    <%= @room.customer.first_name %>さま
-                    <p class="bg-secondary text-white rounded-pill w-50 py-1 px-2">
-                    <%= message.message %></p>
-                  </div>
-                <% else %>
-                  <div style="margin-left: 330px;">
-                    <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
-                    スタッフ
-                    <p class="bg-success text-white rounded-pill py-1 px-2">
-                    <%= message.message %></p>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
+            <%= render 'admin/messages/index', room: @room, messages: @messages %>
           <% end %>
         </div>
         <div class="mt-3">
           <div style="text-align: right;">
-            <%= form_with model: [:admins, @message], url: admin_message_path, local: true do |f| %>
-              <%= f.text_field :message, :placeholder => "メッセージを入力して下さい", class:"form-control" %>
-              <%= f.hidden_field :room_id, value: @room.id %>
-              <%= f.submit "送信", class:"btn btn-success" %>
-            <% end %>
+            <div id="message">
+              <%= render 'admin/messages/form', room: @room, message: @message  %>
+            </div>
           </div>
         </div>
       </div>

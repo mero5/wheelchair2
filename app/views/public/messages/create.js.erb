@@ -1,0 +1,4 @@
+<!--$("#comments_area").html("<%#= j(render 'public/room/show', post: @post, comment: @comment) %>"); -->
+<!--フォームを送信したあとにフォームの値を空にします-->
+$('#message_message').val("");
+$('#messages-index').html("<%= j(render '/public/messages/index', locals: { room: @room, messages: @messages }) %>")

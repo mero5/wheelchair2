@@ -1,0 +1,5 @@
+<%= form_with model: @message, url: message_path, local: false do |f| %>
+  <%= f.text_field :message, :placeholder => "メッセージを入力して下さい", class: "form-control message-textfield" %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.submit "送信", class: "btn btn-success" %>
+<% end %>

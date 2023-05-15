@@ -1,0 +1,19 @@
+<% @messages.each do |message| %>
+  <div>
+    <% if message.customer %>
+      <div style="text-align: left;">
+        <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
+        <%= @room.customer.first_name %>さま
+        <p class="bg-secondary text-white rounded-pill w-50 py-1 px-2">
+        <%= message.message %></p>
+      </div>
+    <% else %>
+      <div style="margin-left: 330px;">
+        <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
+        スタッフ
+        <p class="bg-success text-white rounded-pill py-1 px-2">
+        <%= message.message %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
