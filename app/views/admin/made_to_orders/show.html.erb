@@ -127,10 +127,9 @@
     </div>
     <div class="col-5 mt-3">
       <p class="text-center bg-light"><strong>メモ</strong></p>
-      <%= form_with model: @made_to_order, url: admin_made_to_order_path do |f| %>
-        <%= f.text_area :message, class:"form-control", size: "20x13" %>
-        <%= f.submit "保存", class: 'btn btn-success' %>
-      <% end %>
+      <div id="made_to_order_message">
+        <%= render 'admin/made_to_orders/form', made_to_order: @made_to_order %>
+      </div>
     </div>
   </div>
 </div>

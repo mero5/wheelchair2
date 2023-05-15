@@ -18,7 +18,7 @@ class Admin::RepairsController < ApplicationController
   def update
     @repair = Repair.find(params[:id])
     @repair.update(repair_params)
-    redirect_to request.referer
+    #redirect_to request.referer
   end
 
   def create

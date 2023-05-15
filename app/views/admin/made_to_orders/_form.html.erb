@@ -1,4 +1,4 @@
-<%= form_with model: customer, url: admin_customer_path, local: false do |f| %>
+<%= form_with model: made_to_order, url: admin_made_to_order_path, local: false do |f| %>
   <%= f.text_area :message, class: "form-control customer_message", size: "20x13" %>
   <%= f.submit "保存", class: 'btn btn-success' %>
 <% end %>

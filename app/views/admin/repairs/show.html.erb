@@ -56,10 +56,9 @@
     </div>
     <div class="col-5 mt-3">
       <p class="text-center bg-light"><strong>メモ</strong></p>
-      <%= form_with model: @repair, url: admin_repair_path do |f| %>
-        <%= f.text_area :message, class:"form-control", size: "20x13" %>
-        <%= f.submit "保存", class: 'btn btn-success' %>
-      <% end %>
+      <div id="repair_message">
+        <%= render 'admin/repairs/form', repair: @repair %>
+      </div>
     </div>
   </div>
 </div>

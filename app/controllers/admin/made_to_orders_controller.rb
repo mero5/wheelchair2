@@ -18,7 +18,7 @@ class Admin::MadeToOrdersController < ApplicationController
   def update
     @made_to_order = MadeToOrder.find(params[:id])
     @made_to_order.update(made_to_order_params)
-    redirect_to request.referer
+    #redirect_to request.referer
   end
 
   def create
