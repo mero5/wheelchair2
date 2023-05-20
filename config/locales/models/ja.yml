@@ -60,3 +60,17 @@ ja:
         tire: タイヤ関係
         break: ブレーキ関係
         caster: キャスター関係
+
+      made_to_order:
+        flame: フレームの種類
+        flame2: フレームの種類
+        wheelchair_type: 型式
+        material: 車体
+        break: ブレーキ
+        nursing_break: 介護ブレーキ
+        turnover: 転倒防止装置
+        cane: 杖のサイズ
+        cane2: 杖の位置
+        cushion: クッション
+        table: テーブル
+        others: その他
