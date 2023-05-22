@@ -2,16 +2,18 @@ class Admin::ClothsController < ApplicationController
   before_action :authenticate_admin!
   before_action :edit_cloth, only: [:edit, :update]
 
-  #シート生地カラー設定
+  #シート生地カラー一覧
   def index
     @cloth = Cloth.new
     @cloths = Cloth.all
   end
 
+  #シート生地カラー編集
   def edit
     @cloth = Cloth.find(params[:id])
   end
 
+  #シート生地カラー登録
   def create
     @cloth = Color.new(cloth_params)
     if @cloth.save
@@ -23,6 +25,7 @@ class Admin::ClothsController < ApplicationController
     end
   end
 
+  #シート生地カラーアップデート
   def update
     @cloth = Color.find(params[:id])
     if @cloth.update(cloth_params)
@@ -33,6 +36,7 @@ class Admin::ClothsController < ApplicationController
     end
   end
 
+  #シート生地カラー削除
   def destroy
     @cloth = Color.find(params[:id])
     @cloth.destroy

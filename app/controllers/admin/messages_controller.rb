@@ -1,6 +1,7 @@
 class Admin::MessagesController < ApplicationController
   #after_create_commit :create_notifications
 
+  #チャットメッセージ保存
   def create
     @message = Message.new(message_params)
     if @message.save

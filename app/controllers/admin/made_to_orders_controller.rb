@@ -1,26 +1,31 @@
 class Admin::MadeToOrdersController < ApplicationController
   before_action :authenticate_admin!
 
-  def index
-    @made_to_orders = MadeToOrder.all
-  end
+  #オーダーメイド見積依頼一覧
+  #def index
+    #@made_to_orders = MadeToOrder.all
+  #end
 
+  #オーダーメイド見積依頼詳細
   def show
     @made_to_order_new = MadeToOrder.new
     @made_to_order = MadeToOrder.find(params[:id])
   end
 
-  def history
-    @customer = Customer.find(params[:id])
-    @made_to_orders = @customer.made_to_orders
-  end
-
+  #オーダーメイド詳細ページのメモアップデート
   def update
     @made_to_order = MadeToOrder.find(params[:id])
     @made_to_order.update(made_to_order_params)
-    #redirect_to request.referer
   end
 
+  #オーダーメイドステータスの更新
+  def made_to_order_update
+    @made_to_order = MadeToOrder.find(params[:id])
+    @made_to_order.update(made_to_order_params)
+    redirect_to request.referer
+  end
+
+  #オーダーメイド見積依頼保存
   def create
     @made_to_order_new = MadeToOrder.new(made_to_order_params)
     @made_to_order = MadeToOrder.find(params[:id])

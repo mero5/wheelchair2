@@ -8,4 +8,5 @@ class MadeToOrder < ApplicationRecord
   belongs_to :back_color, class_name: 'Cloth', foreign_key: :back_color_id
 
   enum status: {見積依頼中:0, 見積送信済み:1}
+
 end

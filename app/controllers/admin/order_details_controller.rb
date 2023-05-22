@@ -1,6 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
   before_action :authenticate_admin!
 
+  #注文ステータス更新
   def update
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order

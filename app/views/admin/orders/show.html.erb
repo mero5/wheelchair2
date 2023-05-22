@@ -82,13 +82,10 @@
           <td><strong>商品合計</strong></td>
           <td>¥<%= (@order.billing_amount - @order.postage).to_s(:delimited) %></td>
         </tr>
-
-
         <tr>
           <td><strong>送料</strong></td>
           <td>¥<%= @order.postage %></td>
         </tr>
-
         <tr>
           <td><strong>請求金額合計</strong></td>
           <td>¥<%= @order.billing_amount.to_s(:delimited) %></td>

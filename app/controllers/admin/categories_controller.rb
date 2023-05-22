@@ -8,6 +8,7 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  #カテゴリ登録
   def create
     @category = Category.new(category_params)
     if @category.save
@@ -19,9 +20,11 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
+  #カテゴリ編集
   def edit
   end
 
+  #カテゴリアップデート
   def update
     if @category.update(category_params)
       flash[:notice] = '変更を保存しました'
@@ -31,6 +34,7 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
+  #カテゴリ削除
   def destroy
     @category = Category.find(params[:id])
     @category.destroy!

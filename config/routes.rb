@@ -12,18 +12,20 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    get 'customers/repairs'
-    resources :customers, only: [:index,:show,:edit,:update, :create]
-    resources :items
-    resources :colors
-    resources :cloths
-    resources :categories, only: [:index, :edit, :create, :update, :destroy]
+    patch 'customers/customer_update/:id' => 'customers#customer_update' ,as: 'customer_update'
+    resources :customers, only: [:index,:show,:edit,:update, :create]  #会員
+    resources :items  #商品
+    resources :colors  #カラー
+    resources :cloths  #シート生地カラー
+    resources :categories, only: [:index, :edit, :create, :update, :destroy]  #カテゴリ
     get 'orders/earnings'
     resources :orders, only:[:index,:show,:update]
     get 'order_details/history/:id' => 'order_details#history', as: 'order_details_history'
     resources :order_details,only:[:update, :index, :show]
     resources :deliveries, only: [:show]
+    patch 'repairs/repair_update/:id' => 'repairs#repair_update' ,as: 'repair_update'
     resources :repairs, only:[:index, :show, :update, :create]
+    patch 'made_to_orders/made_to_order_update/:id' => 'made_to_orders#made_to_order_update' ,as: 'made_to_order_update'
     resources :made_to_orders, only:[:index, :show, :update, :create]
     resources :contacts, only:[:index,:show,:update]
     resources :rooms, only: [:show, :index]

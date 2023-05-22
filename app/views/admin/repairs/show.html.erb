@@ -42,8 +42,14 @@
           <tr>
             <td class="table-active text-dark">ステータス</td>
             <td>
-              <%= @repair.status %>
-              <%= form_with model: @repair, url: admin_repair_path, class: "d-inline-block" do |f| %>
+              <% if @repair.status == "修理依頼中" %>
+                <span class="align-middle" style="color: #fd7e14;"><%= @repair.status %></span>
+              <% elsif @repair.status == "スケジュール調整中" %>
+                <span class="align-middle" style="color: #ffc107;"><%= @repair.status %></span>
+              <% elsif @repair.status == "修理完了済み" %>
+                <span class="align-middle" style="color: #28a745;"><%= @repair.status %></span>
+              <% end %>
+              <%= form_with model: @repair, url: admin_repair_update_path(@repair), class: "d-inline-block" do |f| %>
                 <div class="form-inline">
                   <%= f.select(:status, ["修理依頼中", "スケジュール調整中", "修理完了済み"], {}, { class: "custom-select mx-3"}) %>
                   <%= f.submit "更新", class: 'btn btn-success' %>

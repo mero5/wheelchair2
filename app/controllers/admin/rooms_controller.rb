@@ -2,6 +2,7 @@ class Admin::RoomsController < ApplicationController
   before_action :authenticate_admin!
   #after_create_commit :create_notifications
 
+  #お問い合わせチャットルーム一覧
   def index
     @rooms = Room.all.page(params[:page]).order(created_at: :desc)
     @contacts = Contact.all.page(params[:page]).order(created_at: :desc)
@@ -9,6 +10,7 @@ class Admin::RoomsController < ApplicationController
     @read_count = Read.where(open_time: nil).count
   end
 
+  #お問い合わせチャットルーム詳細
   def show
     @room = Room.find(params[:id])
     @message = Message.new

@@ -2,6 +2,7 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
   #impressionist :actions=> [:show]
 
+  #月別売上表
   def earnings
     @orders = Order.all
     @repairs = Repair.all
@@ -34,17 +35,20 @@ class Admin::OrdersController < ApplicationController
     #impressionist(@category, nil, unique: [:session_hash])
   end
 
+  #注文履歴一覧
   def index
     @orders = Order.all
     @repairs = Repair.all
     @made_to_orders = MateToOrder.all
   end
 
+  #注文履歴詳細
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
   end
 
+  #注文ステータス更新
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)

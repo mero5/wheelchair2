@@ -7,6 +7,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new
   end
 
+  #商品登録
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -35,6 +36,7 @@ class Admin::ItemsController < ApplicationController
   def edit
   end
 
+  #商品アップデート
   def update
     if @item.update(item_params)
       flash[:notice] = '商品を更新しました'
@@ -44,6 +46,7 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
+  #商品削除
   def destroy
     @item = Item.find(params[:id])
     @item.destroy

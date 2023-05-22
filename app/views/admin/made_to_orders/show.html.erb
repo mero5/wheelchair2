@@ -113,8 +113,12 @@
           <tr>
             <td class="table-active text-dark">ステータス</td>
             <td>
-              <%= @made_to_order.status %>
-              <%= form_with model: @made_to_order, url: admin_made_to_order_path, class: "d-inline-block" do |f| %>
+              <% if @made_to_order.status == "見積依頼中" %>
+                <span style="color: #fd7e14;"><%= @made_to_order.status %></span>
+              <% elsif @made_to_order.status == "見積送信済み" %>
+                <span style="color: #28a745;"><%= @made_to_order.status %></span>
+              <% end %>
+              <%= form_with model: @made_to_order, url: admin_made_to_order_update_path(@made_to_order), class: "d-inline-block" do |f| %>
                 <div class="form-inline">
                   <%= f.select(:status, ["見積依頼中", "見積送信済み"], {}, { class: "custom-select mx-3"}) %>
                   <%= f.submit "更新", class: 'btn btn-success' %>

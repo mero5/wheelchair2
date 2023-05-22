@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
 
   #会員一覧
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page])
   end
 
   #会員詳細
@@ -17,6 +17,7 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
+  #会員保存
   def create
     @customer_new = Customer.new(customer_params)
     @customer = Customer.find(params[:id])
@@ -30,11 +31,18 @@ class Admin::CustomersController < ApplicationController
     end
   end
 
+  #会員詳細ページのメモアップデート
   def update
+    @customer = Customer.find(params[:id])
+    @customer.update(customer_params)
+  end
+
+  #会員ステータスの更新
+  def customer_update
      @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = '保存しました'
-      #redirect_to admin_customer_path
+      redirect_to admin_customer_path
     else
      render "edit"
     end
