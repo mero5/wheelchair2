@@ -20,12 +20,12 @@
             <% @orders.each do |order| %>
               <tr>
                 <td class="align-middle"><%= order.created_at.strftime('%Y/%-m/%-d') %></td>
-                <td>〒<%= order.post_code %></br>
-                  <%= order.address %></br>
+                <td>〒<%= order.post_code %><br>
+                  <%= order.address %><br>
                   <%= order.name %></td>
                 <td class="align-middle">
                   <% order.order_details.each do |order_detail| %>
-                    <%= order_detail.item.name %></br>
+                    <%= order_detail.item.name %><br>
                   <% end %>
                 </td>
                 <td class="align-middle"><%= order.billing_amount.to_s(:delimited) %>円</td>

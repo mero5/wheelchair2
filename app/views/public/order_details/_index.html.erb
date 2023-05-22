@@ -56,13 +56,13 @@
             </td>
             <td class="align-middle">
               <% if order_detail.repair_id.present? %>
-                <%= order_detail.repair.wheelchair_kinds %></br>
-                <%= order_detail.repair.tire %></br>
-                <%= order_detail.repair.break %></br>
+                <%= order_detail.repair.wheelchair_kinds %><br>
+                <%= order_detail.repair.tire %><br>
+                <%= order_detail.repair.break %><br>
                 <%= order_detail.repair.caster %>
               <% end %>
               <% if order_detail.order_id.present? %>
-                  <%= order_detail.item.name %></br>
+                  <%= order_detail.item.name %><br>
               <% end %>
               <% if order_detail.made_to_order_id.present? %>
 
