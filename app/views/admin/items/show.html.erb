@@ -21,26 +21,23 @@
                 <td>商品名</td>
                 <td class="w-50"><%= @item.name %></td>
               </tr>
-
               <tr>
                 <td>商品説明</td>
                 <td><%= @item.introduction %></td>
               </tr>
-
               <tr>
                 <td>カテゴリ</td>
                 <td><%= @item.category.category_name %></td>
               </tr>
-
               <tr>
                 <td>税込価格<br />(税抜き価格)</td>
                 <td><%= @item.with_tax_price.to_s(:delimited) + '円' %><br /><%= '(' + @item.price.to_s(:delimited) + '円)' %></td>
               </tr>
-
-                  <%# @item.tags.each do |tag| %>
-                    <%#= tag.name %>
-                  <%# end %>
-
+              <tr>
+                <% @item.tags.each do |tag| %>
+                <td><%= tag.name %></td>
+                <% end %>
+              </tr>
               <tr>
                 <td>販売ステータス</td>
                   <% if @item.is_active == false %>

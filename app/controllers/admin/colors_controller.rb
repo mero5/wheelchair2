@@ -2,6 +2,7 @@ class Admin::ColorsController < ApplicationController
   before_action :authenticate_admin!
   before_action :edit_color, only: [:edit, :update]
 
+  #カラー設定
   def index
     @color = Color.new
     @colors = Color.all

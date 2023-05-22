@@ -1,15 +1,18 @@
 class Admin::CustomersController < ApplicationController
-   before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
+  #会員一覧
   def index
     @customers = Customer.all
   end
 
+  #会員詳細
   def show
     @customer_new = Customer.new
     @customer = Customer.find(params[:id])
   end
 
+  #会員編集
   def edit
     @customer = Customer.find(params[:id])
   end

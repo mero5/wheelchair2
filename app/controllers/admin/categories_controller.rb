@@ -2,6 +2,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
   before_action :edit_category, only: [:edit, :update]
 
+  #カテゴリ設定
   def index
     @category = Category.new
     @categories = Category.all

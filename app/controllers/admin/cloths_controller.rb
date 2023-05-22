@@ -2,6 +2,7 @@ class Admin::ClothsController < ApplicationController
   before_action :authenticate_admin!
   before_action :edit_cloth, only: [:edit, :update]
 
+  #シート生地カラー設定
   def index
     @cloth = Cloth.new
     @cloths = Cloth.all
