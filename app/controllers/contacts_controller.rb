@@ -1,12 +1,11 @@
 class ContactsController < ApplicationController
+
+  # お問い合わせ内容入力
   def new
     @contact = Contact.new
   end
 
-  def index
-    @contacts = Contact.all
-  end
-
+  # お問い合わせ履歴詳細
   def show
     @contacts = Contact.all
     @contact = Contact.find(params[:id])
@@ -20,11 +19,13 @@ class ContactsController < ApplicationController
     end
   end
 
+  # お問い合わせ内容入力画面へ遷移
   def back
     @contact = Contact.new(contact_params)
     render :new
   end
 
+  # お問い合わせ保存
   def create
     @contact = Contact.new(contact_params)
     if @contact.save

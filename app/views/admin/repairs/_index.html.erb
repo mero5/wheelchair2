@@ -1,3 +1,4 @@
+<!-- 修理依頼履歴一覧 -->
 <div class="container">
   <div class="row mt-4">
     <div class="col-8 mx-auto">
@@ -7,44 +8,44 @@
   <div class="row mt-4">
     <div class="col-12 mx-auto">
       <% if repairs.present? %>
-      <table class="table">
-        <thead>
-          <tr class="table-active text-dark">
-            <th class="table-active text-dark" style="width: 14%">修理依頼日時</th>
-            <th class="table-active text-dark" style="width: 40%">修理場所の住所</th>
-            <th class="table-active text-dark" style="width: 25%">修理内容</th>
-            <th class="table-active text-dark" style="width: 13%">ステータス</th>
-            <th class="table-active text-dark" style="width: 8%">詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% repairs.each do |repair| %>
-            <tr>
-              <td><%= repair.created_at.strftime("%Y/%-m/%-d %H:%M") %></td>
-              <td>
-                <%= repair.address %></br>
-                <%= repair.name %>
-              </td>
-              <td>
-                <%= repair.wheelchair_kinds %></br>
-                <%= repair.tire %></br>
-                <%= repair.break %></br>
-                <%= repair.caster %>
-              </td>
-              <td>
-                <% if repair.status == "修理依頼中" %>
-                  <p style="color: #fd7e14;"><%= repair.status %></p>
-                <% elsif repair.status == "スケジュール調整中" %>
-                  <p style="color: #ffc107;"><%= repair.status %></p>
-                <% elsif repair.status == "修理完了済み" %>
-                  <p style="color: #28a745;"><%= repair.status %></p>
-                <% end %>
-              </td>
-              <td><%= link_to "詳細", admin_repair_path(repair), class: 'border-primary rounded-primary btn text-primary' %></td>
+        <table class="table">
+          <thead>
+            <tr class="table-active text-dark">
+              <th class="table-active text-dark" style="width: 14%">修理依頼日時</th>
+              <th class="table-active text-dark" style="width: 40%">修理場所の住所</th>
+              <th class="table-active text-dark" style="width: 25%">修理内容</th>
+              <th class="table-active text-dark" style="width: 13%">ステータス</th>
+              <th class="table-active text-dark" style="width: 8%">詳細</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% repairs.each do |repair| %>
+              <tr>
+                <td><%= repair.created_at.strftime("%Y/%-m/%-d %H:%M") %></td>
+                <td>
+                  <%= repair.address %></br>
+                  <%= repair.name %>
+                </td>
+                <td>
+                  <%= repair.wheelchair_kinds %></br>
+                  <%= repair.tire %></br>
+                  <%= repair.break %></br>
+                  <%= repair.caster %>
+                </td>
+                <td>
+                  <% if repair.status == "修理依頼中" %>
+                    <p style="color: #fd7e14;"><%= repair.status %></p>
+                  <% elsif repair.status == "スケジュール調整中" %>
+                    <p style="color: #ffc107;"><%= repair.status %></p>
+                  <% elsif repair.status == "修理完了済み" %>
+                    <p style="color: #28a745;"><%= repair.status %></p>
+                  <% end %>
+                </td>
+                <td><%= link_to "詳細", admin_repair_path(repair), class: 'border-primary rounded-primary btn text-primary' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       <% else %>
         <h4 class="my-5 mx-auto text-center">修理依頼の履歴はありません。</h4>
       <% end %>

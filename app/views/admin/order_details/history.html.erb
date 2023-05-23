@@ -1,3 +1,4 @@
+<!-- 各会員の全ての注文依頼履歴一覧 -->
 <div class='container'>
   <div class='row'>
     <div class='col-8 mt-5 mx-auto'>
@@ -122,7 +123,9 @@
       <% else %>
         <h4 class="my-5 mx-auto text-center"><%= @customer.full_name %>さまの全ての注文依頼履歴はありません。</h4>
       <% end %>
-      <%= paginate @order_details %>
+      <div class="d-flex justify-content-center">
+        <%= paginate @order_details %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
+<!--注文履歴詳細-->
 <div class="container">
   <h2 class="text-center bg-light h4 col-3">注文履歴詳細</h2>
-
   <div class="row">
     <div class="col-md-8">
       <table class="table table-borderless">
@@ -32,7 +32,7 @@
                    <%= f.select(:status, ["受注確認中", "入金確認", "製作中", "発送済み"], {}, { class: "custom-select mr-2"}) %>
                    <%= f.submit "更新", class: 'btn btn-success' %>
                 </div>
-               <% end %>
+              <% end %>
             </td>
           </tr>
         </tbody>

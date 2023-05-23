@@ -1,3 +1,4 @@
+<!-- 会員一覧 -->
 <div class="container">
   <div class="row mt-5">
     <div class="col-8 mx-auto">
@@ -25,11 +26,11 @@
               <td><%= customer.age %></td>
               <td><%= customer.telephone_number %></td>
               <td><%= customer.address %></td>
-                <% if customer.is_deleted %>
-                  <td>退会済み</td>
-                <% else %>
-                  <td class="text-success">有効</td>
-                <% end %>
+              <% if customer.is_deleted %>
+                <td>退会済み</td>
+              <% else %>
+                <td class="text-success">有効</td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

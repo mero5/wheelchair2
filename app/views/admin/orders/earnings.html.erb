@@ -1,4 +1,6 @@
+<!-- 売上管理表・売上グラフ -->
 <div class="container">
+  <!-- 売上管理表 -->
   <div class="row mt-4">
     <div class="col-12 mx-auto">
       <h2 class="text-center bg-light h4 col-4">売上管理表(過去6か月間)</h2>
@@ -52,67 +54,17 @@
     </div>
   </div>
 
+  <!-- 売上グラフ -->
   <div class="row mt-4">
     <div class="col-12 mx-auto">
       <h2 class="text-center bg-light h4 col-4">売上グラフ(過去6か月間)</h2>
     </div>
   </div>
-<div class="row mt-4">
-  <div class="col-12 mx-auto">
-<canvas id="myChart"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-var ctx = document.getElementById('myChart');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: [
-                 '<%= Date.today.months_ago(5).strftime('%-m月') %>',
-                 '<%= Date.today.months_ago(4).strftime('%-m月') %>',
-                 '<%= Date.today.months_ago(3).strftime('%-m月') %>',
-                 '<%= Date.today.months_ago(2).strftime('%-m月') %>',
-                 '<%= @month.prev_month.strftime('%-m月') %>',
-                 '<%= @month.strftime('%-m月') %>',
-                 ],
-        datasets: [{
-            label: '',
-            data: [
-              <%= @six_month.all.sum(:billing_amount) %>,
-                <%= @five_month.all.sum(:billing_amount) %>,
-                <%= @four_month.all.sum(:billing_amount) %>,
-                <%= @three_month.all.sum(:billing_amount) %>,
-                <%= @last_month.all.sum(:billing_amount) %>,
-                <%= @this_month.all.sum(:billing_amount) %>
-            ],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-</script>
-
+  <div class="row mt-4">
+    <div class="col-12 mx-auto">
+      <%= render "admin/orders/earnings",
+      locals: { six_month_made: @six_month_made, five_month_made: @five_month_made, four_month_made: @four_month_made,
+                three_month_made: @three_month_made, last_month_made: @last_month_made, this_month_made: @this_month_made } %>
     </div>
   </div>
 </div>

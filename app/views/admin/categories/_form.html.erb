@@ -1,13 +1,16 @@
+<!-- カテゴリ追加・編集 -->
 <table class="table table-borderless">
   <tbody>
+    <tr>
       <td><%= f.label :image, '商品画像', class: "col-form-label" %></td>
       <td><%= f.file_field :image, accept: 'image/*', class: "form-control-file" %></td>
-    <td><%= f.label :category_name, 'カテゴリ', class: "col-form-label" %></td>
-    <td><%= f.text_field :category_name, class: "form-control col" %></td>
-    <% if local_assigns[:edit_flag].present? %>
-      <td><%= f.submit '変更を保存', class: "form-control btn btn-success col" %></td>
-    <% else %>
-      <td><%= f.submit '新規登録', class: "form-control btn btn-success col" %></td>
-    <% end %>
+      <td><%= f.label :category_name, 'カテゴリ', class: "col-form-label" %></td>
+      <td><%= f.text_field :category_name, class: "form-control col" %></td>
+      <% if local_assigns[:edit_flag].present? %>
+        <td><%= f.submit '変更を保存', class: "form-control btn btn-success col" %></td>
+      <% else %>
+        <td><%= f.submit '新規登録', class: "form-control btn btn-success col" %></td>
+      <% end %>
+    </tr>
   </tbody>
 </table>

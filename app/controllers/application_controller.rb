@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # ログインしたときの遷移先
   def after_sign_in_path_for(resource)
     if resource.is_a?(Admin)
       admin_customers_path
@@ -11,6 +12,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # ログアウトしたときの遷移
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :user
         root_path

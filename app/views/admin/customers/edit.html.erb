@@ -1,70 +1,67 @@
+<!-- 会員編集 -->
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div class="card">
-        <h2 class="card-header bg-light"><%= @customer.full_name %>さんの会員情報編集</h2>
-          <%= form_with model: @customer, url: admin_customer_update_path(@customer) do |f| %>
-          <div class="card-body">
-            <table class="table table-borderless">
-              <tbody>
-                <tr>
-                  <td>会員ID</td>
-                  <td><%= @customer.id %></td>
-                </tr>
-                <tr>
-                  <td>氏名</td>
-                  <td class="form-inline">
-                    <%= f.text_field :first_name, class: "form-control col-4", placeholder: "姓" %>
-                    <%= f.text_field :last_name, class: "form-control col-4 ml-3", placeholder: "名" %>
-                  </td>
-                </tr>
-                <tr>
-                  <td>フリガナ</td>
-                  <td class="form-inline">
-                    <%= f.text_field :kana_first_name, class: "form-control col-4", placeholder: "セイ" %>
-                    <%= f.text_field :kana_last_name, class: "form-control col-4 ml-3", placeholder: "メイ" %>
-                  </td>
-                </tr>
-                <tr>
-                  <td>生年月日</td>
-                  <td><%= f.date_select :birth_date, use_month_numbers: true,start_year: 1940, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), class: "pl-6" %></td>
-                </tr>
-                <tr>
-                  <td>郵便番号</td>
-                  <td><%= f.text_field :post_code, class: "form-control", placeholder: "0000000" %></td>
-                </tr>
-                <tr>
-                  <td>住所</td>
-                  <td><%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区" %></td>
-                </tr>
-                <tr>
-                  <td>電話番号</td>
-                  <td><%= f.text_field :telephone_number, class: "form-control", placeholder: "00000000000" %></td>
-                </tr>
-                <tr>
-                  <td>メールアドレス</td>
-                  <td><%= f.text_field :email, class: "form-control", placeholder: "example@example.com" %></td>
-                </tr>
-                <tr>
-                  <td>会員ステータス</td>
-                  <td class="form-check form-check-inline">
-                    <%= f.radio_button :is_deleted, false, class: "form-check-input", id: "is_active" %>
-                    <%= f.label :is_deleted, "有効", { value: :false, for: "is_active", class: "form-check-label" } %>
-                  </td>
-                  <td class="form-check form-check-inline">
-                    <%= f.radio_button :is_deleted, true, class: "form-check-input", id: "is_deleted" %>
-                    <%= f.label :is_deleted, "退会", { value: :true, for: "is_deleted", class: "form-check-label" } %>
-                  </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          <% end %>
-      </div>
+      <h2 class="card-header bg-light"><%= @customer.full_name %>さんの会員情報編集</h2>
+      <%= form_with model: @customer, url: admin_customer_update_path(@customer) do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>会員ID</td>
+              <td><%= @customer.id %></td>
+            </tr>
+            <tr>
+              <td>氏名</td>
+              <td class="form-inline">
+                <%= f.text_field :first_name, class: "form-control col-4", placeholder: "姓" %>
+                <%= f.text_field :last_name, class: "form-control col-4 ml-3", placeholder: "名" %>
+              </td>
+            </tr>
+            <tr>
+              <td>フリガナ</td>
+              <td class="form-inline">
+                <%= f.text_field :kana_first_name, class: "form-control col-4", placeholder: "セイ" %>
+                <%= f.text_field :kana_last_name, class: "form-control col-4 ml-3", placeholder: "メイ" %>
+              </td>
+            </tr>
+            <tr>
+              <td>生年月日</td>
+              <td><%= f.date_select :birth_date, use_month_numbers: true,start_year: 1940, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), class: "pl-6" %></td>
+            </tr>
+            <tr>
+              <td>郵便番号</td>
+              <td><%= f.text_field :post_code, class: "form-control", placeholder: "0000000" %></td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td><%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区" %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= f.text_field :telephone_number, class: "form-control", placeholder: "00000000000" %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= f.text_field :email, class: "form-control", placeholder: "example@example.com" %></td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td class="form-check form-check-inline">
+                <%= f.radio_button :is_deleted, false, class: "form-check-input", id: "is_active" %>
+                <%= f.label :is_deleted, "有効", { value: :false, for: "is_active", class: "form-check-label" } %>
+              </td>
+              <td class="form-check form-check-inline">
+                <%= f.radio_button :is_deleted, true, class: "form-check-input", id: "is_deleted" %>
+                <%= f.label :is_deleted, "退会", { value: :true, for: "is_deleted", class: "form-check-label" } %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>

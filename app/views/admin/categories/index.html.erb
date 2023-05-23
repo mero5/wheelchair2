@@ -1,3 +1,4 @@
+<!-- カテゴリ一覧・追加 -->
 <div class="container">
   <div class="row mt-5">
     <div class="col-8 mx-auto">
@@ -5,6 +6,8 @@
       <h2 class="text-center h4 bg-light">カテゴリ一覧・追加</h2>
     </div>
   </div>
+
+  <!-- カテゴリ追加 -->
   <div class="row mt-5">
     <div class="col-10 mx-auto">
       <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
@@ -12,9 +15,11 @@
       <% end %>
     </div>
   </div>
+
+  <!-- カテゴリ一覧 -->
   <div class="row mt-4">
     <div class="col-8 mx-auto">
-      <h4 class="text-center bg-light">カテゴリ</h4>
+      <h4 class="text-center bg-light">カテゴリ一覧</h4>
     </div>
   </div>
   <div class="row my-4">

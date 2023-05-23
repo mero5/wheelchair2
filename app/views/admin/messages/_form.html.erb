@@ -1,3 +1,4 @@
+<!-- チャットフォーム -->
 <%= form_with model: [:admins, @message], url: admin_message_path, local: false do |f| %>
   <%= f.text_field :message, :placeholder => "メッセージを入力して下さい", class: "form-control message-textfield" %>
   <%= f.hidden_field :room_id, value: @room.id %>

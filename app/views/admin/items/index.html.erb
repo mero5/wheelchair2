@@ -1,11 +1,10 @@
+<!-- 商品一覧 -->
 <div class="container">
   <div><%= flash[:item_notice] %></div>
-
   <div class="row mt-4">
     <h2 class="text-center w-25 h4 bg-light d-inline-block">商品一覧</h2>
     <%= link_to '新規登録はこちら', new_admin_item_path, class: "border-success rounded-success btn text-success ml-4" %>
   </div>
-
   <div class="row mt-4">
     <div class="col-11 mx-auto">
       <table class="table table-borderless">

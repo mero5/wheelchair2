@@ -1,3 +1,4 @@
+<!-- カテゴリ編集 -->
 <div class="container">
   <div class="row mt-4">
     <div class="col-8 mx-auto">
@@ -7,6 +8,7 @@
   <div class="mt-5">
     <div class="row">
       <div class="col-10">
+        <!-- カテゴリエラーメッセージ -->
         <%= render 'layouts/errors', obj: @category %>
         <%= form_with model: @category, url: admin_category_path(@category.id), method: :patch do |f| %>
           <%= render :partial => 'form', :locals => {:f => f, :edit_flag => true} %>

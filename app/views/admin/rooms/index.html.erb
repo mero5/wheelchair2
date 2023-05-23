@@ -1,14 +1,19 @@
+<!-- お問い合わせ一覧・チャットルーム一覧 -->
 <div class="container">
   <div class="row mt-5">
     <div class='col-6 mx-auto '>
       <h4 class="text-center bg-light">お問い合わせ一覧</h4>
     </div>
     <div class='col-6 mx-auto border-left'>
-      <h4 class="text-center bg-light">チャットルームの一覧</h4>
+      <h4 class="text-center bg-light">チャットルーム一覧</h4>
     </div>
   </div>
   <div class="row mt-3">
+
+    <!-- お問い合わせ一覧 -->
     <%= render "contacts/index", contacts: @contacts %>
+
+    <!-- チャットルーム一覧 -->
     <div class="col-6 mx-auto border-left">
       <% if @rooms.blank? %>
         <p class="text-center mt-3"><strong>メッセージはありません</strong></p>
