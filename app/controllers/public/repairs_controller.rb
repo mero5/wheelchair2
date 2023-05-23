@@ -1,5 +1,5 @@
 class Public::RepairsController < ApplicationController
-  before_action :authenticate_customer!, only: [:show, :new, :confirm, :thanx, :create]
+  before_action :authenticate_customer!
 
   #注文情報入力画面
   def new
@@ -62,6 +62,7 @@ class Public::RepairsController < ApplicationController
     redirect_to repairs_thanx_path
   end
 
+  # 注文詳細
   def show
     @repair = current_customer.repairs.find_by(id: params[:id])
     render 'new' if @repair.blank?
@@ -71,8 +72,9 @@ class Public::RepairsController < ApplicationController
   def thanx
   end
 
-  def index
-  end
+  # ログインしてください
+  #def index
+  #end
 
   private
 

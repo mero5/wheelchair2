@@ -1,7 +1,8 @@
 class Public::RoomsController < ApplicationController
-  #before_action :authenticate_customer!
+  before_action :authenticate_customer!
   #after_create_commit :create_notifications
 
+  # チャットルーム作成
   def create
     if customer_signed_in?
       @room = current_customer.room
@@ -14,6 +15,7 @@ class Public::RoomsController < ApplicationController
     end
   end
 
+  # チャットルーム
   def show
     @room = Room.find_by(customer_id: current_customer.id)
     @message = Message.new

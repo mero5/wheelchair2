@@ -1,6 +1,7 @@
 class Public::MadeToOrdersController < ApplicationController
   before_action :authenticate_customer!
 
+  #オーダーメイド見積依頼
   def new
     @cloths = Cloth.all
     @colors = Color.all
@@ -13,10 +14,11 @@ class Public::MadeToOrdersController < ApplicationController
     @made_to_order.customer_id = current_customer.id
   end
 
-  def index
-    @made_to_orders = MadeToOrder.all
-  end
+  #オーダーメイド見積依頼はログインしてからでないと使用できません
+  #def index
+  #end
 
+  #オーダーメイド見積依頼詳細
   def show
     @made_to_order = current_customer.made_to_orders.find_by(id: params[:id])
     render 'new' if @made_to_order.blank?
@@ -44,16 +46,19 @@ class Public::MadeToOrdersController < ApplicationController
     @made_to_order.seat_color = Cloth.find(params[:made_to_order][:cloth_seat_id])
     #背シート色
     @made_to_order.back_color = Cloth.find(params[:made_to_order][:cloth_id])
+
     if @made_to_order.invalid?
       render :new
     end
   end
 
+  #オーダーメイド見積依頼newページへ遷移
   def back
     @made_to_order = MadeToOrder.new(made_to_order_params)
     render :new
   end
 
+  #オーダーメイド見積依頼完了
   def create
     @made_to_order = MadeToOrder.new(made_to_order_params)
     @made_to_order.customer_id = current_customer.id

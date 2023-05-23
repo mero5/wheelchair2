@@ -1,14 +1,17 @@
 class Public::CustomersController < ApplicationController
-before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
+  # 会員詳細
   def show
     @customer = current_customer
   end
 
+  # 会員編集
   def edit
     @customer = current_customer
   end
 
+  # 会員更新
   def update
     @customer = current_customer
     if @customer.update(customer_params)
@@ -19,10 +22,12 @@ before_action :authenticate_customer!
     end
   end
 
+  # 会員退会ページ
   def unsubscribe
     @customer = current_customer
   end
 
+  # 会員退会処理
   def withdrawal
     @customer = current_customer
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる

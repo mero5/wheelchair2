@@ -1,6 +1,7 @@
 class Public::MessagesController < ApplicationController
   #after_create_commit :create_notifications
 
+  #チャットのメッセージ送信
   def create
     @message = Message.new(message_params)
     if @message.save

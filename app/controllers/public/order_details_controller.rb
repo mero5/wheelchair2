@@ -1,5 +1,5 @@
 class Public::OrderDetailsController < ApplicationController
-
+  before_action :authenticate_customer!
 
   #注文依頼履歴一覧
   def index

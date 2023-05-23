@@ -1,15 +1,18 @@
 class Public::DeliveriesController < ApplicationController
   before_action :authenticate_customer!
 
+  #配送先一覧
   def index
     @delivery = Delivery.new
     @deliveries = current_customer.deliveries
   end
 
+  #配送先編集
   def edit
     @delivery = Delivery.find(params[:id])
   end
 
+  #配送先保存
   def create
     @delivery = Delivery.new(delivery_params)
     @delivery.customer_id = current_customer.id
@@ -22,6 +25,7 @@ class Public::DeliveriesController < ApplicationController
     end
   end
 
+  #配送先更新
   def update
     @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
@@ -32,6 +36,7 @@ class Public::DeliveriesController < ApplicationController
     end
   end
 
+  #配送先削除
   def destroy
     @delivery = Delivery.find(params[:id])
     @delivery.destroy

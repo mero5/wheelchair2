@@ -66,6 +66,7 @@ class Public::OrdersController < ApplicationController
     redirect_to orders_success_path
   end
 
+  # 注文履歴詳細
   def show
     @order = current_customer.orders.find_by(id: params[:id])
     render 'new' if @order.blank?
@@ -76,6 +77,7 @@ class Public::OrdersController < ApplicationController
   def success
   end
 
+  # 注文履歴一覧
   def index
     @orders = current_customer.orders
     @repairs = current_customer.repairs
