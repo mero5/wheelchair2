@@ -1,4 +1,5 @@
-<!--$("#comments_area").html("<%#= j(render 'public/room/show', post: @post, comment: @comment) %>"); -->
-<!--フォームを送信したあとにフォームの値を空にします-->
+<!--フォームを送信したあとにフォームの値を空にする-->
 $('#message_message').val("");
+
+<!-- メッセージ一覧を表示 -->
 $('#messages-index').html("<%= j(render '/public/messages/index', locals: { room: @room, messages: @messages }) %>")

@@ -11,7 +11,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
 
-              <% if customer_signed_in? %><!-- 顧客がログインしたとき -->
+              <% if customer_signed_in? %><!-- 顧客がログインしているとき -->
                 <li class="nav-link border rounded btn mx-3">
                   <%= link_to root_path do %>
                     <i class="fas fa-home text-dark"></i>
@@ -49,7 +49,7 @@
                   <% end %>
                 </li>
 
-              <% elsif admin_signed_in? %><!-- 管理者がログインしたとき -->
+              <% elsif admin_signed_in? %><!-- 管理者がログインしているとき -->
                 <li class="nav-item nav-link border rounded btn mx-4">
                   <%= link_to admin_customers_path do %>
                     <i class="fas fa-user-cog text-dark"></i>

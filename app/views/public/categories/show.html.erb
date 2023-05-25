@@ -1,7 +1,7 @@
-<!-- 顧客がログインしたとき -->
+<!-- 選択したカテゴリの商品一覧 -->
 <div class="container">
   <div class="row mt-5">
-    <!-- カテゴリ一覧 -->
+    <!-- カテゴリ検索(カテゴリ一覧) -->
     <%= render 'public/items/categories', categories: @categories %>
   </div>
   <div class="row mt-5">
@@ -10,7 +10,7 @@
         <strong><%= @category.category_name %>一覧</strong>
         (全<%= @items.count %>件)
       </h3>
-      <!-- 顧客がログインしたとき -->
+      <!-- 商品一覧 -->
       <%= render 'public/categories/show', items: @items %>
     </div>
   </div>

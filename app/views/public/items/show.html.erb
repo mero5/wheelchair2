@@ -1,7 +1,11 @@
+<!-- 商品詳細ページ -->
 <div class="container">
   <div class="row my-5">
+    <!-- カテゴリ検索(カテゴリ一覧) -->
     <%= render 'public/items/categories', categories: @categories %>
   </div>
+
+  <!-- 商品詳細 -->
   <div class="row mb-5">
     <div class="ml-5 col-4">
       <%= image_tag @item.image, style: "background-cover; background-position: center; width: 90%;" %>
@@ -10,9 +14,12 @@
       <h3 class="mb-3" style="font-weight: bold"><%= @item.name %></h3>
       <h4 class="mb-5" style="font-size: 16px;"><%= @item.introduction %></h4>
       <p><strong style="font-weight: bold; font-size: 2rem;">￥<%= @item.with_tax_price.to_s(:delimited) %></strong>(税込)</p>
+
+      <!-- ログインしていて、商品が販売しているとき -->
       <% if (customer_signed_in?) && (@item.is_active == false) %>
         <div class="mb-3">
           <div class=<%= "favorite-" + @item.id.to_s %> >
+            <!-- 欲しいものリスト機能 -->
             <%= render 'public/favorites/btn', item: @item %>
           </div>
         </div>
@@ -21,6 +28,8 @@
           <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, { required: true, class: "ml-4"}  %>
           <%= f.submit 'カートに入れる', class: "btn btn-success ml-4" %>
         <% end %>
+        
+      <!-- 商品が売り切れのとき -->
       <% elsif @item.is_active != false %>
         <span class="btn btn-danger disabled ml-4">売切れ</span>
       <% end %>

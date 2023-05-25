@@ -1,3 +1,4 @@
+<!-- 管理者の会員、商品の検索 -->
 <div class="container">
   <% if @member.nil? && @result.nil? %>
     <p>該当する文字は見つかりませんでした</p>
@@ -13,9 +14,11 @@
       <% end %>
     <% else %>
       <div class="row">
+        <!-- カテゴリ検索(カテゴリ一覧) -->
         <%= render 'public/items/categories', categories: @categories %>
         <div class="col-9">
           <h3 class="text-center bg-light"><strong><%= @word %>一覧</strong>(全<%= @result.count %>件)</h3>
+          <!-- 商品検索後の商品一覧 -->
           <%= render 'result', result: @result %>
         </div>
       </div>

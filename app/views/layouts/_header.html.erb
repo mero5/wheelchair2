@@ -46,7 +46,7 @@
                   </li>
                 <% end %>
 
-                <% if customer_signed_in? %><!-- 顧客がログインしたとき -->
+                <% if customer_signed_in? %><!-- 顧客がログインしているとき -->
                   <li class="nav-item mx-2 mt-2">
                     <%= link_to order_details_path do %>
                       <div class="text-center">
@@ -88,7 +88,7 @@
                     <% end %>
                   </li>
 
-                <% elsif admin_signed_in? %><!-- 管理者がログインしたとき -->
+                <% elsif admin_signed_in? %><!-- 管理者がログインしているとき -->
                   <li class="nav-item mx-2 mt-2">
                     <%= link_to admin_categories_path do %>
                       <div class="d-flex flex-column text-center">
