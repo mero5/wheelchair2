@@ -2,14 +2,18 @@
   <div style="background-color: #3A98B9;">
     <div class="container">
       <div class="row">
+        <!-- 会社ロゴ -->
         <%= link_to root_path do %>
           <%= image_tag '車椅子サービス.png', style: "height: 115px;" %>
         <% end %>
-        <% if customer_signed_in? %>
+
+        <% if customer_signed_in? %><!-- 会員がログインしたとき -->
           <p class="my-auto ml-4" style="height: 42px;line-height: 42px; color: #FFFFFF;"><%= current_customer.first_name %>さま</p>
-        <% elsif admin_signed_in? %>
+        <% elsif admin_signed_in? %><!-- 管理者がログインしたとき -->
           <p class="my-auto ml-2" style="height: 36px;line-height: 36px; color: #FFFFFF;">管理者専用</p>
         <% end %>
+
+        <!-- ナビバー -->
         <div class="mt-4 f-flex flex-column ml-auto">
           <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3A98B9;">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -18,7 +22,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
-                <% if admin_signed_in? %>
+                <% if admin_signed_in? %><!-- 管理者ページの検索フォーム(顧客と商品を検索できる) -->
                   <li class="nav-item mr-3">
                     <div class="mt-5" style="position: relative">
                       <%= form_with url: member_search_path, method: :get do |f| %>
@@ -29,7 +33,7 @@
                       <% end %>
                     </div>
                   </li>
-                <% else %>
+                <% else %><!-- 管理者ページの検索フォーム(商品のみ検索できる) -->
                 <li class="nav-item mr-5">
                   <div class="mt-5" style="position: relative">
                     <%= form_with url: search_path, method: :get do |f| %>
@@ -41,7 +45,8 @@
                   </div>
                   </li>
                 <% end %>
-                <% if customer_signed_in? %>
+
+                <% if customer_signed_in? %><!-- 顧客がログインしたとき -->
                   <li class="nav-item mx-2 mt-2">
                     <%= link_to order_details_path do %>
                       <div class="text-center">
@@ -82,7 +87,8 @@
                       </div>
                     <% end %>
                   </li>
-                <% elsif admin_signed_in? %>
+
+                <% elsif admin_signed_in? %><!-- 管理者がログインしたとき -->
                   <li class="nav-item mx-2 mt-2">
                     <%= link_to admin_categories_path do %>
                       <div class="d-flex flex-column text-center">
@@ -123,7 +129,8 @@
                       </div>
                     <% end %>
                   </li>
-                <% else %>
+
+                <% else %><!-- ログインしていないとき -->
                   <li class="nav-item mx-2 mt-2">
                     <%= link_to new_customer_session_path do %>
                       <div class="d-flex flex-column text-center">
