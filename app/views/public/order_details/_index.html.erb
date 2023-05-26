@@ -27,7 +27,7 @@
           <thead>
             <tr>
               <th class="table-active text-dark align-middle" style="width: 10%">注文依頼日</th>
-              <th class="table-active text-dark align-middle" style="width: 10%">アイコン</th>
+              <th class="table-active text-dark align-middle text-center" style="width: 10%">アイコン</th>
 
               <% if customer_signed_in? %><!-- 顧客がログインしているとき -->
                 <th class="table-active text-dark align-middle" style="width: 20%">注文種類</th>
@@ -41,7 +41,7 @@
 
               <th class="table-active text-dark align-middle" style="width: 30%">内容</th>
               <th class="table-active text-dark align-middle" style="width: 20%">ステータス</th>
-              <th class="table-active text-dark align-middle" style="width: 10%">詳細</th>
+              <th class="table-active text-dark align-middle text-center" style="width: 10%">詳細</th>
             </tr>
           </thead>
           <tbody>
@@ -53,7 +53,7 @@
                 </td>
 
                 <!-- アイコン -->
-                <td class="align-middle">
+                <td class="align-middle text-center">
                   <% if order_detail.repair_id.present? %><!-- 修理依頼 -->
                     <i class="fas fa-tools text-dark fa-2x"></i>
                   <% end %>
@@ -147,37 +147,37 @@
                 <td class="align-middle">
                   <% if order_detail.repair_id.present? %><!-- 修理依頼 -->
                     <% if order_detail.repair.status == "修理依頼中" %>
-                      <p class="align-middle" style="color: #fd7e14;"><%= order_detail.repair.status %></p>
+                      <span class="align-middle" style="color: #fd7e14;"><%= order_detail.repair.status %></span>
                     <% elsif order_detail.repair.status == "スケジュール調整中" %>
-                      <p class="align-middle" style="color: #ffc107;"><%= order_detail.repair.status %></p>
+                      <span class="align-middle" style="color: #ffc107;"><%= order_detail.repair.status %></span>
                     <% elsif order_detail.repair.status == "修理完了済み" %>
-                      <p class="align-middle" style="color: #28a745;"><%= order_detail.repair.status %></p>
+                      <span class="align-middle" style="color: #28a745;"><%= order_detail.repair.status %></span>
                     <% end %>
                   <% end %>
 
                   <% if order_detail.order_id.present? %><!-- 商品購入 -->
                     <% if order_detail.order.status == "受注確認中" %>
-                      <p style="color: #dc3545;"><%= order_detail.order.status %></p>
+                      <span style="color: #dc3545;"><%= order_detail.order.status %></span>
                     <% elsif order_detail.order.status == "入金確認" %>
-                      <p style="color: #fd7e14;"><%= order_detail.order.status %></p>
+                      <span style="color: #fd7e14;"><%= order_detail.order.status %></span>
                     <% elsif order_detail.order.status == "製作中" %>
-                      <p style="color: #ffc107;"><%= order_detail.order.status %></p>
+                      <span style="color: #ffc107;"><%= order_detail.order.status %></span>
                     <% elsif order_detail.order.status == "発送済み" %>
-                      <p style="color: #28a745;"><%= order_detail.order.status %></p>
+                      <span style="color: #28a745;"><%= order_detail.order.status %></span>
                     <% end %>
                   <% end %>
 
                   <% if order_detail.made_to_order_id.present? %><!-- オーダーメイド見積依頼 -->
                     <% if order_detail.made_to_order.status == "見積依頼中" %>
-                      <p style="color: #fd7e14;"><%= order_detail.made_to_order.status %></p>
+                      <span style="color: #fd7e14;"><%= order_detail.made_to_order.status %></span>
                     <% elsif order_detail.made_to_order.status == "見積送信済み" %>
-                      <p style="color: #28a745;"><%= order_detail.made_to_order.status %></p>
+                      <span style="color: #28a745;"><%= order_detail.made_to_order.status %></span>
                     <% end %>
                   <% end %>
                 </td>
 
                 <!-- 注文詳細ボタン -->
-                <td class="align-middle">
+                <td class="align-middle text-center">
                   <% if order_detail.repair_id.present? %><!-- 修理依頼 -->
                     <%= link_to "詳細", repair_path(order_detail.repair_id), class: 'border-primary rounded-primary btn text-primary' %>
                   <% end %>

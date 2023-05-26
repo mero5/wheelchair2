@@ -18,10 +18,12 @@ class Customer < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
+  # フルネーム
   def full_name
     self.first_name + " " + self.last_name
   end
 
+  # カタカナのフルネーム
   def kana_full_name
     self.kana_first_name + " " + self.kana_last_name
   end
@@ -31,6 +33,7 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  # 生年月日から年齢を出す
   def age
     today = Time.zone.today
     this_years_birthday = Time.zone.local(today.year, birth_date.month, birth_date.day)
