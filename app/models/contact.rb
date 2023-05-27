@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-  has_many :order_details,dependent: :destroy
+  has_many :order_details, dependent: :destroy
 
   enum status: {電話:0, メール:1}
 
@@ -9,4 +9,5 @@ class Contact < ApplicationRecord
   validates :subject, presence: true
   validates :message, presence: true
   validates :status, presence: true
+
 end
